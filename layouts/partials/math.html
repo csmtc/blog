@@ -1,12 +1,24 @@
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [["$", "$"]],
+      macros: {
+        '\\': '\\\\' // 将单个反斜杠映射为换行命令
+      },
+    },
+    displayMath: [
+      ["$$", "$$"],
+      ["\[\[", "\]\]"],
+    ],
+    svg: {
+      fontCache: "global",
+    },
+  };
+</script>
 
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-<style>
-code.has-jax {
-    font: inherit;
-    font-size: 100%;
-    background: inherit;
-    border: inherit;
-    color: #515151;
-}
-</style>
+<!--<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+></script>-->

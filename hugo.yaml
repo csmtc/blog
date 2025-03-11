@@ -41,7 +41,7 @@ languages:
         - identifier: categories
           name: Categories
           pageRef: /categories
-          pre: tag
+          pre: archive
           weight: 2
         - identifier: tag
           name: Tags
@@ -344,7 +344,7 @@ params:
   # OG SEO 配置
   # Open graph settings
   openGraph:
-    enable: true
+    enable: false
     #twitter:
      #creator: <twitter:creator>
      #image: <twitter:image>
@@ -405,7 +405,7 @@ params:
   avatar:
     # 设置显示头像的相对路径
     # Replace the default image and set the url here.
-    url: /imgs/csmtc.jpg
+    url: /imgs/csmtc.png
     # 开启头像的圆形显示效果
     # If true, the avatar will be displayed in circle.
     rounded: true
@@ -487,7 +487,7 @@ params:
     enable: true
     # 自动设置列表的数字
     # Automatically add list number to toc.
-    number: true
+    number: false
     # 开启自动换行显示
     # If true, all words will placed on next lines 
     # if header width longer then sidebar width.
@@ -660,7 +660,7 @@ params:
     # 是否开启捐赠按钮，开启后将在每个文章页面底部显示
     # If true, a donate button will be displayed 
     # in every article by default.
-    enable: true
+    enable: false
     # 是否开启捐赠方式的动画效果
     # If true, the donate type title will with animation.
     animation: true
@@ -684,8 +684,8 @@ params:
   followMe:
     #channel0: Twitter || https://twitter.com/username || fab fa-twitter
     #channel1: Telegram || https://t.me/channel_name || fab fa-telegram
-    channel2: WeChat || /images/wechat_channel.jpg || fab fa-weixin
-    channel3: RSS || /atom.xml || fa fa-rss
+    # channel2: WeChat || /images/wechat_channel.jpg || fab fa-weixin
+    # channel3: RSS || /atom.xml || fa fa-rss
 
   # 文章的在线编辑
   # Post edit

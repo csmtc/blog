@@ -108,12 +108,12 @@
 &lt;a class="header-anchor" href="#70-%e7%88%ac%e6%a5%bc%e6%a2%af">&lt;/a>
 &lt;/h3>&lt;p>假设你正在爬楼梯。需要 &lt;code>n&lt;/code> 阶你才能到达楼顶。
 每次你可以爬 &lt;code>1&lt;/code> 或 &lt;code>2&lt;/code> 个台阶。你有多少种不同的方法可以爬到楼顶呢？&lt;/p>
-&lt;p>$$
+&lt;div class="math display">
 \begin{cases}
-f(n)=f(n-2)+f(n-1)\
-f(&amp;lt;=0)=0,f(1)=1,f(2)=2
+f(n)=f(n-2)+f(n-1)\\
+f(&lt;=0)=0,f(1)=1,f(2)=2
 \end{cases}
-$$&lt;/p>
+&lt;/div>
 &lt;h3 id="746-使用最小花费爬楼梯">
 &lt;a href="https://leetcode.cn/problems/min-cost-climbing-stairs/" title="746. 使用最小花费爬楼梯" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
  746. 使用最小花费爬楼梯
