@@ -1,7 +1,7 @@
 ---
 title: LeetCode刷题记录-动态规划
-date: 2025-02-17T16:50:13
-lastmod: 2025-03-12T00:38:38
+date: 2024-02-17 16:50:13
+lastmod: 2025-03-12 00:38:38
 aliases: 
 keywords: 
 categories: 
@@ -20,10 +20,12 @@ share: true
 假设你正在爬楼梯。需要 `n` 阶你才能到达楼顶。
 每次你可以爬 `1` 或 `2` 个台阶。你有多少种不同的方法可以爬到楼顶呢？
 
-<div>$$\n\begin{cases}
+$$
+\begin{cases}
 f(n)=f(n-2)+f(n-1)\\
 f(<=0)=0,f(1)=1,f(2)=2
-\end{cases}\n$$</div>
+\end{cases}
+$$
 
 ### [746. 使用最小花费爬楼梯](https://leetcode.cn/problems/min-cost-climbing-stairs/)
 
