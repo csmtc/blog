@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>算法与数据结构 on CSMTC Blog</title><link>//localhost:1313/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link><description>Recent content in 算法与数据结构 on CSMTC Blog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Wed, 12 Mar 2025 00:38:38 +0000</lastBuildDate><atom:link href="//localhost:1313/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/rss.xml" rel="self" type="application/rss+xml"/><item><title>LeetCode刷题记录-动态规划</title><link>//localhost:1313/post/work/%E5%9F%BA%E7%A1%80/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/%E9%A2%98%E7%9B%AE/leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</link><pubDate>Sat, 17 Feb 2024 16:50:13 +0000</pubDate><guid>//localhost:1313/post/work/%E5%9F%BA%E7%A1%80/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/%E9%A2%98%E7%9B%AE/leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</guid><description>&lt;h1 id="动态规划问题">动态规划问题
+&lt;a class="header-anchor" href="#%e5%8a%a8%e6%80%81%e8%a7%84%e5%88%92%e9%97%ae%e9%a2%98">&lt;/a>
+&lt;/h1>&lt;p>这类问题的求解思路是：&lt;/p>
+&lt;ul>
+&lt;li>先尝试有 Cache 的暴力搜索，列出递推式&lt;/li>
+&lt;li>将上述搜索转化为使用 dp 数组的方法&lt;/li>
+&lt;/ul>
+&lt;h3 id="70-爬楼梯">
+&lt;a href="https://leetcode.cn/problems/climbing-stairs/description/" title="70. 爬楼梯" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ 70. 爬楼梯
+ 
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+ 
+&lt;/a>
+&lt;a class="header-anchor" href="#70-%e7%88%ac%e6%a5%bc%e6%a2%af">&lt;/a>
+&lt;/h3>&lt;p>假设你正在爬楼梯。需要 &lt;code>n&lt;/code> 阶你才能到达楼顶。
+每次你可以爬 &lt;code>1&lt;/code> 或 &lt;code>2&lt;/code> 个台阶。你有多少种不同的方法可以爬到楼顶呢？&lt;/p>
+&lt;p>$$
+\begin{cases}
+f(n)=f(n-2)+f(n-1)\
+f(&amp;lt;=0)=0,f(1)=1,f(2)=2
+\end{cases}
+$$&lt;/p>
+&lt;h3 id="746-使用最小花费爬楼梯">
+&lt;a href="https://leetcode.cn/problems/min-cost-climbing-stairs/" title="746. 使用最小花费爬楼梯" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ 746. 使用最小花费爬楼梯
+ 
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+ 
+&lt;/a>
+&lt;a class="header-anchor" href="#746-%e4%bd%bf%e7%94%a8%e6%9c%80%e5%b0%8f%e8%8a%b1%e8%b4%b9%e7%88%ac%e6%a5%bc%e6%a2%af">&lt;/a>
+&lt;/h3>&lt;p>给你一个整数数组 &lt;code>cost&lt;/code> ，其中 &lt;code>cost[i]&lt;/code> 是从楼梯第 &lt;code>i&lt;/code> 个台阶向上爬需要支付的费用。一旦你支付此费用，即可选择向上爬一个或者两个台阶。
+你可以选择从下标为 &lt;code>0&lt;/code> 或下标为 &lt;code>1&lt;/code> 的台阶开始爬楼梯。
+输入：cost = [10,15,20]
+输出：15
+解释：你将从下标为 1 的台阶开始。&lt;/p>
+&lt;ul>
+&lt;li>支付 15 ，向上爬两个台阶，到达楼梯顶部。
+总花费为 15 。&lt;/li>
+&lt;/ul>
+&lt;h3 id="62-不同路径">
+&lt;a href="https://leetcode.cn/problems/unique-paths/" title="62. 不同路径" rel="noopener external nofollow noreferrer" target="_blank" class=" exturl">
+ 62. 不同路径
+ 
+ &lt;i class="fa fa-external-link-alt">&lt;/i>
+ 
+&lt;/a>
+&lt;a class="header-anchor" href="#62-%e4%b8%8d%e5%90%8c%e8%b7%af%e5%be%84">&lt;/a>
+&lt;/h3>&lt;p>一个机器人位于一个 &lt;code>m x n&lt;/code> 网格的左上角 （起始点在下图中标记为 “Start” ）。
+机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为 “Finish” ）。
+问总共有多少条不同的路径？&lt;/p></description></item></channel></rss>
