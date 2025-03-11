@@ -51,9 +51,9 @@ jobs:
       - name: Install Node.js dependencies
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
       - name: Install Python
-        run: sudo apt install python
+        run: sudo apt install python3 -y
       - name: pre-Process Markdown
-        run: "python preprocess.py"
+        run: "python3 preprocess.py"
       - name: Build with Hugo
         env:
           HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
