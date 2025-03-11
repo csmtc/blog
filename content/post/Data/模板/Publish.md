@@ -1,10 +1,10 @@
 ---
-date: <% tp.file.creation_date("YYYY/MM/D,ddd  HH-mm-ss") %>
-lastmod: <% tp.file.last_modified_date("YYYY/MM/D,ddd  HH-mm-ss") %>
+date: <% tp.file.creation_date("YYYY-MM-DD") %>T<% tp.file.creation_date("HH:mm:ss") %>
+lastmod: <% tp.file.last_modified_date("YYYY-MM-DD") %>T<% tp.file.last_modified_date("HH:mm:ss") %>
 aliases: 
 keywords: 
 categories: 
 tags: 
-published: true
+share: true
 ---
 
