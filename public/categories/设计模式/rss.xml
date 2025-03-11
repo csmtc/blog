@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>设计模式 on CSMTC Blog</title><link>//localhost:1313/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link><description>Recent content in 设计模式 on CSMTC Blog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Wed, 12 Mar 2025 02:54:36 +0000</lastBuildDate><atom:link href="//localhost:1313/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/rss.xml" rel="self" type="application/rss+xml"/><item><title>5.1-ChainOfResponsibility-职责链-行为型模式</title><link>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.1-ChainOfResponsibility-%E8%81%8C%E8%B4%A3%E9%93%BE-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Mon, 09 Sep 2024 20:03:09 +0000</pubDate><guid>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.1-ChainOfResponsibility-%E8%81%8C%E8%B4%A3%E9%93%BE-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h3 id="目的">目的
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>设计模式 on CSMTC Blog</title><link>/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</link><description>Recent content in 设计模式 on CSMTC Blog</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Wed, 12 Mar 2025 02:54:36 +0000</lastBuildDate><atom:link href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/rss.xml" rel="self" type="application/rss+xml"/><item><title>5.1-ChainOfResponsibility-职责链-行为型模式</title><link>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.1-ChainOfResponsibility-%E8%81%8C%E8%B4%A3%E9%93%BE-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Mon, 09 Sep 2024 20:03:09 +0000</pubDate><guid>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.1-ChainOfResponsibility-%E8%81%8C%E8%B4%A3%E9%93%BE-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h3 id="目的">目的
 &lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
 &lt;/h3>&lt;p>使多个对象都有机会处理请求，从而避免请求的发送者和接收者之间的耦合关系。
 对象连成一条链，并沿着这条链传递该请求，直到有一个对象处理它为止。&lt;/p>
@@ -10,7 +10,7 @@
 &lt;li>&lt;strong>职责链&lt;/strong>：将可选的处理对象排成一条链，链中对象收到请求的对象要么亲自处理它，要么转发给链中的下一个候选者。
 &lt;ul>
 &lt;li>要求：每个在链上的对象都有一致的&lt;em>处理请求&lt;/em>和&lt;em>访问链上后继者&lt;/em>的接口
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5.1-ChainOfResponsibility-%E8%81%8C%E8%B4%A3%E9%93%BE-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-08_10-04-55-745.png" alt="" />
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5.1-ChainOfResponsibility-%E8%81%8C%E8%B4%A3%E9%93%BE-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-08_10-04-55-745.png" alt="" />
 按钮、对话框和应用类都使用 HelpHandler 操作来处理帮助请求。 HelpHandler 的 HandleHelp 操作默认是将请求转发给后继。&lt;/li>
 &lt;/ul>
 &lt;/li>
@@ -24,7 +24,7 @@
 &lt;/ul>
 &lt;h3 id="结构">结构
 &lt;a class="header-anchor" href="#%e7%bb%93%e6%9e%84">&lt;/a>
-&lt;/h3>&lt;p>&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5.1-ChainOfResponsibility-%E8%81%8C%E8%B4%A3%E9%93%BE-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-08_10-05-58-915.png" alt="" />&lt;/p>
+&lt;/h3>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5.1-ChainOfResponsibility-%E8%81%8C%E8%B4%A3%E9%93%BE-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-08_10-05-58-915.png" alt="" />&lt;/p>
 &lt;ul>
 &lt;li>Handler：定义处理请求的接口
 &lt;ul>
@@ -40,7 +40,7 @@
 当客户提交一个请求时，请求沿链传递直至有一个 ConcreteHandler 对象负责处理它。&lt;/li>
 &lt;/ul>
 &lt;p>请求传递过程可能如下
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5.1-ChainOfResponsibility-%E8%81%8C%E8%B4%A3%E9%93%BE-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-08_10-06-26-399.png" alt="" />&lt;/p>
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5.1-ChainOfResponsibility-%E8%81%8C%E8%B4%A3%E9%93%BE-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-08_10-06-26-399.png" alt="" />&lt;/p>
 &lt;h3 id="优缺点">优缺点
 &lt;a class="header-anchor" href="#%e4%bc%98%e7%bc%ba%e7%82%b9">&lt;/a>
 &lt;/h3>&lt;ul>
@@ -59,7 +59,7 @@
 &lt;/h4>&lt;ul>
 &lt;li>&lt;strong>使用已有的链接&lt;/strong>：例如，在一个部分–整体层次结构中，父构件引用可定义一个部件的后继者。窗口组件（widget）结构可能早已有这样的链接。&lt;/li>
 &lt;li>&lt;strong>由 Handler 实现&lt;/strong>：如果没有已有的引用可定义一个链，则必须构建新的链。这种情况下 Handler 不仅定义该请求的接口，通常也维护后继者
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5.1-ChainOfResponsibility-%E8%81%8C%E8%B4%A3%E9%93%BE-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-08_10-22-13-233.png" alt="" />&lt;/li>
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5.1-ChainOfResponsibility-%E8%81%8C%E8%B4%A3%E9%93%BE-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-08_10-22-13-233.png" alt="" />&lt;/li>
 &lt;/ul>
 &lt;h4 id="表示请求">表示请求
 &lt;a class="header-anchor" href="#%e8%a1%a8%e7%a4%ba%e8%af%b7%e6%b1%82">&lt;/a>
@@ -76,17 +76,17 @@
 &lt;li>使用独立的请求对象来封装请求参数&lt;/li>
 &lt;li>Request 可定义一个访问器（accessor）函数以返回该类的标识符（对于支持的语言，可使用运行时的类型信息）&lt;/li>
 &lt;li>子类可通过重定义 HandleRequest 扩展该分派函数。子类只处理它感兴趣的请求，其他的请求被转发给父类。
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5.1-ChainOfResponsibility-%E8%81%8C%E8%B4%A3%E9%93%BE-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-08_10-26-57-404.png" alt="" />&lt;/li>
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5.1-ChainOfResponsibility-%E8%81%8C%E8%B4%A3%E9%93%BE-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-08_10-26-57-404.png" alt="" />&lt;/li>
 &lt;/ul>
 &lt;h3 id="相关模式">相关模式
 &lt;a class="header-anchor" href="#%e7%9b%b8%e5%85%b3%e6%a8%a1%e5%bc%8f">&lt;/a>
-&lt;/h3>&lt;p>职责链常与 Composite（4.3）一起使用。这种情况下，一个构件的父构件可作为它的后继。&lt;/p></description></item><item><title>「HARD」4.6-Flyweight-享元-结构型模式</title><link>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/HARD4.6-Flyweight-%E4%BA%AB%E5%85%83-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/HARD4.6-Flyweight-%E4%BA%AB%E5%85%83-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h3 id="用途">用途
+&lt;/h3>&lt;p>职责链常与 Composite（4.3）一起使用。这种情况下，一个构件的父构件可作为它的后继。&lt;/p></description></item><item><title>「HARD」4.6-Flyweight-享元-结构型模式</title><link>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/HARD4.6-Flyweight-%E4%BA%AB%E5%85%83-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/HARD4.6-Flyweight-%E4%BA%AB%E5%85%83-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h3 id="用途">用途
 &lt;a class="header-anchor" href="#%e7%94%a8%e9%80%94">&lt;/a>
 &lt;/h3>&lt;p>运用共享技术支持大量细粒度的对象&lt;strong>节约空间&lt;/strong>&lt;/p>
 &lt;h3 id="示例">示例
 &lt;a class="header-anchor" href="#%e7%a4%ba%e4%be%8b">&lt;/a>
 &lt;/h3>&lt;p>面向对象中创建一个对象的开销是相对较大的，有时这是难以承受的。例如文本编辑器若将每个字符均采用一个相应的对象描述将产生巨大的内存负担&lt;/p>
-&lt;p>&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/%E3%80%8CHARD%E3%80%8D4.6-Flyweight-%E4%BA%AB%E5%85%83-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-03_12-30-49-151.png" alt="" />
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/%E3%80%8CHARD%E3%80%8D4.6-Flyweight-%E4%BA%AB%E5%85%83-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-03_12-30-49-151.png" alt="" />
 Flyweight 模式描述了如何共享对象，使得可以细粒度地使用它们而不需要高昂的代价&lt;/p>
 &lt;ul>
 &lt;li>说明：flyweight 是一个共享对象，它可以同时在多个&lt;strong>场景/上下文&lt;/strong>（context）中使用，并且在每个场景中 flyweight 都可以作为一个独立的对象
@@ -106,7 +106,7 @@ Flyweight 模式描述了如何共享对象，使得可以细粒度地使用它�
 &lt;li>逻辑上&lt;em>每个&lt;/em>字符对应一个对象&lt;/li>
 &lt;li>物理上&lt;em>每种&lt;/em>字符共享同一个 Flyweight 对象（存储在 Flyweight 对象池），只存储字符编码，不存储相应的图元位置和字体等信息&lt;/li>
 &lt;li>行对象绘制字符对象时传递位置、字体等信息
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/%E3%80%8CHARD%E3%80%8D4.6-Flyweight-%E4%BA%AB%E5%85%83-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-03_12-42-29-654.png" alt="" />&lt;/li>
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/%E3%80%8CHARD%E3%80%8D4.6-Flyweight-%E4%BA%AB%E5%85%83-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-03_12-42-29-654.png" alt="" />&lt;/li>
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
@@ -123,7 +123,7 @@ Flyweight 模式描述了如何共享对象，使得可以细粒度地使用它�
 &lt;/ul>
 &lt;h3 id="结构">结构
 &lt;a class="header-anchor" href="#%e7%bb%93%e6%9e%84">&lt;/a>
-&lt;/h3>&lt;p>&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/%E3%80%8CHARD%E3%80%8D4.6-Flyweight-%E4%BA%AB%E5%85%83-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-03_12-45-43-193.png" alt="" />&lt;/p>
+&lt;/h3>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/%E3%80%8CHARD%E3%80%8D4.6-Flyweight-%E4%BA%AB%E5%85%83-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-03_12-45-43-193.png" alt="" />&lt;/p>
 &lt;ul>
 &lt;li>FlyweightFactory：创建、管理、共享 Flyweight 对象。（采用懒加载创建）&lt;/li>
 &lt;li>Flyweight（示例中的 Glyph）：描述接口，通过这个接口 flyweight 可以接受并作用于外部状态。&lt;/li>
@@ -149,7 +149,7 @@ Flyweight 模式描述了如何共享对象，使得可以细粒度地使用它�
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;p>Flyweight 模式经常和 Composite（4.3）模式结合起来表示一个层次式结构，这一层次式结构是一个共享叶结点的图。&lt;/p></description></item><item><title>「HARD」5.3-Interpreter-解释器-行为型模式</title><link>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/HARD5.3-Interpreter-%E8%A7%A3%E9%87%8A%E5%99%A8-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/HARD5.3-Interpreter-%E8%A7%A3%E9%87%8A%E5%99%A8-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h3 id="目的">目的
+&lt;p>Flyweight 模式经常和 Composite（4.3）模式结合起来表示一个层次式结构，这一层次式结构是一个共享叶结点的图。&lt;/p></description></item><item><title>「HARD」5.3-Interpreter-解释器-行为型模式</title><link>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/HARD5.3-Interpreter-%E8%A7%A3%E9%87%8A%E5%99%A8-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/HARD5.3-Interpreter-%E8%A7%A3%E9%87%8A%E5%99%A8-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h3 id="目的">目的
 &lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
 &lt;/h3>&lt;p>给定一个语言，定义它的文法的一种表示，并定义一个解释器，这个解释器使用该表示来解释语言中的句子。&lt;/p>
 &lt;h3 id="示例">示例
@@ -163,7 +163,7 @@ Flyweight 模式描述了如何共享对象，使得可以细粒度地使用它�
 &lt;li>literal ::= &amp;lsquo;a&amp;rsquo; | &amp;lsquo;b&amp;rsquo; | &amp;lsquo;c&amp;rsquo;&amp;hellip; ( &amp;lsquo;a&amp;rsquo; | &amp;lsquo;b&amp;rsquo; | &amp;lsquo;c&amp;rsquo;&amp;hellip;)*&lt;/li>
 &lt;/ul>
 &lt;p>使用类去描述上述文法：
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/%E3%80%8CHARD%E3%80%8D5.3-Interpreter-%E8%A7%A3%E9%87%8A%E5%99%A8-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-09_15-09-53-908.png" alt="" />&lt;/p>
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/%E3%80%8CHARD%E3%80%8D5.3-Interpreter-%E8%A7%A3%E9%87%8A%E5%99%A8-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-09_15-09-53-908.png" alt="" />&lt;/p>
 &lt;ul>
 &lt;li>每个用这个文法定义的正则表达式都被表示为一个由这些类的实例构成的抽象语法树 AST&lt;/li>
 &lt;li>如果我们为 RegularExpression 的每一子类都定义解释（Interpret） 操作，那么就得到了这些正则表达式的一个解释器。&lt;/li>
@@ -178,7 +178,7 @@ Flyweight 模式描述了如何共享对象，使得可以细粒度地使用它�
 &lt;/ul>
 &lt;h3 id="结构">结构
 &lt;a class="header-anchor" href="#%e7%bb%93%e6%9e%84">&lt;/a>
-&lt;/h3>&lt;p>&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/%E3%80%8CHARD%E3%80%8D5.3-Interpreter-%E8%A7%A3%E9%87%8A%E5%99%A8-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-09_15-17-01-856.png" alt="" />&lt;/p>
+&lt;/h3>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/%E3%80%8CHARD%E3%80%8D5.3-Interpreter-%E8%A7%A3%E9%87%8A%E5%99%A8-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-09_15-17-01-856.png" alt="" />&lt;/p>
 &lt;ul>
 &lt;li>AbstractExpression：定义抽象的解释操作&lt;/li>
 &lt;li>TerminalExpression：（终结符表达式，如 LiteralExpression）
@@ -201,7 +201,7 @@ Flyweight 模式描述了如何共享对象，使得可以细粒度地使用它�
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;p>&lt;strong>工作流程&lt;/strong>：Client 构建（或被给定）一个句子，它是 NonterminalExpression 和 TerminalExpression 的实例的一个抽象语法树。然后初始化上下文并调用解释操作。&lt;/p></description></item><item><title>1-设计模式概论</title><link>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%A6%82%E8%AE%BA/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%A6%82%E8%AE%BA/</guid><description>&lt;h2 id="定义和组成要素">定义和组成要素
+&lt;p>&lt;strong>工作流程&lt;/strong>：Client 构建（或被给定）一个句子，它是 NonterminalExpression 和 TerminalExpression 的实例的一个抽象语法树。然后初始化上下文并调用解释操作。&lt;/p></description></item><item><title>1-设计模式概论</title><link>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%A6%82%E8%AE%BA/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/1-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%A6%82%E8%AE%BA/</guid><description>&lt;h2 id="定义和组成要素">定义和组成要素
 &lt;a class="header-anchor" href="#%e5%ae%9a%e4%b9%89%e5%92%8c%e7%bb%84%e6%88%90%e8%a6%81%e7%b4%a0">&lt;/a>
 &lt;/h2>&lt;p>&lt;strong>什么是模式&lt;/strong>：每一个模式描述了一个在我们周围不断重复发生的问题，以及该问题的解决方案的核心。&lt;/p>
 &lt;p>&lt;strong>模式的组成要素&lt;/strong>：&lt;/p>
@@ -248,7 +248,7 @@ Flyweight 模式描述了如何共享对象，使得可以细粒度地使用它�
 &lt;/ul>
 &lt;h2 id="设计模式目录">设计模式目录
 &lt;a class="header-anchor" href="#%e8%ae%be%e8%ae%a1%e6%a8%a1%e5%bc%8f%e7%9b%ae%e5%bd%95">&lt;/a>
-&lt;/h2>&lt;p>&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/1-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%A6%82%E8%AE%BA/image-2023-09-20_19-23-19-922.png" alt="" />&lt;/p>
+&lt;/h2>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/1-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%A6%82%E8%AE%BA/image-2023-09-20_19-23-19-922.png" alt="" />&lt;/p>
 &lt;ul>
 &lt;li>
 &lt;p>创建型模式与对象的创建有关；&lt;/p>
@@ -267,7 +267,7 @@ Flyweight 模式描述了如何共享对象，使得可以细粒度地使用它�
 &lt;/li>
 &lt;/ul>
 &lt;p>&lt;strong>设计模式中可变的部分&lt;/strong>：
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/1-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%A6%82%E8%AE%BA/image-2023-09-20_20-49-05-817.png" alt="" />&lt;/p>
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/1-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E6%A6%82%E8%AE%BA/image-2023-09-20_20-49-05-817.png" alt="" />&lt;/p>
 &lt;ol>
 &lt;li>Abstract Factory（3.1）：提供一个创建一系列相关或相互依赖对象的接口，而无须指定它们具体的类。&lt;/li>
 &lt;li>Adapter（4.1）：将一个类的接口转换成客户希望的另外一个接口。Adapter 模式使得原本由于接口不兼容而不能一起工作的那些类可以一起工作。&lt;/li>
@@ -294,7 +294,7 @@ Flyweight 模式描述了如何共享对象，使得可以细粒度地使用它�
 &lt;a class="header-anchor" href="#%e9%9d%a2%e5%90%91%e5%af%b9%e8%b1%a1%e8%ae%be%e8%ae%a1%e7%9a%84%e6%ad%a5%e9%aa%a4">&lt;/a>
 &lt;/h2>&lt;h3 id="设计原则">设计原则
 &lt;a class="header-anchor" href="#%e8%ae%be%e8%ae%a1%e5%8e%9f%e5%88%99">&lt;/a>
-&lt;/h3>&lt;p>&lt;strong>对接口编程，而不是对实现编程&lt;/strong>。这可以极大地减少子系统实现之间的相互依赖关系：&lt;/p></description></item><item><title>3-创建型模式</title><link>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/3-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/3-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h1 id="创建型模式">创建型模式
+&lt;/h3>&lt;p>&lt;strong>对接口编程，而不是对实现编程&lt;/strong>。这可以极大地减少子系统实现之间的相互依赖关系：&lt;/p></description></item><item><title>3-创建型模式</title><link>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/3-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/3-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h1 id="创建型模式">创建型模式
 &lt;a class="header-anchor" href="#%e5%88%9b%e5%bb%ba%e5%9e%8b%e6%a8%a1%e5%bc%8f">&lt;/a>
 &lt;/h1>&lt;p>创建型设计模式抽象了实例化过程。它们帮助一个系统独立于如何创建、组合和表示它的那些对象。&lt;/p>
 &lt;p>&lt;strong>主要特征&lt;/strong>：&lt;/p>
@@ -458,7 +458,7 @@ Flyweight 模式描述了如何共享对象，使得可以细粒度地使用它�
 &lt;/ul>
 &lt;h2 id="讨论">讨论
 &lt;a class="header-anchor" href="#%e8%ae%a8%e8%ae%ba">&lt;/a>
-&lt;/h2>&lt;p>对系统进行参数化主要有 2 种方法：&lt;/p></description></item><item><title>3.1-AbstractFactory「Kit」-抽象工厂-创建型模式</title><link>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/3.1-AbstractFactoryKit-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/3.1-AbstractFactoryKit-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;p>又称 &lt;strong>Kit&lt;/strong>&lt;/p>
+&lt;/h2>&lt;p>对系统进行参数化主要有 2 种方法：&lt;/p></description></item><item><title>3.1-AbstractFactory「Kit」-抽象工厂-创建型模式</title><link>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/3.1-AbstractFactoryKit-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/3.1-AbstractFactoryKit-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;p>又称 &lt;strong>Kit&lt;/strong>&lt;/p>
 &lt;h2 id="abstract-factory-抽象工厂">Abstract Factory 抽象工厂
 &lt;a class="header-anchor" href="#abstract-factory-%e6%8a%bd%e8%b1%a1%e5%b7%a5%e5%8e%82">&lt;/a>
 &lt;/h2>&lt;h4 id="用途">用途
@@ -471,11 +471,11 @@ Flyweight 模式描述了如何共享对象，使得可以细粒度地使用它�
 &lt;li>抽象工厂提供 CreateXXX 接口生产抽象组件 XXX，用户调用该函数获取 XXX 组件&lt;/li>
 &lt;li>抽象工厂的具象工厂子类实现 CreateXXX 接口，生产自己这种类型的具象组件 YYXXX（YYWindow，YYScrollBar,&amp;hellip;）&lt;/li>
 &lt;li>&lt;strong>客户仅与抽象类定义的接口交互，而不使用特定的具体类的接口&lt;/strong>
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/3.1-AbstractFactory%E3%80%8CKit%E3%80%8D-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-24_13-01-22-769.png" alt="" />&lt;/li>
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/3.1-AbstractFactory%E3%80%8CKit%E3%80%8D-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-24_13-01-22-769.png" alt="" />&lt;/li>
 &lt;/ul>
 &lt;h4 id="结构">结构
 &lt;a class="header-anchor" href="#%e7%bb%93%e6%9e%84">&lt;/a>
-&lt;/h4>&lt;p>&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/3.1-AbstractFactory%E3%80%8CKit%E3%80%8D-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-24_15-12-44-904.png" alt="" />&lt;/p>
+&lt;/h4>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/3.1-AbstractFactory%E3%80%8CKit%E3%80%8D-%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-24_15-12-44-904.png" alt="" />&lt;/p>
 &lt;ul>
 &lt;li>AbstractFactory：声明一个创建抽象产品对象的接口&lt;/li>
 &lt;li>ConcreteFactory：实现创建具体产品对象的操作&lt;/li>
@@ -533,7 +533,7 @@ Flyweight 模式描述了如何共享对象，使得可以细粒度地使用它�
 &lt;li>客户需要使用执行&lt;strong>向下类型转换&lt;/strong>（downcast，例如 cpp 中的 dynamic_cast）才能获得具体的子类型，而这会带来安全隐患&lt;/li>
 &lt;/ul>
 &lt;/li>
-&lt;/ul></description></item><item><title>3.2-Builder-生成器模式-创建型模式</title><link>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/3.2-Builder-%E7%94%9F%E6%88%90%E5%99%A8%E6%A8%A1%E5%BC%8F-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/3.2-Builder-%E7%94%9F%E6%88%90%E5%99%A8%E6%A8%A1%E5%BC%8F-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h1 id="builder">Builder
+&lt;/ul></description></item><item><title>3.2-Builder-生成器模式-创建型模式</title><link>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/3.2-Builder-%E7%94%9F%E6%88%90%E5%99%A8%E6%A8%A1%E5%BC%8F-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/3.2-Builder-%E7%94%9F%E6%88%90%E5%99%A8%E6%A8%A1%E5%BC%8F-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h1 id="builder">Builder
 &lt;a class="header-anchor" href="#builder">&lt;/a>
 &lt;/h1>&lt;h4 id="用途">用途
 &lt;a class="header-anchor" href="#%e7%94%a8%e9%80%94">&lt;/a>
@@ -556,7 +556,7 @@ Flyweight 模式描述了如何共享对象，使得可以细粒度地使用它�
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/3.2-Builder-%E7%94%9F%E6%88%90%E5%99%A8%E6%A8%A1%E5%BC%8F-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-24_15-03-46-060.png" alt="" />&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/3.2-Builder-%E7%94%9F%E6%88%90%E5%99%A8%E6%A8%A1%E5%BC%8F-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-24_15-03-46-060.png" alt="" />&lt;/p>
 &lt;h4 id="适用情形">适用情形
 &lt;a class="header-anchor" href="#%e9%80%82%e7%94%a8%e6%83%85%e5%bd%a2">&lt;/a>
 &lt;/h4>&lt;ul>
@@ -565,7 +565,7 @@ Flyweight 模式描述了如何共享对象，使得可以细粒度地使用它�
 &lt;/ul>
 &lt;h4 id="结构">结构
 &lt;a class="header-anchor" href="#%e7%bb%93%e6%9e%84">&lt;/a>
-&lt;/h4>&lt;p>&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/3.2-Builder-%E7%94%9F%E6%88%90%E5%99%A8%E6%A8%A1%E5%BC%8F-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-24_15-12-06-045.png" alt="" />&lt;/p>
+&lt;/h4>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/3.2-Builder-%E7%94%9F%E6%88%90%E5%99%A8%E6%A8%A1%E5%BC%8F-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-24_15-12-06-045.png" alt="" />&lt;/p>
 &lt;ul>
 &lt;li>Builder：创建 Product 的抽象接口&lt;/li>
 &lt;li>ConcreteBuilder：（ASCIIConverter、TeXConverter、 TextWidgetConverter）
@@ -589,7 +589,7 @@ Flyweight 模式描述了如何共享对象，使得可以细粒度地使用它�
 &lt;li>一旦生成了产品部件，导向器就会通知生成器。&lt;/li>
 &lt;li>生成器处理导向器的请求，并将部件添加到该产品中。&lt;/li>
 &lt;li>客户从生成器中获取最终产品。
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/3.2-Builder-%E7%94%9F%E6%88%90%E5%99%A8%E6%A8%A1%E5%BC%8F-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-24_15-22-11-430.png" alt="" />&lt;/li>
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/3.2-Builder-%E7%94%9F%E6%88%90%E5%99%A8%E6%A8%A1%E5%BC%8F-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-24_15-22-11-430.png" alt="" />&lt;/li>
 &lt;/ul>
 &lt;h4 id="优缺点">优缺点
 &lt;a class="header-anchor" href="#%e4%bc%98%e7%bc%ba%e7%82%b9">&lt;/a>
@@ -601,7 +601,7 @@ Flyweight 模式描述了如何共享对象，使得可以细粒度地使用它�
 &lt;h4 id="实现">实现
 &lt;a class="header-anchor" href="#%e5%ae%9e%e7%8e%b0">&lt;/a>
 &lt;/h4>&lt;p>通常有一个抽象的 Builder 类为导向器可能要求创建的&lt;em>每一个构件&lt;/em>定义一个操作（默认什么都不做）。
-一个 ConcreteBuilder 类对它有兴趣创建的构件重定义这些操作。&lt;/p></description></item><item><title>3.3-FactoryMethod-工厂方法-创建型模式</title><link>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/3.3-FactoryMethod-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/3.3-FactoryMethod-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;p>又称&lt;strong>虚构造器（virtual constructor）&lt;/strong>&lt;/p>
+一个 ConcreteBuilder 类对它有兴趣创建的构件重定义这些操作。&lt;/p></description></item><item><title>3.3-FactoryMethod-工厂方法-创建型模式</title><link>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/3.3-FactoryMethod-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/3.3-FactoryMethod-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;p>又称&lt;strong>虚构造器（virtual constructor）&lt;/strong>&lt;/p>
 &lt;h4 id="用途">用途
 &lt;a class="header-anchor" href="#%e7%94%a8%e9%80%94">&lt;/a>
 &lt;/h4>&lt;p>定义一个用于创建对象的接口，让子类决定实例化哪一个类。 Factory Method 使一个类的实例化延迟到其子类。&lt;/p>
@@ -614,13 +614,13 @@ Eg：框架定义了 App 抽象类，它包含一个 Document 抽象内容。但
 &lt;ul>
 &lt;li>抽象类 App 中提供接口 CreateDocument。&lt;/li>
 &lt;li>具象 App 子类重载接口 CreateDocument，并创建自己要用到具象的 Document
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/3.3-FactoryMethod-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-26_10-24-30-852.png" alt="" />&lt;/li>
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/3.3-FactoryMethod-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-26_10-24-30-852.png" alt="" />&lt;/li>
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
 &lt;h4 id="结构">结构
 &lt;a class="header-anchor" href="#%e7%bb%93%e6%9e%84">&lt;/a>
-&lt;/h4>&lt;p>&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/3.3-FactoryMethod-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-26_10-35-30-090.png" alt="" />&lt;/p>
+&lt;/h4>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/3.3-FactoryMethod-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-26_10-35-30-090.png" alt="" />&lt;/p>
 &lt;ul>
 &lt;li>Product：定义工厂方法要创建的对象的类别&lt;/li>
 &lt;li>ConcreteProduct：&lt;/li>
@@ -645,7 +645,7 @@ Eg：框架定义了 App 抽象类，它包含一个 Document 抽象内容。但
 &lt;li>工厂方法不再将应用相关的类绑定到程序代码中。代码只处理 Product 接口&lt;/li>
 &lt;li>可以为子类提供钩子 Hook（提供合理的缺省实现）&lt;/li>
 &lt;li>可以连接平行的类层次：例如图形类和用户的操作是平行的类层次，而抽象父类 Figure 可以提供 CreateManipulator 方法连接 Manipulate 类层次，并为子类提供默认实现
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/3.3-FactoryMethod-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-26_10-48-51-858.png" alt="" />&lt;/li>
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/3.3-FactoryMethod-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-26_10-48-51-858.png" alt="" />&lt;/li>
 &lt;/ul>
 &lt;h4 id="实现">实现
 &lt;a class="header-anchor" href="#%e5%ae%9e%e7%8e%b0">&lt;/a>
@@ -662,14 +662,14 @@ Eg：框架定义了 App 抽象类，它包含一个 Document 抽象内容。但
 &lt;/ul>
 &lt;/li>
 &lt;li>&lt;strong>命名约定&lt;/strong>：使用命名约定是一个好习惯，它可以清楚地说明你正在使用工厂方法
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/3.3-FactoryMethod-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-26_10-58-47-704.png" alt="600" />&lt;/li>
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/3.3-FactoryMethod-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-26_10-58-47-704.png" alt="600" />&lt;/li>
 &lt;/ul>
-&lt;p>&lt;strong>Cpp 中的工厂方法&lt;/strong>：&lt;/p></description></item><item><title>3.4-Prototype-原型-创建型方法</title><link>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/3.4-Prototype-%E5%8E%9F%E5%9E%8B-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%96%B9%E6%B3%95/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/3.4-Prototype-%E5%8E%9F%E5%9E%8B-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%96%B9%E6%B3%95/</guid><description>&lt;h4 id="用途">用途
+&lt;p>&lt;strong>Cpp 中的工厂方法&lt;/strong>：&lt;/p></description></item><item><title>3.4-Prototype-原型-创建型方法</title><link>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/3.4-Prototype-%E5%8E%9F%E5%9E%8B-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%96%B9%E6%B3%95/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/3.4-Prototype-%E5%8E%9F%E5%9E%8B-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%96%B9%E6%B3%95/</guid><description>&lt;h4 id="用途">用途
 &lt;a class="header-anchor" href="#%e7%94%a8%e9%80%94">&lt;/a>
 &lt;/h4>&lt;p>用原型指定创建对象的种类，拷贝这些原型创建新的对象&lt;/p>
 &lt;h4 id="示例">示例
 &lt;a class="header-anchor" href="#%e7%a4%ba%e4%be%8b">&lt;/a>
-&lt;/h4>&lt;p>&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/3.4-Prototype-%E5%8E%9F%E5%9E%8B-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%96%B9%E6%B3%95/image-2023-09-26_12-32-40-532.png" alt="" />&lt;/p>
+&lt;/h4>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/3.4-Prototype-%E5%8E%9F%E5%9E%8B-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%96%B9%E6%B3%95/image-2023-09-26_12-32-40-532.png" alt="" />&lt;/p>
 &lt;p>例如采用工具类操作图形元素：&lt;/p>
 &lt;ul>
 &lt;li>若为每个图形元素创建相应工具类，则过于冗杂&lt;/li>
@@ -697,7 +697,7 @@ Eg：框架定义了 App 抽象类，它包含一个 Document 抽象内容。但
 &lt;/li>
 &lt;li>Client：用原型 clone 自身从而创建新的对象&lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/3.4-Prototype-%E5%8E%9F%E5%9E%8B-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%96%B9%E6%B3%95/image-2023-09-26_12-51-54-343.png" alt="" />&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/3.4-Prototype-%E5%8E%9F%E5%9E%8B-%E5%88%9B%E5%BB%BA%E5%9E%8B%E6%96%B9%E6%B3%95/image-2023-09-26_12-51-54-343.png" alt="" />&lt;/p>
 &lt;h4 id="优缺点">优缺点
 &lt;a class="header-anchor" href="#%e4%bc%98%e7%bc%ba%e7%82%b9">&lt;/a>
 &lt;/h4>&lt;p>Prototype 有许多与 Abstract Factory（3.1）和 Builder（3.2）一样的效果：&lt;/p>
@@ -735,7 +735,7 @@ Eg：框架定义了 App 抽象类，它包含一个 Document 抽象内容。但
 &lt;h4 id="实现">实现
 &lt;a class="header-anchor" href="#%e5%ae%9e%e7%8e%b0">&lt;/a>
 &lt;/h4>&lt;p>在像 C++这样的静态语言中，类不是对象，并且运行时只能得到很少或者得不到任何类型信息，所以 Prototype 特别有用。
-相反，在类似 Python 这样的语言中意义不大，语言自带等价于原型的东西（类对象、元类等）&lt;/p></description></item><item><title>3.5-Singleton-单例模式-对象创建模式</title><link>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/3.5-Singleton-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F-%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/3.5-Singleton-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F-%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h4 id="用途">用途
+相反，在类似 Python 这样的语言中意义不大，语言自带等价于原型的东西（类对象、元类等）&lt;/p></description></item><item><title>3.5-Singleton-单例模式-对象创建模式</title><link>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/3.5-Singleton-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F-%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/3.5-Singleton-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F-%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h4 id="用途">用途
 &lt;a class="header-anchor" href="#%e7%94%a8%e9%80%94">&lt;/a>
 &lt;/h4>&lt;p>保证一个类仅有一个实例，并提供一个访问它的全局访问点。&lt;/p>
 &lt;h4 id="示例">示例
@@ -749,7 +749,7 @@ Eg：框架定义了 App 抽象类，它包含一个 Document 抽象内容。但
 &lt;/ul>
 &lt;h4 id="结构">结构
 &lt;a class="header-anchor" href="#%e7%bb%93%e6%9e%84">&lt;/a>
-&lt;/h4>&lt;p>&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/3.5-Singleton-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F-%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F/image-2023-09-26_16-43-30-386.png" alt="" />&lt;/p>
+&lt;/h4>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/3.5-Singleton-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F-%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F/image-2023-09-26_16-43-30-386.png" alt="" />&lt;/p>
 &lt;ul>
 &lt;li>Singleton：定义一个 Instance 操作，允许客户访问它的唯一实例。Instance 是
 一个类操作（即 Java 中的一个类方法和 C++中的一个静态成员函数）。&lt;/li>
@@ -766,9 +766,9 @@ Eg：框架定义了 App 抽象类，它包含一个 Document 抽象内容。但
 &lt;h4 id="实现">实现
 &lt;a class="header-anchor" href="#%e5%ae%9e%e7%8e%b0">&lt;/a>
 &lt;/h4>&lt;p>类型定义
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/3.5-Singleton-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F-%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F/image-2023-09-26_16-50-46-325.png" alt="" />
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/3.5-Singleton-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F-%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F/image-2023-09-26_16-50-46-325.png" alt="" />
 方法实现：在 Instance 方法中懒初始化
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/3.5-Singleton-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F-%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F/image-2023-09-26_16-50-57-559.png" alt="" />&lt;/p>
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/3.5-Singleton-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F-%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F/image-2023-09-26_16-50-57-559.png" alt="" />&lt;/p>
 &lt;ul>
 &lt;li>
 &lt;p>注意构造器是 protected 的。试图直接实例化 Singleton 的客户将得到一个编译时的错误信息。这就保证了仅有一个实例可以被创建。&lt;/p>
@@ -790,13 +790,13 @@ Eg：框架定义了 App 抽象类，它包含一个 Document 抽象内容。但
 &lt;ul>
 &lt;li>Singleton 类不再负责创建单件。它的主要职责是使得供选择的单件对象在系统中可以被访问&lt;/li>
 &lt;li>所有可能的 Singleton 子类的实例都必须被创建，否则它们不会被注册
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/3.5-Singleton-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F-%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F/image-2023-09-26_17-15-24-020.png" alt="" />&lt;/li>
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/3.5-Singleton-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F-%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%A8%A1%E5%BC%8F/image-2023-09-26_17-15-24-020.png" alt="" />&lt;/li>
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;p>如何实现单件注册表：&lt;/p></description></item><item><title>4-结构型模式</title><link>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;p>结构型模式涉及如何组合类和对象以获得更大的结构。结构型类模式采用继承机制来组合接口或实现。&lt;/p>
+&lt;p>如何实现单件注册表：&lt;/p></description></item><item><title>4-结构型模式</title><link>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;p>结构型模式涉及如何组合类和对象以获得更大的结构。结构型类模式采用继承机制来组合接口或实现。&lt;/p>
 &lt;ul>
 &lt;li>Adapter（4.1）模式：适配器使得一个接口（adaptee 的接口）与其他接口兼容，从而给出多个不同接口的统一抽象。&lt;/li>
 &lt;li>Composite（4.3）模式是结构型对象模式的一个实例。它描述了如何构造一个类层次式结构，这一结构由两种类型的对象（基元对象和组合对象）所对应的类构成。
@@ -851,7 +851,7 @@ Eg：框架定义了 App 抽象类，它包含一个 Document 抽象内容。但
 &lt;li>Composite 用于构造类&lt;/li>
 &lt;/ul>
 &lt;/li>
-&lt;/ul></description></item><item><title>4.1-Adapter「wrapper」-适配器-结构型模式</title><link>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.1-Adapterwrapper-%E9%80%82%E9%85%8D%E5%99%A8-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.1-Adapterwrapper-%E9%80%82%E9%85%8D%E5%99%A8-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;p>又称包装器（wrapper）&lt;/p>
+&lt;/ul></description></item><item><title>4.1-Adapter「wrapper」-适配器-结构型模式</title><link>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.1-Adapterwrapper-%E9%80%82%E9%85%8D%E5%99%A8-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.1-Adapterwrapper-%E9%80%82%E9%85%8D%E5%99%A8-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;p>又称包装器（wrapper）&lt;/p>
 &lt;h4 id="用途">用途
 &lt;a class="header-anchor" href="#%e7%94%a8%e9%80%94">&lt;/a>
 &lt;/h4>&lt;p>将一个类的接口转换成客户希望的另外一个接口。&lt;/p>
@@ -870,9 +870,9 @@ Eg：框架定义了 App 抽象类，它包含一个 Document 抽象内容。但
 &lt;h4 id="结构">结构
 &lt;a class="header-anchor" href="#%e7%bb%93%e6%9e%84">&lt;/a>
 &lt;/h4>&lt;p>类适配器：Adapter 同时继承 Target 和 Adaptee
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/4.1-Adapter%E3%80%8Cwrapper%E3%80%8D-%E9%80%82%E9%85%8D%E5%99%A8-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-28_15-07-30-553.png" alt="" />
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/4.1-Adapter%E3%80%8Cwrapper%E3%80%8D-%E9%80%82%E9%85%8D%E5%99%A8-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-28_15-07-30-553.png" alt="" />
 对象适配器
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/4.1-Adapter%E3%80%8Cwrapper%E3%80%8D-%E9%80%82%E9%85%8D%E5%99%A8-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-28_15-08-24-490.png" alt="" />&lt;/p>
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/4.1-Adapter%E3%80%8Cwrapper%E3%80%8D-%E9%80%82%E9%85%8D%E5%99%A8-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-28_15-08-24-490.png" alt="" />&lt;/p>
 &lt;p>&lt;strong>参与者&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Target（Shape）：定义 Client 使用的与特定领域相关的接口。&lt;/li>
@@ -909,7 +909,7 @@ Eg：框架定义了 App 抽象类，它包含一个 Document 抽象内容。但
 &lt;a class="header-anchor" href="#%e5%ae%9e%e7%8e%b0">&lt;/a>
 &lt;/h3>&lt;h4 id="使用-c实现适配器类">使用 C++实现适配器类
 &lt;a class="header-anchor" href="#%e4%bd%bf%e7%94%a8-c%e5%ae%9e%e7%8e%b0%e9%80%82%e9%85%8d%e5%99%a8%e7%b1%bb">&lt;/a>
-&lt;/h4>&lt;p>在使用 C++实现适配器类时，Adapter 类应该采用公共方式继承 Target 类，并且用私有方式继承 Adaptee 类。因此，Adapter 类应该是 Target 的子类型，但不是 Adaptee 的子类型。&lt;/p></description></item><item><title>4.2-Bridge「Handle」-桥接-结构型模式</title><link>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.2-BridgeHandle-%E6%A1%A5%E6%8E%A5-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.2-BridgeHandle-%E6%A1%A5%E6%8E%A5-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;p>又称 Handle/Body&lt;/p>
+&lt;/h4>&lt;p>在使用 C++实现适配器类时，Adapter 类应该采用公共方式继承 Target 类，并且用私有方式继承 Adaptee 类。因此，Adapter 类应该是 Target 的子类型，但不是 Adaptee 的子类型。&lt;/p></description></item><item><title>4.2-Bridge「Handle」-桥接-结构型模式</title><link>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.2-BridgeHandle-%E6%A1%A5%E6%8E%A5-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.2-BridgeHandle-%E6%A1%A5%E6%8E%A5-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;p>又称 Handle/Body&lt;/p>
 &lt;h3 id="011-用途">0.1.1 用途
 &lt;a class="header-anchor" href="#011-%e7%94%a8%e9%80%94">&lt;/a>
 &lt;/h3>&lt;h2 id="继承-vs-bridge">将抽象部分与它的实现部分分离，使它们可以独立地变化。
@@ -937,7 +937,7 @@ Eg：框架定义了 App 抽象类，它包含一个 Document 抽象内容。但
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/4.2-Bridge%E3%80%8CHandle%E3%80%8D-%E6%A1%A5%E6%8E%A5-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-28_17-37-36-790.png" alt="" />&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/4.2-Bridge%E3%80%8CHandle%E3%80%8D-%E6%A1%A5%E6%8E%A5-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-28_17-37-36-790.png" alt="" />&lt;/p>
 &lt;h3 id="013-适用性">0.1.3 适用性
 &lt;a class="header-anchor" href="#013-%e9%80%82%e7%94%a8%e6%80%a7">&lt;/a>
 &lt;/h3>&lt;ul>
@@ -954,7 +954,7 @@ Eg：框架定义了 App 抽象类，它包含一个 Document 抽象内容。但
 &lt;/ul>
 &lt;h3 id="014-结构">0.1.4 结构
 &lt;a class="header-anchor" href="#014-%e7%bb%93%e6%9e%84">&lt;/a>
-&lt;/h3>&lt;p>&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/4.2-Bridge%E3%80%8CHandle%E3%80%8D-%E6%A1%A5%E6%8E%A5-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-28_18-21-07-218.png" alt="" />&lt;/p>
+&lt;/h3>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/4.2-Bridge%E3%80%8CHandle%E3%80%8D-%E6%A1%A5%E6%8E%A5-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-28_18-21-07-218.png" alt="" />&lt;/p>
 &lt;ul>
 &lt;li>Abstraction：抽象接口（例如示例中的 Window），维护一个指向实现（Implementor）的指针&lt;/li>
 &lt;li>RefinedAbstraction：精化的接口（例如示例中的 IconWindow）&lt;/li>
@@ -970,7 +970,7 @@ Eg：框架定义了 App 抽象类，它包含一个 Document 抽象内容。但
 &lt;/li>
 &lt;li>ConcreteImplementor：实现 Implementor 的具体接口（示例中的 XWindowImp、PMWindowImp）&lt;/li>
 &lt;/ul>
-&lt;p>Abstraction 将 client 的请求转发给它的 Implementor 对象&lt;/p></description></item><item><title>4.3-Composite-组合-结构型模式</title><link>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.3-Composite-%E7%BB%84%E5%90%88-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.3-Composite-%E7%BB%84%E5%90%88-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h3 id="目的">目的
+&lt;p>Abstraction 将 client 的请求转发给它的 Implementor 对象&lt;/p></description></item><item><title>4.3-Composite-组合-结构型模式</title><link>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.3-Composite-%E7%BB%84%E5%90%88-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.3-Composite-%E7%BB%84%E5%90%88-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h3 id="目的">目的
 &lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
 &lt;/h3>&lt;ul>
 &lt;li>将对象组合成&lt;em>树形结构&lt;/em>以表示“部分–整体”的层次结构。&lt;/li>
@@ -987,7 +987,7 @@ Eg：框架定义了 App 抽象类，它包含一个 Document 抽象内容。但
 &lt;ul>
 &lt;li>它的图元子类（树的叶结点，Line，Text 等）无需实现容器相关的操作&lt;/li>
 &lt;li>聚合类 Picture 定义了一个 Graphic 的集合，它的 Draw 递归调用子部件的 Draw 操作。由于 Picture 接口与 Graphic 接口是一致的，因此 Picture 对象可以递归地组合其他 Picture 对象。
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/4.3-Composite-%E7%BB%84%E5%90%88-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-30_09-37-45-676.png" alt="" />&lt;/li>
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/4.3-Composite-%E7%BB%84%E5%90%88-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-30_09-37-45-676.png" alt="" />&lt;/li>
 &lt;/ul>
 &lt;h3 id="适用性">适用性
 &lt;a class="header-anchor" href="#%e9%80%82%e7%94%a8%e6%80%a7">&lt;/a>
@@ -998,9 +998,9 @@ Eg：框架定义了 App 抽象类，它包含一个 Document 抽象内容。但
 &lt;h3 id="结构">结构
 &lt;a class="header-anchor" href="#%e7%bb%93%e6%9e%84">&lt;/a>
 &lt;/h3>&lt;p>组合结构如下：
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/4.3-Composite-%E7%BB%84%E5%90%88-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-30_09-40-59-855.png" alt="" />
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/4.3-Composite-%E7%BB%84%E5%90%88-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-30_09-40-59-855.png" alt="" />
 继承结构如下：
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/4.3-Composite-%E7%BB%84%E5%90%88-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-30_09-40-54-198.png" alt="" />&lt;/p>
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/4.3-Composite-%E7%BB%84%E5%90%88-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-30_09-40-54-198.png" alt="" />&lt;/p>
 &lt;p>&lt;strong>参与者&lt;/strong>&lt;/p>
 &lt;ul>
 &lt;li>Component：
@@ -1024,7 +1024,7 @@ Eg：框架定义了 App 抽象类，它包含一个 Document 抽象内容。但
 &lt;li>Leaf：定义图元对象的行为&lt;/li>
 &lt;li>Client：通过 Component 接口操纵组合部件的对象&lt;/li>
 &lt;/ul>
-&lt;p>用户使用 Component 类接口与组合结构中的对象进行交互。&lt;/p></description></item><item><title>4.4-Decorator「wrapper」-装饰器-结构型模式</title><link>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.4-Decoratorwrapper-%E8%A3%85%E9%A5%B0%E5%99%A8-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.4-Decoratorwrapper-%E8%A3%85%E9%A5%B0%E5%99%A8-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h3 id="目的">目的
+&lt;p>用户使用 Component 类接口与组合结构中的对象进行交互。&lt;/p></description></item><item><title>4.4-Decorator「wrapper」-装饰器-结构型模式</title><link>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.4-Decoratorwrapper-%E8%A3%85%E9%A5%B0%E5%99%A8-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.4-Decoratorwrapper-%E8%A3%85%E9%A5%B0%E5%99%A8-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h3 id="目的">目的
 &lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
 &lt;/h3>&lt;p>动态地向对象添加额外功能，比创建子类更加灵活&lt;/p>
 &lt;h3 id="示例">示例
@@ -1034,7 +1034,7 @@ Eg：框架定义了 App 抽象类，它包含一个 Document 抽象内容。但
 &lt;ul>
 &lt;li>这个装饰与它所装饰的组件接口一致，因此它对使用该组件的客户透明（因此可以递归地嵌套）&lt;/li>
 &lt;li>它将客户请求转发给该组件，并且可能在转发前后执行一些额外的动作（例如画一个边框）。
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/4.4-Decorator%E3%80%8Cwrapper%E3%80%8D-%E8%A3%85%E9%A5%B0%E5%99%A8-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-30_14-10-58-351.png" alt="600" />&lt;/li>
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/4.4-Decorator%E3%80%8Cwrapper%E3%80%8D-%E8%A3%85%E9%A5%B0%E5%99%A8-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-30_14-10-58-351.png" alt="600" />&lt;/li>
 &lt;/ul>
 &lt;h3 id="适用性">适用性
 &lt;a class="header-anchor" href="#%e9%80%82%e7%94%a8%e6%80%a7">&lt;/a>
@@ -1050,13 +1050,13 @@ Eg：框架定义了 App 抽象类，它包含一个 Document 抽象内容。但
 &lt;/ul>
 &lt;h3 id="结构">结构
 &lt;a class="header-anchor" href="#%e7%bb%93%e6%9e%84">&lt;/a>
-&lt;/h3>&lt;p>&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/4.4-Decorator%E3%80%8Cwrapper%E3%80%8D-%E8%A3%85%E9%A5%B0%E5%99%A8-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-30_14-13-50-387.png" alt="" />&lt;/p>
+&lt;/h3>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/4.4-Decorator%E3%80%8Cwrapper%E3%80%8D-%E8%A3%85%E9%A5%B0%E5%99%A8-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-30_14-13-50-387.png" alt="" />&lt;/p>
 &lt;ul>
 &lt;li>Component：对象接口&lt;/li>
 &lt;li>ConcreteComponent&lt;/li>
 &lt;li>Decorator：维护指向 Component 的指针，定义和 Component 一致的接口&lt;/li>
 &lt;li>ConcreteDecorator：向组件添加职责（将操作代理给所持有的对象，并附加自身的操作）
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/4.4-Decorator%E3%80%8Cwrapper%E3%80%8D-%E8%A3%85%E9%A5%B0%E5%99%A8-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-30_14-32-31-015.png" alt="" />&lt;/li>
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/4.4-Decorator%E3%80%8Cwrapper%E3%80%8D-%E8%A3%85%E9%A5%B0%E5%99%A8-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-09-30_14-32-31-015.png" alt="" />&lt;/li>
 &lt;/ul>
 &lt;h3 id="优缺点">优缺点
 &lt;a class="header-anchor" href="#%e4%bc%98%e7%bc%ba%e7%82%b9">&lt;/a>
@@ -1091,12 +1091,12 @@ Eg：框架定义了 App 抽象类，它包含一个 Document 抽象内容。但
 &lt;li>Decorator 模式改变外壳&lt;/li>
 &lt;li>Strategy 模式改变内核&lt;/li>
 &lt;/ul>
-&lt;p>当 Component 类原本就很庞大时，使用 Decorator 模式代价太高， Strategy 模式相对好一些&lt;/p></description></item><item><title>4.5-Facade-外观-结构型模式</title><link>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.5-Facade-%E5%A4%96%E8%A7%82-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.5-Facade-%E5%A4%96%E8%A7%82-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h3 id="用途">用途
+&lt;p>当 Component 类原本就很庞大时，使用 Decorator 模式代价太高， Strategy 模式相对好一些&lt;/p></description></item><item><title>4.5-Facade-外观-结构型模式</title><link>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.5-Facade-%E5%A4%96%E8%A7%82-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.5-Facade-%E5%A4%96%E8%A7%82-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h3 id="用途">用途
 &lt;a class="header-anchor" href="#%e7%94%a8%e9%80%94">&lt;/a>
 &lt;/h3>&lt;ul>
 &lt;li>定义一个高层接口，为子系统的一组接口提供一个一致的界面，使得子系统更加易用&lt;/li>
 &lt;li>Facade/fəˈsɑd/ 还可以降低子系统间的依赖关系
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/4.5-Facade-%E5%A4%96%E8%A7%82-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-03_06-38-33-854.png" alt="" />&lt;/li>
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/4.5-Facade-%E5%A4%96%E8%A7%82-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-03_06-38-33-854.png" alt="" />&lt;/li>
 &lt;/ul>
 &lt;h3 id="示例">示例
 &lt;a class="header-anchor" href="#%e7%a4%ba%e4%be%8b">&lt;/a>
@@ -1110,7 +1110,7 @@ Eg：框架定义了 App 抽象类，它包含一个 Document 抽象内容。但
 &lt;li>对于了解内部细节、有特殊需求的高级用户，可以绕过外观类 Complier 使用低层类实现功能
 &lt;ul>
 &lt;li>外观类不会隐藏内部实现
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/4.5-Facade-%E5%A4%96%E8%A7%82-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-03_06-39-35-694.png" alt="" />&lt;/li>
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/4.5-Facade-%E5%A4%96%E8%A7%82-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-03_06-39-35-694.png" alt="" />&lt;/li>
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
@@ -1129,7 +1129,7 @@ Eg：框架定义了 App 抽象类，它包含一个 Document 抽象内容。但
 &lt;/ul>
 &lt;h3 id="结构">结构
 &lt;a class="header-anchor" href="#%e7%bb%93%e6%9e%84">&lt;/a>
-&lt;/h3>&lt;p>&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/4.5-Facade-%E5%A4%96%E8%A7%82-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-03_06-59-02-665.png" alt="" />&lt;/p>
+&lt;/h3>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/4.5-Facade-%E5%A4%96%E8%A7%82-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-03_06-59-02-665.png" alt="" />&lt;/p>
 &lt;ul>
 &lt;li>Facade：知道系统的内部结构，并将客户请求代理给适当的子系统对象&lt;/li>
 &lt;li>Subsystemclasses：
@@ -1173,7 +1173,7 @@ Eg：框架定义了 App 抽象类，它包含一个 Document 抽象内容。但
 &lt;a class="header-anchor" href="#%e7%9b%b8%e5%85%b3%e6%a8%a1%e5%bc%8f">&lt;/a>
 &lt;/h3>&lt;ul>
 &lt;li>
-&lt;p>Abstract Factory（3.1）模式可以与 Facade 模式一起使用以提供一个接口，这一接口可用来以一种子系统独立的方式创建子系统对象。 Abstract Factory 也可以代替 Facade 模式隐藏那些与平台相关的类。&lt;/p></description></item><item><title>4.7-Proxy-代理-结构型模式</title><link>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.7-Proxy-%E4%BB%A3%E7%90%86-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.7-Proxy-%E4%BB%A3%E7%90%86-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h3 id="目的">目的
+&lt;p>Abstract Factory（3.1）模式可以与 Facade 模式一起使用以提供一个接口，这一接口可用来以一种子系统独立的方式创建子系统对象。 Abstract Factory 也可以代替 Facade 模式隐藏那些与平台相关的类。&lt;/p></description></item><item><title>4.7-Proxy-代理-结构型模式</title><link>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.7-Proxy-%E4%BB%A3%E7%90%86-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/4.7-Proxy-%E4%BB%A3%E7%90%86-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h3 id="目的">目的
 &lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
 &lt;/h3>&lt;p>为其他对象提供一种代理以控制该对象的访问。
 类似网络中的反向代理&lt;/p>
@@ -1188,7 +1188,7 @@ Eg：框架定义了 App 抽象类，它包含一个 Document 抽象内容。但
 &lt;ul>
 &lt;li>使用图像 Proxy 替代真正的图像，Proxy 可以代替一个图像对象，并且在需要（文档编辑器调用图像代理的 Draw 操作）时负责实例化这个图像对象&lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/4.7-Proxy-%E4%BB%A3%E7%90%86-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-03_13-19-51-038.png" alt="" />&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/4.7-Proxy-%E4%BB%A3%E7%90%86-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-03_13-19-51-038.png" alt="" />&lt;/p>
 &lt;ul>
 &lt;li>图像 Proxy 存储图像路径和分辨率，以及对真正的 Image 实例的指引。因此不需要真正实例化这个图像就可以响应格式化程序对图像尺寸的请求&lt;/li>
 &lt;/ul>
@@ -1219,7 +1219,7 @@ Eg：框架定义了 App 抽象类，它包含一个 Document 抽象内容。但
 &lt;/ul>
 &lt;h3 id="结构">结构
 &lt;a class="header-anchor" href="#%e7%bb%93%e6%9e%84">&lt;/a>
-&lt;/h3>&lt;p>&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/4.7-Proxy-%E4%BB%A3%E7%90%86-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-03_13-25-32-488.png" alt="" />&lt;/p>
+&lt;/h3>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/4.7-Proxy-%E4%BB%A3%E7%90%86-%E7%BB%93%E6%9E%84%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-03_13-25-32-488.png" alt="" />&lt;/p>
 &lt;ul>
 &lt;li>Proxy：
 &lt;ul>
@@ -1242,7 +1242,7 @@ Eg：框架定义了 App 抽象类，它包含一个 Document 抽象内容。但
 &lt;li>Subject（Graphic）：定义 RealSubject 和 Proxy 的共用接口，这样就在任何使用 RealSubject 的地方都可以使用 Proxy。&lt;/li>
 &lt;li>RealSubject（Image）：定义 Proxy 所代表的实体。&lt;/li>
 &lt;/ul>
-&lt;p>代理根据其种类，在适当的时候向 RealSubject 转发请求&lt;/p></description></item><item><title>5-行为型模式</title><link>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;p>行为型模式涉及&lt;strong>算法和对象间职责的分配&lt;/strong>。行为型模式不仅描述对象或类的模式，还描述它们之间的&lt;strong>通信模式&lt;/strong>。&lt;/p>
+&lt;p>代理根据其种类，在适当的时候向 RealSubject 转发请求&lt;/p></description></item><item><title>5-行为型模式</title><link>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;p>行为型模式涉及&lt;strong>算法和对象间职责的分配&lt;/strong>。行为型模式不仅描述对象或类的模式，还描述它们之间的&lt;strong>通信模式&lt;/strong>。&lt;/p>
 &lt;ul>
 &lt;li>类行为型模式使用继承机制在类间分派行为&lt;/li>
 &lt;li>对象行为型模式描述了一组对等的对象怎样相互协作&lt;/li>
@@ -1264,21 +1264,21 @@ Eg：框架定义了 App 抽象类，它包含一个 Document 抽象内容。但
 &lt;ul>
 &lt;li>Command 对象提供了一个提交请求的简单接口（即 Execute 操作）。&lt;/li>
 &lt;li>将发送者和接收者之间的连接定义在一个单独的对象中使得该发送者可以与不同的接收者一起工作。
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-20_12-17-25-128.png" alt="" />&lt;/li>
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-20_12-17-25-128.png" alt="" />&lt;/li>
 &lt;/ul>
 &lt;p>观察者模式通过定义一个接口来通知目标中发生的改变，从而将发送者（目标）与接收者（观察者）解耦&lt;/p>
 &lt;ul>
 &lt;li>当对象间有数据依赖时，最好用观察者模式来对它们进行解耦。
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-20_12-53-44-164.png" alt="" />&lt;/li>
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-20_12-53-44-164.png" alt="" />&lt;/li>
 &lt;/ul>
 &lt;p>中介者模式让对象通过一个 Mediator 对象间接地互相引用，从而对它们解耦&lt;/p>
 &lt;ul>
 &lt;li>它将通信行为集中到一个类中而不是将其分布在各个子类中&lt;/li>
 &lt;li>为增加灵活性 Mediator 可能不得不实现它自己的分发策略（例如用一定方式对请求编码并打包参数），但这通常会导致类型安全问题
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-20_12-54-29-879.png" alt="" />&lt;/li>
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-20_12-54-29-879.png" alt="" />&lt;/li>
 &lt;/ul>
 &lt;p>职责链模式通过沿一个潜在接收者链传递请求而将发送者与接收者解耦
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-20_12-56-10-591.png" alt="" />&lt;/p></description></item><item><title>5.10-TemplateMethod-模板方法</title><link>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.10-TemplateMethod-%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.10-TemplateMethod-%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95/</guid><description>&lt;h3 id="目的">目的
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-20_12-56-10-591.png" alt="" />&lt;/p></description></item><item><title>5.10-TemplateMethod-模板方法</title><link>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.10-TemplateMethod-%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.10-TemplateMethod-%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95/</guid><description>&lt;h3 id="目的">目的
 &lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
 &lt;/h3>&lt;p>定义一个操作的算法骨架，而将一些步骤延迟到子类中。通过子类来实现这些步骤，使得不改变算法结构的情况下，可重新定义算法中的某些特定步骤&lt;/p>
 &lt;h3 id="适用性">适用性
@@ -1295,7 +1295,7 @@ Eg：框架定义了 App 抽象类，它包含一个 Document 抽象内容。但
 &lt;/ul>
 &lt;h3 id="结构">结构
 &lt;a class="header-anchor" href="#%e7%bb%93%e6%9e%84">&lt;/a>
-&lt;/h3>&lt;p>&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5.10-TemplateMethod-%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95/image-2023-10-19_17-05-39-615.png" alt="" />&lt;/p>
+&lt;/h3>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5.10-TemplateMethod-%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95/image-2023-10-19_17-05-39-615.png" alt="" />&lt;/p>
 &lt;ul>
 &lt;li>AbstractClass：
 &lt;ul>
@@ -1331,7 +1331,7 @@ Eg：框架定义了 App 抽象类，它包含一个 Document 抽象内容。但
 &lt;h3 id="相关模式">相关模式
 &lt;a class="header-anchor" href="#%e7%9b%b8%e5%85%b3%e6%a8%a1%e5%bc%8f">&lt;/a>
 &lt;/h3>&lt;p>Strategy（5.9）：模板方法使用继承来改变算法的一部分， Strategy 使用委托来改变整个算法。
-Factory Method（3.3）常被模板方法调用。&lt;/p></description></item><item><title>5.11-Visitor-访问者</title><link>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.11-Visitor-%E8%AE%BF%E9%97%AE%E8%80%85/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.11-Visitor-%E8%AE%BF%E9%97%AE%E8%80%85/</guid><description>&lt;ul>
+Factory Method（3.3）常被模板方法调用。&lt;/p></description></item><item><title>5.11-Visitor-访问者</title><link>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.11-Visitor-%E8%AE%BF%E9%97%AE%E8%80%85/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.11-Visitor-%E8%AE%BF%E9%97%AE%E8%80%85/</guid><description>&lt;ul>
 &lt;li>&lt;/li>
 &lt;/ul>
 &lt;h3 id="目的">目的
@@ -1340,13 +1340,13 @@ Factory Method（3.3）常被模板方法调用。&lt;/p></description></item><i
 &lt;h3 id="示例">示例
 &lt;a class="header-anchor" href="#%e7%a4%ba%e4%be%8b">&lt;/a>
 &lt;/h3>&lt;p>考虑一个编译器，它将源程序表示为一个抽象语法树，对于语法树结点需要进行不同的处理：类型检查，代码优化等
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5.11-Visitor-%E8%AE%BF%E9%97%AE%E8%80%85/image-2023-10-19_18-21-15-257.png" alt="" />&lt;/p>
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5.11-Visitor-%E8%AE%BF%E9%97%AE%E8%80%85/image-2023-10-19_18-21-15-257.png" alt="" />&lt;/p>
 &lt;ul>
 &lt;li>将操作和结点类耦合带来的问题：将所有这些操作分散到各种结点类中会导致整个系统难以理解、难以维护和修改；此外，增加新的操作通常需要重新编译所有这些类&lt;/li>
 &lt;li>解决方法：将每一个类中相关的操作包装在一个独立的对象（称为一个 Visitor）中，并在遍历抽象语法树时将此对象传递给当前访问的元素
 &lt;ul>
 &lt;li>所有抽象语法树的访问者有一个抽象的父类 NodeVisitor。NodeVisitor 必须为每一个结点类定义一个操作
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5.11-Visitor-%E8%AE%BF%E9%97%AE%E8%80%85/image-2023-10-19_18-39-03-846.png" alt="" />
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5.11-Visitor-%E8%AE%BF%E9%97%AE%E8%80%85/image-2023-10-19_18-39-03-846.png" alt="" />
 使用 Visitor 模式，必须定义两个类层次：&lt;/li>
 &lt;/ul>
 &lt;/li>
@@ -1362,7 +1362,7 @@ Factory Method（3.3）常被模板方法调用。&lt;/p></description></item><i
 &lt;/ul>
 &lt;h3 id="结构">结构
 &lt;a class="header-anchor" href="#%e7%bb%93%e6%9e%84">&lt;/a>
-&lt;/h3>&lt;p>&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5.11-Visitor-%E8%AE%BF%E9%97%AE%E8%80%85/image-2023-10-19_18-40-40-846.png" alt="" />&lt;/p>
+&lt;/h3>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5.11-Visitor-%E8%AE%BF%E9%97%AE%E8%80%85/image-2023-10-19_18-40-40-846.png" alt="" />&lt;/p>
 &lt;ul>
 &lt;li>
 &lt;p>Visitor：接口。为该对象结构中 ConcreteElement 的每一个类声明一个 Visit 操作，该操作的名字和特征标识了发送 Visit 请求给该访问者的类。&lt;/p>
@@ -1396,7 +1396,7 @@ Factory Method（3.3）常被模板方法调用。&lt;/p></description></item><i
 &lt;p>访问者集中相关的操作而分离无关的操作：相关的行为不是分布在定义该对象结构的各个类上，而是集中在一个访问者中；无关行为却被分别放在各自的访问者子类中&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>增加新的 ConcreteElement 类很困难：每添加一个新的 ConcreteElement 都要在 Vistor 中添加一个新的抽象操作，并在每一个 ConcretVisitor 类中实现相应的操作。&lt;/p></description></item><item><title>5.4-Iterator「cursor」-迭代器-行为型模式</title><link>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.4-Iteratorcursor-%E8%BF%AD%E4%BB%A3%E5%99%A8-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.4-Iteratorcursor-%E8%BF%AD%E4%BB%A3%E5%99%A8-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h3 id="目的">目的
+&lt;p>增加新的 ConcreteElement 类很困难：每添加一个新的 ConcreteElement 都要在 Vistor 中添加一个新的抽象操作，并在每一个 ConcretVisitor 类中实现相应的操作。&lt;/p></description></item><item><title>5.4-Iterator「cursor」-迭代器-行为型模式</title><link>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.4-Iteratorcursor-%E8%BF%AD%E4%BB%A3%E5%99%A8-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.4-Iteratorcursor-%E8%BF%AD%E4%BB%A3%E5%99%A8-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h3 id="目的">目的
 &lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
 &lt;/h3>&lt;p>提供一种方法顺序访问一个聚合对象中的各个元素，而又不需要暴露该对象的内部表示&lt;/p>
 &lt;h3 id="示例">示例
@@ -1417,7 +1417,7 @@ Factory Method（3.3）常被模板方法调用。&lt;/p></description></item><i
 &lt;li>方法：使用继承和多态机制，并由容器提供 CreateIterator 的接口，创建自己兼容的某种迭代器
 &lt;ul>
 &lt;li>这是 Factory Method，产生两个类层次，一个是列表的，一个是迭代器的。 CreateIterator“联系”这两个类层次
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5.4-Iterator%E3%80%8Ccursor%E3%80%8D-%E8%BF%AD%E4%BB%A3%E5%99%A8-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-10_09-23-04-798.png" alt="" />&lt;/li>
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5.4-Iterator%E3%80%8Ccursor%E3%80%8D-%E8%BF%AD%E4%BB%A3%E5%99%A8-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-10_09-23-04-798.png" alt="" />&lt;/li>
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
@@ -1430,7 +1430,7 @@ Factory Method（3.3）常被模板方法调用。&lt;/p></description></item><i
 &lt;/ul>
 &lt;h3 id="结构">结构
 &lt;a class="header-anchor" href="#%e7%bb%93%e6%9e%84">&lt;/a>
-&lt;/h3>&lt;p>&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5.4-Iterator%E3%80%8Ccursor%E3%80%8D-%E8%BF%AD%E4%BB%A3%E5%99%A8-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-10_09-27-45-319.png" alt="" />&lt;/p>
+&lt;/h3>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5.4-Iterator%E3%80%8Ccursor%E3%80%8D-%E8%BF%AD%E4%BB%A3%E5%99%A8-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-10_09-27-45-319.png" alt="" />&lt;/p>
 &lt;ul>
 &lt;li>Iterator：定义访问和遍历元素的接口&lt;/li>
 &lt;li>ConcreteIterator：
@@ -1491,7 +1491,7 @@ Factory Method（3.3）常被模板方法调用。&lt;/p></description></item><i
 &lt;/ul>
 &lt;h4 id="可选接口">可选接口
 &lt;a class="header-anchor" href="#%e5%8f%af%e9%80%89%e6%8e%a5%e5%8f%a3">&lt;/a>
-&lt;/h4>&lt;p>迭代器的最小接口由 First、Next、IsDone 和 CurrentItem 操作组成&lt;/p></description></item><item><title>5.5-Mediator-中介者-行为型模式</title><link>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.5-Mediator-%E4%B8%AD%E4%BB%8B%E8%80%85-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.5-Mediator-%E4%B8%AD%E4%BB%8B%E8%80%85-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h3 id="目的">目的
+&lt;/h4>&lt;p>迭代器的最小接口由 First、Next、IsDone 和 CurrentItem 操作组成&lt;/p></description></item><item><title>5.5-Mediator-中介者-行为型模式</title><link>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.5-Mediator-%E4%B8%AD%E4%BB%8B%E8%80%85-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.5-Mediator-%E4%B8%AD%E4%BB%8B%E8%80%85-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h3 id="目的">目的
 &lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
 &lt;/h3>&lt;p>用一个中介对象封装对象交互，使各对象不需要显式地相互引用&lt;/p>
 &lt;ul>
@@ -1506,10 +1506,10 @@ Factory Method（3.3）常被模板方法调用。&lt;/p></description></item><i
 &lt;li>这导致每个组件必须单独定制以反应组件间的依赖关系&lt;/li>
 &lt;li>解决方法：可以通过将集体行为封装在一个单独的中介者（mediator）对象中，如下图所设&lt;/li>
 &lt;/ul>
-&lt;p>类层次结构：&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5.5-Mediator-%E4%B8%AD%E4%BB%8B%E8%80%85-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-12_15-58-26-968.png" alt="" />
-对象交互：&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5.5-Mediator-%E4%B8%AD%E4%BB%8B%E8%80%85-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-12_15-52-46-168.png" alt="" />
+&lt;p>类层次结构：&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5.5-Mediator-%E4%B8%AD%E4%BB%8B%E8%80%85-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-12_15-58-26-968.png" alt="" />
+对象交互：&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5.5-Mediator-%E4%B8%AD%E4%BB%8B%E8%80%85-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-12_15-52-46-168.png" alt="" />
 例如选择 ListBox 改变 EntryField 的内容
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5.5-Mediator-%E4%B8%AD%E4%BB%8B%E8%80%85-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-12_15-53-31-871.png" alt="" />&lt;/p>
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5.5-Mediator-%E4%B8%AD%E4%BB%8B%E8%80%85-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-12_15-53-31-871.png" alt="" />&lt;/p>
 &lt;h3 id="适用性">适用性
 &lt;a class="header-anchor" href="#%e9%80%82%e7%94%a8%e6%80%a7">&lt;/a>
 &lt;/h3>&lt;ul>
@@ -1519,7 +1519,7 @@ Factory Method（3.3）常被模板方法调用。&lt;/p></description></item><i
 &lt;/ul>
 &lt;h3 id="结构">结构
 &lt;a class="header-anchor" href="#%e7%bb%93%e6%9e%84">&lt;/a>
-&lt;/h3>&lt;p>&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5.5-Mediator-%E4%B8%AD%E4%BB%8B%E8%80%85-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-12_16-00-15-284.png" alt="" />&lt;/p>
+&lt;/h3>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5.5-Mediator-%E4%B8%AD%E4%BB%8B%E8%80%85-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-12_16-00-15-284.png" alt="" />&lt;/p>
 &lt;ul>
 &lt;li>Mediator 中介者：定义和同事 Colleague 通信的接口&lt;/li>
 &lt;li>ConcreteMediator：了解并维护它的各个同事，处理它们之间的交互&lt;/li>
@@ -1557,13 +1557,13 @@ Factory Method（3.3）常被模板方法调用。&lt;/p></description></item><i
 &lt;/ul>
 &lt;h3 id="相关模式">相关模式
 &lt;a class="header-anchor" href="#%e7%9b%b8%e5%85%b3%e6%a8%a1%e5%bc%8f">&lt;/a>
-&lt;/h3>&lt;p>Facade（4.5）与中介者的不同之处在于：&lt;/p></description></item><item><title>5.6-Memento「Token」-备忘录-行为型模式</title><link>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.6-MementoToken-%E5%A4%87%E5%BF%98%E5%BD%95-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.6-MementoToken-%E5%A4%87%E5%BF%98%E5%BD%95-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h4 id="目的">目的
+&lt;/h3>&lt;p>Facade（4.5）与中介者的不同之处在于：&lt;/p></description></item><item><title>5.6-Memento「Token」-备忘录-行为型模式</title><link>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.6-MementoToken-%E5%A4%87%E5%BF%98%E5%BD%95-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.6-MementoToken-%E5%A4%87%E5%BF%98%E5%BD%95-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h4 id="目的">目的
 &lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
 &lt;/h4>&lt;p>在不破坏封装性的前提下捕获对象内部状态，在对象外保存该状态以备恢复&lt;/p>
 &lt;h3 id="示例">示例
 &lt;a class="header-anchor" href="#%e7%a4%ba%e4%be%8b">&lt;/a>
 &lt;/h3>&lt;p>一个图形编辑器，它支持图形对象间的连线。用户可用一条直线连接两个矩形，而当用户移动任意一个矩形时，这两个矩形仍能保持连接
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5.6-Memento%E3%80%8CToken%E3%80%8D-%E5%A4%87%E5%BF%98%E5%BD%95-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-13_17-44-47-122.png" alt="" />
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5.6-Memento%E3%80%8CToken%E3%80%8D-%E5%A4%87%E5%BF%98%E5%BD%95-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-13_17-44-47-122.png" alt="" />
 考虑需要撤销移动命令的情形：&lt;/p>
 &lt;ul>
 &lt;li>备忘录存储内部状态：某个对象（称为原发器 originator ）保存自身某个瞬间的内部状态为备忘录对象。&lt;/li>
@@ -1578,7 +1578,7 @@ Factory Method（3.3）常被模板方法调用。&lt;/p></description></item><i
 &lt;/ul>
 &lt;h3 id="结构">结构
 &lt;a class="header-anchor" href="#%e7%bb%93%e6%9e%84">&lt;/a>
-&lt;/h3>&lt;p>&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5.6-Memento%E3%80%8CToken%E3%80%8D-%E5%A4%87%E5%BF%98%E5%BD%95-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-13_17-55-11-564.png" alt="" />&lt;/p>
+&lt;/h3>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5.6-Memento%E3%80%8CToken%E3%80%8D-%E5%A4%87%E5%BF%98%E5%BD%95-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-13_17-55-11-564.png" alt="" />&lt;/p>
 &lt;ul>
 &lt;li>Memento 备忘录：备忘录存储原发器对象的内部状态。原发器根据需要决定备忘录存储原发器的哪些内部状态
 &lt;ul>
@@ -1625,7 +1625,7 @@ Factory Method（3.3）常被模板方法调用。&lt;/p></description></item><i
 &lt;h3 id="相关模式">相关模式
 &lt;a class="header-anchor" href="#%e7%9b%b8%e5%85%b3%e6%a8%a1%e5%bc%8f">&lt;/a>
 &lt;/h3>&lt;p>Command（5.2）：命令可使用备忘录来为可撤销的操作维护状态。
-Iterator（5.4）：如前所述，备忘录可用于迭代。&lt;/p></description></item><item><title>5.8-State「Object for state」-状态-状态对象-行为型模式</title><link>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.8-StateObject-for-state-%E7%8A%B6%E6%80%81-%E7%8A%B6%E6%80%81%E5%AF%B9%E8%B1%A1-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.8-StateObject-for-state-%E7%8A%B6%E6%80%81-%E7%8A%B6%E6%80%81%E5%AF%B9%E8%B1%A1-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h3 id="目的">目的
+Iterator（5.4）：如前所述，备忘录可用于迭代。&lt;/p></description></item><item><title>5.8-State「Object for state」-状态-状态对象-行为型模式</title><link>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.8-StateObject-for-state-%E7%8A%B6%E6%80%81-%E7%8A%B6%E6%80%81%E5%AF%B9%E8%B1%A1-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.8-StateObject-for-state-%E7%8A%B6%E6%80%81-%E7%8A%B6%E6%80%81%E5%AF%B9%E8%B1%A1-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h3 id="目的">目的
 &lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
 &lt;/h3>&lt;p>允许一个对象在其内部状态改变时改变它的行为。对象看起来似乎修改了它的类&lt;/p>
 &lt;h3 id="示例">示例
@@ -1633,7 +1633,7 @@ Iterator（5.4）：如前所述，备忘录可用于迭代。&lt;/p></descripti
 &lt;/h3>&lt;p>考虑一个表示网络连接的类 TCPConnection。
 一个 TCPConnection 对象的状态处于若干不同状态之一：连接已建立（Established）、正在监听（Listening）、连接已关闭（Closed）。
 当一个 TCPConnection 对象收到其他对象的请求时，它根据自身的当前状态做出不同的反应。
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5.8-State%E3%80%8CObject%20for%20state%E3%80%8D-%E7%8A%B6%E6%80%81-%E7%8A%B6%E6%80%81%E5%AF%B9%E8%B1%A1-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-18_17-19-21-774.png" alt="" />&lt;/p>
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5.8-State%E3%80%8CObject%20for%20state%E3%80%8D-%E7%8A%B6%E6%80%81-%E7%8A%B6%E6%80%81%E5%AF%B9%E8%B1%A1-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-18_17-19-21-774.png" alt="" />&lt;/p>
 &lt;p>State 模式：&lt;/p>
 &lt;ul>
 &lt;li>Key：引入了一个称为 TCPState 的抽象类来表示网络的连接状态：
@@ -1661,7 +1661,7 @@ Iterator（5.4）：如前所述，备忘录可用于迭代。&lt;/p></descripti
 &lt;/ul>
 &lt;h3 id="结构">结构
 &lt;a class="header-anchor" href="#%e7%bb%93%e6%9e%84">&lt;/a>
-&lt;/h3>&lt;p>&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5.8-State%E3%80%8CObject%20for%20state%E3%80%8D-%E7%8A%B6%E6%80%81-%E7%8A%B6%E6%80%81%E5%AF%B9%E8%B1%A1-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-18_17-25-04-181.png" alt="" />&lt;/p>
+&lt;/h3>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5.8-State%E3%80%8CObject%20for%20state%E3%80%8D-%E7%8A%B6%E6%80%81-%E7%8A%B6%E6%80%81%E5%AF%B9%E8%B1%A1-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-18_17-25-04-181.png" alt="" />&lt;/p>
 &lt;ul>
 &lt;li>Context：定义面向客户的接口
 &lt;ul>
@@ -1693,7 +1693,7 @@ Iterator（5.4）：如前所述，备忘录可用于迭代。&lt;/p></descripti
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;p>&lt;strong>确保内部状态变量的一致性&lt;/strong>：从 Context 的角度看，状态转换是原子的——只需重新绑定一个 ConcreteState 实例，而无需为一组变量分别赋值。（仅以内部数据值来定义当前状态时，其状态仅表现为对一些变量的赋值）&lt;/p></description></item><item><title>5.9-Strategy「Policy」-策略模式</title><link>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.9-StrategyPolicy-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.9-StrategyPolicy-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h3 id="目的">目的
+&lt;p>&lt;strong>确保内部状态变量的一致性&lt;/strong>：从 Context 的角度看，状态转换是原子的——只需重新绑定一个 ConcreteState 实例，而无需为一组变量分别赋值。（仅以内部数据值来定义当前状态时，其状态仅表现为对一些变量的赋值）&lt;/p></description></item><item><title>5.9-Strategy「Policy」-策略模式</title><link>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.9-StrategyPolicy-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:58 +0000</pubDate><guid>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.9-StrategyPolicy-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h3 id="目的">目的
 &lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
 &lt;/h3>&lt;p>封装算法，使之可以独立于客户变化&lt;/p>
 &lt;h3 id="示例">示例
@@ -1704,7 +1704,7 @@ Iterator（5.4）：如前所述，备忘录可用于迭代。&lt;/p></descripti
 &lt;li>并非任何时候都需要所有的算法&lt;/li>
 &lt;li>若将算法嵌入客户程序内部，则变更算法将十分困难&lt;/li>
 &lt;/ul>
-&lt;p>&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5.9-Strategy%E3%80%8CPolicy%E3%80%8D-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/image-2023-10-18_20-27-56-390.png" alt="" />&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5.9-Strategy%E3%80%8CPolicy%E3%80%8D-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/image-2023-10-18_20-27-56-390.png" alt="" />&lt;/p>
 &lt;ul>
 &lt;li>Composition 维护对 Compositor 对象的一个引用。一旦 Composition 重新格式化它的文本，它就将这个职责转发给它的 Compositor 对象&lt;/li>
 &lt;li>Compositor 的子类实现具体的分行算法&lt;/li>
@@ -1719,7 +1719,7 @@ Iterator（5.4）：如前所述，备忘录可用于迭代。&lt;/p></descripti
 &lt;/ul>
 &lt;h3 id="结构">结构
 &lt;a class="header-anchor" href="#%e7%bb%93%e6%9e%84">&lt;/a>
-&lt;/h3>&lt;p>&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5.9-Strategy%E3%80%8CPolicy%E3%80%8D-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/image-2023-10-19_16-10-40-788.png" alt="" />&lt;/p>
+&lt;/h3>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5.9-Strategy%E3%80%8CPolicy%E3%80%8D-%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/image-2023-10-19_16-10-40-788.png" alt="" />&lt;/p>
 &lt;ul>
 &lt;li>Strategy：算法的公共接口，Context 调用该接口&lt;/li>
 &lt;li>ConcreteStrategy：实现具体的策略&lt;/li>
@@ -1755,7 +1755,7 @@ Iterator（5.4）：如前所述，备忘录可用于迭代。&lt;/p></descripti
 &lt;a class="header-anchor" href="#%e5%ae%9e%e7%8e%b0">&lt;/a>
 &lt;/h3>&lt;h4 id="关于-strategy-和-context-的接口">关于 Strategy 和 Context 的接口
 &lt;a class="header-anchor" href="#%e5%85%b3%e4%ba%8e-strategy-%e5%92%8c-context-%e7%9a%84%e6%8e%a5%e5%8f%a3">&lt;/a>
-&lt;/h4>&lt;p>这些接口必须让 ConcreteStrategy 能够有效地访问它所需要的 Context 中的任何数据，实现上有两种方法：&lt;/p></description></item><item><title>5.2-Command「Action,Transaction」-命令模式-动作模式-事务模式-行为型模式</title><link>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.2-CommandActionTransaction-%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F-%E5%8A%A8%E4%BD%9C%E6%A8%A1%E5%BC%8F-%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:57 +0000</pubDate><guid>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.2-CommandActionTransaction-%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F-%E5%8A%A8%E4%BD%9C%E6%A8%A1%E5%BC%8F-%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h3 id="目的">目的
+&lt;/h4>&lt;p>这些接口必须让 ConcreteStrategy 能够有效地访问它所需要的 Context 中的任何数据，实现上有两种方法：&lt;/p></description></item><item><title>5.2-Command「Action,Transaction」-命令模式-动作模式-事务模式-行为型模式</title><link>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.2-CommandActionTransaction-%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F-%E5%8A%A8%E4%BD%9C%E6%A8%A1%E5%BC%8F-%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</link><pubDate>Thu, 28 Mar 2024 15:49:57 +0000</pubDate><guid>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.2-CommandActionTransaction-%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F-%E5%8A%A8%E4%BD%9C%E6%A8%A1%E5%BC%8F-%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/</guid><description>&lt;h3 id="目的">目的
 &lt;a class="header-anchor" href="#%e7%9b%ae%e7%9a%84">&lt;/a>
 &lt;/h3>&lt;p>将请求封装为对象，从而可用不同的请求：&lt;/p>
 &lt;ul>
@@ -1774,18 +1774,18 @@ Iterator（5.4）：如前所述，备忘录可用于迭代。&lt;/p></descripti
 &lt;ul>
 &lt;li>关键是一个抽象的 Command 类，它定义了一个执行操作的接口。&lt;/li>
 &lt;li>Command 子类将接收者作为它的一个实例变量，并实现 Execute 操作
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5.2-Command%E3%80%8CAction,Transaction%E3%80%8D-%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F-%E5%8A%A8%E4%BD%9C%E6%A8%A1%E5%BC%8F-%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-08_10-34-53-110.png" alt="" />&lt;/li>
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5.2-Command%E3%80%8CAction,Transaction%E3%80%8D-%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F-%E5%8A%A8%E4%BD%9C%E6%A8%A1%E5%BC%8F-%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-08_10-34-53-110.png" alt="" />&lt;/li>
 &lt;/ul>
 
  &lt;blockquote>
  &lt;p>例如，PasteCommand 支持从剪贴板向一个文档（document）粘贴正文。
 PasteCommand 的接收者是一个文档对象，该对象是实例化时提供的。Execute 操作将调用该 Document 的 Paste 操作。
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5.2-Command%E3%80%8CAction,Transaction%E3%80%8D-%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F-%E5%8A%A8%E4%BD%9C%E6%A8%A1%E5%BC%8F-%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-08_10-44-14-818.png" alt="" />&lt;/p>
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5.2-Command%E3%80%8CAction,Transaction%E3%80%8D-%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F-%E5%8A%A8%E4%BD%9C%E6%A8%A1%E5%BC%8F-%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-08_10-44-14-818.png" alt="" />&lt;/p>
  &lt;/blockquote>
 &lt;p>&lt;strong>MacroCommand&lt;/strong>：有时一个操作需要多个子操作完成，因此可定义 MacroCommand 执行一个命令序列&lt;/p>
 &lt;ul>
 &lt;li>MacroCommand 没有明确的接收者，而序列中的命令各自定义其接收者。
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5.2-Command%E3%80%8CAction,Transaction%E3%80%8D-%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F-%E5%8A%A8%E4%BD%9C%E6%A8%A1%E5%BC%8F-%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-08_10-47-37-766.png" alt="" />&lt;/li>
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5.2-Command%E3%80%8CAction,Transaction%E3%80%8D-%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F-%E5%8A%A8%E4%BD%9C%E6%A8%A1%E5%BC%8F-%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-08_10-47-37-766.png" alt="" />&lt;/li>
 &lt;/ul>
 &lt;p>&lt;strong>优势：灵活&lt;/strong>。因为&lt;em>提交一个请求的对象仅需要知道如何提交它，而不需要知道该请求将会被如何执行&lt;/em>。&lt;/p>
 &lt;ul>
@@ -1808,14 +1808,14 @@ PasteCommand 的接收者是一个文档对象，该对象是实例化时提供�
 &lt;/ul>
 &lt;h3 id="结构">结构
 &lt;a class="header-anchor" href="#%e7%bb%93%e6%9e%84">&lt;/a>
-&lt;/h3>&lt;p>&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5.2-Command%E3%80%8CAction,Transaction%E3%80%8D-%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F-%E5%8A%A8%E4%BD%9C%E6%A8%A1%E5%BC%8F-%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-08_10-57-10-433.png" alt="" />&lt;/p>
+&lt;/h3>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5.2-Command%E3%80%8CAction,Transaction%E3%80%8D-%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F-%E5%8A%A8%E4%BD%9C%E6%A8%A1%E5%BC%8F-%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%BC%8F-%E8%A1%8C%E4%B8%BA%E5%9E%8B%E6%A8%A1%E5%BC%8F/image-2023-10-08_10-57-10-433.png" alt="" />&lt;/p>
 &lt;ul>
 &lt;li>Command：操作的接口&lt;/li>
 &lt;li>ConcreteCommand：将一个接收者对象绑定于一个动作，调用接收者相应的操作，以实现 Execute&lt;/li>
 &lt;li>Invoker（示例中的MenuItem）：要求该命令执行这个请求&lt;/li>
 &lt;li>Receiver（示例中的 Document）：知道如何实施与执行一个请求相关的操作&lt;/li>
 &lt;/ul>
-&lt;p>&lt;strong>工作流程&lt;/strong>：&lt;/p></description></item><item><title>5.7-Observer「publish-subscribe,dependent」-观察者-发布订阅-依赖</title><link>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.7-Observerpublish-subscribedependent-%E8%A7%82%E5%AF%9F%E8%80%85-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85-%E4%BE%9D%E8%B5%96/</link><pubDate>Thu, 28 Mar 2024 15:49:57 +0000</pubDate><guid>//localhost:1313/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.7-Observerpublish-subscribedependent-%E8%A7%82%E5%AF%9F%E8%80%85-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85-%E4%BE%9D%E8%B5%96/</guid><description>&lt;h3 id="用途">用途
+&lt;p>&lt;strong>工作流程&lt;/strong>：&lt;/p></description></item><item><title>5.7-Observer「publish-subscribe,dependent」-观察者-发布订阅-依赖</title><link>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.7-Observerpublish-subscribedependent-%E8%A7%82%E5%AF%9F%E8%80%85-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85-%E4%BE%9D%E8%B5%96/</link><pubDate>Thu, 28 Mar 2024 15:49:57 +0000</pubDate><guid>/post/Work/%E5%9F%BA%E7%A1%80/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/5.7-Observerpublish-subscribedependent-%E8%A7%82%E5%AF%9F%E8%80%85-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85-%E4%BE%9D%E8%B5%96/</guid><description>&lt;h3 id="用途">用途
 &lt;a class="header-anchor" href="#%e7%94%a8%e9%80%94">&lt;/a>
 &lt;/h3>&lt;p>定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新&lt;/p>
 &lt;h3 id="示例">示例
@@ -1827,7 +1827,7 @@ PasteCommand 的接收者是一个文档对象，该对象是实例化时提供�
 一个目标 Subject/publish 可以有任意数目的依赖它的观察者 Observer/subscribe。一旦目标的状态发生改变，所有的观察者都得到通知。
 收到通知后，每个观察者都将查询目标以使其状态与目标的状态同步。&lt;/p>
  &lt;/blockquote>
-&lt;p>&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5.7-Observer%E3%80%8Cpublish-subscribe,dependent%E3%80%8D-%E8%A7%82%E5%AF%9F%E8%80%85-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85-%E4%BE%9D%E8%B5%96/image-2023-10-13_18-16-12-168.png" alt="" />&lt;/p>
+&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5.7-Observer%E3%80%8Cpublish-subscribe,dependent%E3%80%8D-%E8%A7%82%E5%AF%9F%E8%80%85-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85-%E4%BE%9D%E8%B5%96/image-2023-10-13_18-16-12-168.png" alt="" />&lt;/p>
 &lt;h3 id="适用性">适用性
 &lt;a class="header-anchor" href="#%e9%80%82%e7%94%a8%e6%80%a7">&lt;/a>
 &lt;/h3>&lt;ul>
@@ -1837,7 +1837,7 @@ PasteCommand 的接收者是一个文档对象，该对象是实例化时提供�
 &lt;/ul>
 &lt;h3 id="结构">结构
 &lt;a class="header-anchor" href="#%e7%bb%93%e6%9e%84">&lt;/a>
-&lt;/h3>&lt;p>&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5.7-Observer%E3%80%8Cpublish-subscribe,dependent%E3%80%8D-%E8%A7%82%E5%AF%9F%E8%80%85-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85-%E4%BE%9D%E8%B5%96/image-2023-10-13_18-18-30-331.png" alt="" />&lt;/p>
+&lt;/h3>&lt;p>&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5.7-Observer%E3%80%8Cpublish-subscribe,dependent%E3%80%8D-%E8%A7%82%E5%AF%9F%E8%80%85-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85-%E4%BE%9D%E8%B5%96/image-2023-10-13_18-18-30-331.png" alt="" />&lt;/p>
 &lt;ul>
 &lt;li>Subject（目标）
 &lt;ul>
@@ -1864,7 +1864,7 @@ PasteCommand 的接收者是一个文档对象，该对象是实例化时提供�
 &lt;ul>
 &lt;li>当 ConcreteSubject 发生任何可能导致其观察者与其本身状态不一致的改变时，它将通知它的各个观察者。&lt;/li>
 &lt;li>在得到一个具体目标的改变通知后，ConcreteObserver 对象可向目标对象查询信息。ConcreteObserver 使用这些信息使它的状态与目标对象的状态一致。
-&lt;img src="//localhost:1313/imgs/img-lazy-loading.gif" data-src="./assets/5.7-Observer%E3%80%8Cpublish-subscribe,dependent%E3%80%8D-%E8%A7%82%E5%AF%9F%E8%80%85-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85-%E4%BE%9D%E8%B5%96/image-2023-10-13_18-26-01-479.png" alt="" />&lt;/li>
+&lt;img src="/imgs/img-lazy-loading.gif" data-src="./assets/5.7-Observer%E3%80%8Cpublish-subscribe,dependent%E3%80%8D-%E8%A7%82%E5%AF%9F%E8%80%85-%E5%8F%91%E5%B8%83%E8%AE%A2%E9%98%85-%E4%BE%9D%E8%B5%96/image-2023-10-13_18-26-01-479.png" alt="" />&lt;/li>
 &lt;/ul>
 &lt;p>&lt;strong>注意&lt;/strong>：&lt;/p>
 &lt;ul>
