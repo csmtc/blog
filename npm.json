@@ -1,6 +1,0 @@
-{
-  "scripts": {
-    "prebuild": "python preprocess.py yourfile.md",
-    "build": "hugo --gc --minify"
-  }
-}
