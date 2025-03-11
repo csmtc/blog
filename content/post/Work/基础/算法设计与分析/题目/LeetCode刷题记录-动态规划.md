@@ -4,10 +4,13 @@ date: 2024-02-17 16:50:13
 lastmod: 2025-03-12 00:38:38
 aliases: 
 keywords: 
-categories: 算法与数据结构
-tags: []
+categories:
+  - 算法与数据结构
+tags:
+  - 
 share: true
 ---
+
 # 动态规划问题
 
 这类问题的求解思路是：
@@ -60,9 +63,7 @@ $$
 $$
 \begin{cases}
 dp[2]=1\\
-dp[i] =max(&max(i-1,dp[i-1])*1,\\
-&...,\\
-&max(2,dp[2])*(i-2))
+dp[i] =max(max(i-1,dp[i-1])*1,\,\dots,\,max(2,dp[2])*(i-2))
 \end{cases}
 $$
 
