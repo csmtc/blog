@@ -1,0 +1,555 @@
+<!doctype html><html lang=zh-CN data-theme=light><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset=UTF-8><meta name=viewport content="width=device-width"><meta name=theme-color content="#222" media="(prefers-color-scheme: light)"><meta name=generator content="Hugo 0.145.0"><link rel="shortcut icon" type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/x-icon href=/imgs/icons/favicon.ico><link rel=icon type=image/png sizes=16x16 href=/imgs/icons/favicon_16x16_next.png><link rel=icon type=image/png sizes=32x32 href=/imgs/icons/favicon_32_32_next.png><link rel=apple-touch-icon sizes=180x180 href=/imgs/icons/apple_touch_icon_next.png><meta itemprop=name content="LeetCode刷题记录-动态规划"><meta itemprop=description content="分享让自我更强大"><meta name=description content="分享让自我更强大"><meta itemprop=datePublished zgotmplz><meta itemprop=dateModified zgotmplz><meta itemprop=image content="//localhost:1313/imgs/csmtc.jpg"><meta itemprop=keywords content="算法与数据结构"><meta property="og:type" content="article"><meta property="og:title" content="LeetCode刷题记录-动态规划"><meta property="og:description" content="分享让自我更强大"><meta property="og:image" content="/imgs/csmtc.jpg"><meta property="og:image:width" content="312"><meta property="og:image:height" content="312"><meta property="og:image:type" content="image/jpeg/png/svg/jpg"><meta property="og:url" content="//localhost:1313/post/work/%E5%9F%BA%E7%A1%80/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/%E9%A2%98%E7%9B%AE/leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"><meta property="og:site_name" content="CSMTC Blog"><meta property="og:locale" content="zh-CN"><meta property="article:author" content="CSMTC"><meta property="article:published_time" content="2024-02-17 16:50:13 +0000 UTC"><meta property="article:modified_time" content="2025-03-12 00:38:38 +0000 UTC"><link type=text/css rel=stylesheet href=//localhost:1313/js/3rd/font-awesome/6.7.2/css/all.min.css><link type=text/css rel=stylesheet href=//localhost:1313/js/3rd/animate.css/3.1.1/animate.min.css><link type=text/css rel=stylesheet href=//localhost:1313/js/3rd/viewerjs/1.11.6/viewer.min.css><link rel=stylesheet href="/css/main.css?=1741718936"><style type=text/css>.post-footer hr:after{content:"~ 我可是有底线的哟 ~"}.flinks-list-footer hr:after{content:"~ 我可是有底线的哟 ~"}</style><script type=text/javascript>(function(){localDB={set:function(e,t,n){if(n===0)return;const s=new Date,o=n*864e5,i={value:t,expiry:s.getTime()+o};localStorage.setItem(e,JSON.stringify(i))},get:function(e){const t=localStorage.getItem(e);if(!t)return void 0;const n=JSON.parse(t),s=new Date;return s.getTime()>n.expiry?(localStorage.removeItem(e),void 0):n.value}},theme={active:function(){const e=localDB.get("theme");if(e==null)return;theme.toggle(e),window.matchMedia("(prefers-color-scheme: dark)").addListener(function(e){theme.toggle(e.matches?"dark":"light")})},toggle:function(e){document.documentElement.setAttribute("data-theme",e),localDB.set("theme",e,2);const t=document.querySelector("iframe.giscus-frame");if(t){const n={setConfig:{theme:e}};t.contentWindow.postMessage({giscus:n},"https://giscus.app")}}},theme.active()})(window)</script><script type=text/javascript>document.addEventListener("DOMContentLoaded",()=>{var e=document.createElement("script");e.charset="UTF-8",e.src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js",e.async=!1,e.defer=!0,document.head.appendChild(e),e.onload=function(){NexT.utils.fmtBusuanzi()}})</script><title>LeetCode刷题记录-动态规划 - CSMTC Blog</title><noscript><link rel=stylesheet href=/css/noscript.css></noscript></head><body itemscope itemtype=http://schema.org/WebPage class=use-motion><div class=headband></div><main class=main><header class=header itemscope itemtype=http://schema.org/WPHeader><div class=header-inner><div class=site-brand-container><div class=site-nav-toggle><div class=toggle aria-label role=button><span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span></div></div><div class=site-meta><a href=/ class=brand rel=start><i class=logo-line></i><h1 class=site-title>CSMTC Blog</h1><i class=logo-line></i></a><p class=site-subtitle itemprop=description>share make powerful</p></div><div class=site-nav-right><div class="toggle popup-trigger"><i class="fa fa-search fa-fw fa-lg"></i></div></div></div><nav class=site-nav><ul class="main-menu menu"><li class="menu-item menu-item-home"><a href=/ class=hvr-icon-pulse rel=section><i class="fa fa-home hvr-icon"></i>Home</a></li><li class="menu-item menu-item-categories"><a href=/categories/ class=hvr-icon-pulse rel=section><i class="fa fa-tag hvr-icon"></i>Categories</a></li><li class="menu-item menu-item-tag"><a href=/tags/ class=hvr-icon-pulse rel=section><i class="fa fa-tag hvr-icon"></i>Tags</a></li><li class="menu-item menu-item-search"><a role=button class="popup-trigger hvr-icon-pulse"><i class="fa fa-search fa-fw hvr-icon"></i>搜索</a></li></ul></nav><div class=search-pop-overlay><div class="popup search-popup"><div class=search-header><span class=search-icon><i class="fa fa-search"></i></span><div class=search-input-container><input autocomplete=off autocapitalize=off maxlength=80 placeholder=搜索... spellcheck=false type=search class=search-input></div><span class=popup-btn-close role=button><i class="fa fa-times-circle"></i></span></div><div class="search-result-container no-result"><div class=search-result-icon><i class="fa fa-spinner fa-pulse fa-5x"></i></div></div></div></div></div><div class="toggle sidebar-toggle" role=button><span class=toggle-line></span>
+<span class=toggle-line></span>
+<span class=toggle-line></span></div><aside class=sidebar><div class="sidebar-inner sidebar-nav-active sidebar-toc-active"><ul class=sidebar-nav><li class=sidebar-nav-toc>文章目录</li><li class=sidebar-nav-overview>站点概览</li></ul><div class=sidebar-panel-container><div class="post-toc-wrap sidebar-panel"><div class="post-toc animated"><nav id=TableOfContents><ul><li><ul><li><a href=#70-爬楼梯><a href=https://leetcode.cn/problems/climbing-stairs/description/>70. 爬楼梯</a></a></li><li><a href=#746-使用最小花费爬楼梯><a href=https://leetcode.cn/problems/min-cost-climbing-stairs/>746. 使用最小花费爬楼梯</a></a></li><li><a href=#62-不同路径><a href=https://leetcode.cn/problems/unique-paths/>62. 不同路径</a></a></li><li><a href=#343-整数拆分><a href=https://leetcode.cn/problems/integer-break/>343. 整数拆分</a></a></li><li><a href=#96-不同的二叉搜索树><a href=https://leetcode.cn/problems/unique-binary-search-trees/>96. 不同的二叉搜索树</a></a></li><li><a href=#198-打家劫舍><a href=https://leetcode.cn/problems/house-robber/>198. 打家劫舍</a></a></li><li><a href=#213-打家劫舍-ii><a href=https://leetcode.cn/problems/house-robber-ii/>213. 打家劫舍 II</a></a></li><li><a href=#337-打家劫舍-iii-树形-dp><a href=https://leetcode.cn/problems/house-robber-iii/>337. 打家劫舍 III</a> (树形 DP)</a></li><li><a href=#5-最长回文子串---力扣leetcode><a href="https://leetcode.cn/problems/longest-palindromic-substring/description/?envType=study-plan-v2&amp;envId=top-100-liked">5. 最长回文子串 - 力扣（LeetCode）</a></a></li><li><a href=#买卖股票的最佳时机>买卖股票的最佳时机</a><ul><li><a href=#限制交易数>限制交易数</a></li><li><a href=#限制交易间隔>限制交易间隔</a></li><li><a href=#含手续费>含手续费</a></li></ul></li><li><a href=#子序列问题>子序列问题</a><ul><li><a href=#300-最长递增子序列><a href=https://leetcode.cn/problems/longest-increasing-subsequence/>300. 最长递增子序列</a></a></li><li><a href=#674-最长连续递增序列><a href=https://leetcode.cn/problems/longest-continuous-increasing-subsequence/>674. 最长连续递增序列</a></a></li><li><a href=#718-最长重复子数组><a href=https://leetcode.cn/problems/maximum-length-of-repeated-subarray/>718. 最长重复子数组</a></a></li><li><a href=#1143-最长公共子序列><a href=https://leetcode.cn/problems/longest-common-subsequence/>1143. 最长公共子序列</a></a></li></ul></li></ul></li><li><a href=#背包问题>背包问题</a><ul><li><a href=#01-背包>01 背包</a><ul><li><a href=#416-分割等和子集><a href=https://leetcode.cn/problems/partition-equal-subset-sum/>416. 分割等和子集</a></a></li><li><a href=#1049-最后一块石头的重量-ii><a href=https://leetcode.cn/problems/last-stone-weight-ii/>1049. 最后一块石头的重量 II</a></a></li><li><a href=#494-目标和><a href=https://leetcode.cn/problems/target-sum/>494. 目标和</a></a></li><li><a href=#474-一和零><a href=https://leetcode.cn/problems/ones-and-zeroes/>474. 一和零</a></a></li></ul></li><li><a href=#完全背包>完全背包</a><ul><li><a href=#遍历顺序对方案数的影响>遍历顺序对方案数的影响</a></li><li><a href=#转换为-01-背包>转换为 01 背包</a></li><li><a href=#518-零钱兑换-ii><a href=https://leetcode.cn/problems/coin-change-ii/>518. 零钱兑换 II</a></a></li><li><a href=#377-组合总和-><a href=https://leetcode.cn/problems/combination-sum-iv/>377. 组合总和 Ⅳ</a></a></li><li><a href=#322-零钱兑换><a href=https://leetcode.cn/problems/coin-change/>322. 零钱兑换</a></a></li><li><a href=#279-完全平方数><a href=https://leetcode.cn/problems/perfect-squares/>279. 完全平方数</a></a></li><li><a href=#139-单词拆分><a href=https://leetcode.cn/problems/word-break/>139. 单词拆分</a></a></li></ul></li><li><a href=#多重背包>多重背包</a></li></ul></li></ul></nav></div></div><div class="site-overview-wrap sidebar-panel"><div class="site-author site-overview-item animated" itemprop=author itemscope itemtype=http://schema.org/Person><img class=site-author-image itemprop=image alt=CSMTC src=/imgs/img-lazy-loading.gif data-src=/imgs/csmtc.jpg><p class=site-author-name itemprop=name>CSMTC</p><div class=site-description itemprop=description>分享让自我更强大</div></div><div class="site-state-wrap site-overview-item animated"><nav class=site-state><div class="site-state-item site-state-posts"><a href=/><span class=site-state-item-count>3</span>
+<span class=site-state-item-name>日志</span></a></div><div class="site-state-item site-state-categories"><a href=/categories/><span class=site-state-item-count>0</span>
+<span class=site-state-item-name>分类</span></a></div><div class="site-state-item site-state-tags"><a href=/tags/><span class=site-state-item-count>1</span>
+<span class=site-state-item-name>标签</span></a></div></nav></div><div class="links-of-social site-overview-item animated"><span class=links-of-social-item><a href=https://github.com/csmtc title="Github → https://github.com/csmtc" rel=noopener class=hvr-icon-pulse target=_blank><i class="fab fa-github fa-fw hvr-icon"></i>
+Github
+</a></span><span class=links-of-social-item><a href=https://gitee.com/csmtce title="Gitee → https://gitee.com/csmtce" rel=noopener class=hvr-icon-pulse target=_blank><i class="fab fa-github fa-fw hvr-icon"></i>
+Gitee</a></span></div><div class="cc-license animated" itemprop=license><a href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh class=cc-opacity rel=noopener target=_blank title=共享知识><img src=/imgs/img-lazy-loading.gif data-src=/imgs/cc/small/by_nc_sa.svg alt=共享知识></a></div></div></div></div></aside><div class=sidebar-dimmer></div></header><div class=tool-buttons><div id=toggle-theme class=button title=深浅模式切换><i class="fas fa-adjust"></i></div><div class=back-to-top role=button title=返回顶部><i class="fa fa-arrow-up"></i>
+<span>0%</span></div></div><div class=reading-progress-bar></div><a role=button class="book-mark-link book-mark-link-fixed"></a><a href=https://github.com/hugo-next rel="noopener external nofollow noreferrer" target=_blank title="Follow me on GitHub" class="exturl github-corner"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0 0 115 115h15l12 27L250 250V0z"/><path d="M128.3 109C113.8 99.7 119 89.6 119 89.6 122 82.7 120.5 78.6 120.5 78.6 119.2 72 123.4 76.3 123.4 76.3 127.3 80.9 125.5 87.3 125.5 87.3 122.9 97.6 130.6 101.9 134.4 103.2" fill="currentcolor" style="transform-origin:130px 106px" class="octo-arm"/><path d="M115 115C114.9 115.1 118.7 116.5 119.8 115.4l13.9-13.8C136.9 99.2 139.9 98.4 142.2 98.6 133.8 88 127.5 74.4 143.8 58 148.5 53.4 154 51.2 159.7 51 160.3 49.4 163.2 43.6 171.4 40.1 171.4 40.1 176.1 42.5 178.8 56.2 183.1 58.6 187.2 61.8 190.9 65.4 194.5 69 197.7 73.2 200.1 77.6 213.8 80.2 216.3 84.9 216.3 84.9 212.7 93.1 206.9 96 205.4 96.6 205.1 102.4 203 107.8 198.3 112.5 181.9 128.9 168.3 122.5 157.7 114.1 157.9 116.9 156.7 120.9 152.7 124.9L141 136.5C139.8 137.7 141.6 141.9 141.8 141.8z" fill="currentcolor" class="octo-body"/></svg>
+</a><script type=text/javascript src=//sidecar.gitter.im/dist/sidecar.v1.js async></script><script type=text/javascript>((window.gitter={}).chat={}).options={room:"hugo-next/community"}</script><noscript><div class=noscript-warning>Theme NexT works best with JavaScript enabled</div></noscript><div class="main-inner post posts-expand"><div class=post-block><article itemscope itemtype=http://schema.org/Article class=post-content lang><link itemprop=mainEntityOfPage href=//localhost:1313/post/work/%E5%9F%BA%E7%A1%80/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/%E9%A2%98%E7%9B%AE/leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/><span hidden itemprop=author itemscope itemtype=http://schema.org/Person><meta itemprop=image content="/imgs/csmtc.jpg"><meta itemprop=name content="CSMTC"></span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization><meta itemprop=name content="CSMTC"><meta itemprop=description content="分享让自我更强大"></span><span hidden itemprop=post itemscope itemtype=http://schema.org/CreativeWork><meta itemprop=name content="LeetCode刷题记录-动态规划"><meta itemprop=description content="动态规划问题
+
+这类问题的求解思路是：
+
+先尝试有 Cache 的暴力搜索，列出递推式
+将上述搜索转化为使用 dp 数组的方法
+
+
+
+    70. 爬楼梯
+    
+    
+    
+
+
+假设你正在爬楼梯。需要 n 阶你才能到达楼顶。
+每次你可以爬 1 或 2 个台阶。你有多少种不同的方法可以爬到楼顶呢？
+$$
+\begin{cases}
+f(n)=f(n-2)+f(n-1)\
+f(<=0)=0,f(1)=1,f(2)=2
+\end{cases}
+$$
+
+
+    746. 使用最小花费爬楼梯
+    
+    
+    
+
+
+给你一个整数数组 cost ，其中 cost[i] 是从楼梯第 i 个台阶向上爬需要支付的费用。一旦你支付此费用，即可选择向上爬一个或者两个台阶。
+你可以选择从下标为 0 或下标为 1 的台阶开始爬楼梯。
+输入：cost = [10,15,20]
+输出：15
+解释：你将从下标为 1 的台阶开始。
+
+支付 15 ，向上爬两个台阶，到达楼梯顶部。
+总花费为 15 。
+
+
+
+    62. 不同路径
+    
+    
+    
+
+
+一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为 “Start” ）。
+机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为 “Finish” ）。
+问总共有多少条不同的路径？"></span><header class=post-header><h1 class=post-title itemprop="name headline">LeetCode刷题记录-动态规划
+<a href=https://github.com/user-name/repo-name/tree/branch-name/subdirectory-name/post/Work/%e5%9f%ba%e7%a1%80/%e7%ae%97%e6%b3%95%e8%ae%be%e8%ae%a1%e4%b8%8e%e5%88%86%e6%9e%90/%e9%a2%98%e7%9b%ae/LeetCode%e5%88%b7%e9%a2%98%e8%ae%b0%e5%bd%95-%e5%8a%a8%e6%80%81%e8%a7%84%e5%88%92.md rel="noopener external nofollow noreferrer" target=_blank class="exturl post-edit-link" title=编辑><i class="fa fa-pen-nib"></i></a></h1><div class=post-meta-container><div class=post-meta-items><span class=post-meta-item><span class=post-meta-item-icon><i class="fas fa-solid fa-calendar"></i>
+</span><span class=post-meta-item-text title=发表于>发表于：
+</span><time title="创建时间：2024-02-17 16:50:13 +00:00" itemprop="dateCreated datePublished" datetime="2024-02-17 16:50:13 +0000 UTC">2024-02-17
+</time></span><span class=post-meta-item><span class=post-meta-item-icon><i class="fas fa-solid fa-calendar-check"></i>
+</span><span class=post-meta-item-text title=更新于>更新于：
+</span><time title="修改时间：2025-03-12 00:38:38 +00:00" itemprop="dateModified dateLastmod" datetime="2025-03-12 00:38:38 +0000 UTC">2025-03-12</time></span></div><div class=post-meta-items><span class=post-meta-item title=字数><span class=post-meta-item-icon><i class="fas fa-solid fa-file-word"></i>
+</span><span class=post-meta-item-text>字数：</span>
+<span>1961</span>
+</span><span class=post-meta-item title=阅读><span class=post-meta-item-icon><i class="fas fa-solid fa-clock"></i>
+</span><span class=post-meta-item-text>阅读：&ap;</span>
+<span>10分钟</span>
+</span><span class=post-meta-item title=浏览><span class=post-meta-item-icon><i class="fas fa-solid fa-eye"></i>
+</span><span class=post-meta-item-text>浏览：
+</span><span id=busuanzi_value_page_pv data-path=/post/work/%E5%9F%BA%E7%A1%80/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/%E9%A2%98%E7%9B%AE/leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/><i class="fa fa-sync fa-spin"></i></span></span></div></div></header><div class="post-body autonumber" itemprop=articleBody><h1 id=动态规划问题>动态规划问题
+<a class=header-anchor href=#%e5%8a%a8%e6%80%81%e8%a7%84%e5%88%92%e9%97%ae%e9%a2%98></a></h1><p>这类问题的求解思路是：</p><ul><li>先尝试有 Cache 的暴力搜索，列出递推式</li><li>将上述搜索转化为使用 dp 数组的方法</li></ul><h3 id=70-爬楼梯><a href=https://leetcode.cn/problems/climbing-stairs/description/ title="70. 爬楼梯" rel="noopener external nofollow noreferrer" target=_blank class=exturl>70. 爬楼梯
+<i class="fa fa-external-link-alt"></i>
+</a><a class=header-anchor href=#70-%e7%88%ac%e6%a5%bc%e6%a2%af></a></h3><p>假设你正在爬楼梯。需要 <code>n</code> 阶你才能到达楼顶。
+每次你可以爬 <code>1</code> 或 <code>2</code> 个台阶。你有多少种不同的方法可以爬到楼顶呢？</p><p>$$
+\begin{cases}
+f(n)=f(n-2)+f(n-1)\
+f(&lt;=0)=0,f(1)=1,f(2)=2
+\end{cases}
+$$</p><h3 id=746-使用最小花费爬楼梯><a href=https://leetcode.cn/problems/min-cost-climbing-stairs/ title="746. 使用最小花费爬楼梯" rel="noopener external nofollow noreferrer" target=_blank class=exturl>746. 使用最小花费爬楼梯
+<i class="fa fa-external-link-alt"></i>
+</a><a class=header-anchor href=#746-%e4%bd%bf%e7%94%a8%e6%9c%80%e5%b0%8f%e8%8a%b1%e8%b4%b9%e7%88%ac%e6%a5%bc%e6%a2%af></a></h3><p>给你一个整数数组 <code>cost</code> ，其中 <code>cost[i]</code> 是从楼梯第 <code>i</code> 个台阶向上爬需要支付的费用。一旦你支付此费用，即可选择向上爬一个或者两个台阶。
+你可以选择从下标为 <code>0</code> 或下标为 <code>1</code> 的台阶开始爬楼梯。
+输入：cost = [10,15,20]
+输出：15
+解释：你将从下标为 1 的台阶开始。</p><ul><li>支付 15 ，向上爬两个台阶，到达楼梯顶部。
+总花费为 15 。</li></ul><h3 id=62-不同路径><a href=https://leetcode.cn/problems/unique-paths/ title="62. 不同路径" rel="noopener external nofollow noreferrer" target=_blank class=exturl>62. 不同路径
+<i class="fa fa-external-link-alt"></i>
+</a><a class=header-anchor href=#62-%e4%b8%8d%e5%90%8c%e8%b7%af%e5%be%84></a></h3><p>一个机器人位于一个 <code>m x n</code> 网格的左上角 （起始点在下图中标记为 “Start” ）。
+机器人每次只能向下或者向右移动一步。机器人试图达到网格的右下角（在下图中标记为 “Finish” ）。
+问总共有多少条不同的路径？</p><a id=more></a><p>设 $dp[i][j]$ 表示由 (0,0) 走到(i,j)的路径数目
+$$
+\begin{cases}
+dp[i][j]=0,i&lt;=0||j&lt;=0\
+dp[i][j]=dp[i][j-1]+dp[i-1][j]
+\end{cases}
+$$</p><h3 id=343-整数拆分><a href=https://leetcode.cn/problems/integer-break/ title="343. 整数拆分" rel="noopener external nofollow noreferrer" target=_blank class=exturl>343. 整数拆分
+<i class="fa fa-external-link-alt"></i>
+</a><a class=header-anchor href=#343-%e6%95%b4%e6%95%b0%e6%8b%86%e5%88%86></a></h3><p>给定一个正整数 <code>n</code> ，将其拆分为 <code>k</code> 个 <strong>正整数</strong> 的和（ <code>k >= 2</code> ），并使这些整数的乘积最大化。
+返回 <em>你可以获得的最大乘积</em> 。</p><ul><li>$dp[i]$ 表示拆解i可得的最大乘积</li><li>递推时，数 a 可拆解为 b+c 的形式，而 b，c 可以进一步拆分（其最大乘积为 $dp[b]$ ），也可以不拆分
+$$
+\begin{cases}
+dp[2]=1\
+dp[i] =max(&amp;max(i-1,dp[i-1])<em>1,\
+&&mldr;,\
+&amp;max(2,dp[2])</em>(i-2))
+\end{cases}
+$$</li></ul><h3 id=96-不同的二叉搜索树><a href=https://leetcode.cn/problems/unique-binary-search-trees/ title="96. 不同的二叉搜索树" rel="noopener external nofollow noreferrer" target=_blank class=exturl>96. 不同的二叉搜索树
+<i class="fa fa-external-link-alt"></i>
+</a><a class=header-anchor href=#96-%e4%b8%8d%e5%90%8c%e7%9a%84%e4%ba%8c%e5%8f%89%e6%90%9c%e7%b4%a2%e6%a0%91></a></h3><p>#mark/leetcode 未做出来</p><p>给你一个整数 <code>n</code> ，求恰由 <code>n</code> 个节点组成且节点值从 <code>1</code> 到 <code>n</code> 互不相同的 <strong>二叉搜索树</strong> 有多少种？返回满足题意的二叉搜索树的种数。</p><p>思路：</p><ul><li>设 $dp_n$ 为以 n 个结点的二叉搜索树的数目</li><li>以 n=3 为例， $dp_3$ =以 1 为根的搜索树数目+以 2 为根的搜索树数目+以 3 为根的搜索树数目</li><li>以 2 为根的搜索树数目=左子树数目×右子树数目= $dp[2-1]*dp[3-2]$</li></ul><h3 id=198-打家劫舍><a href=https://leetcode.cn/problems/house-robber/ title="198. 打家劫舍" rel="noopener external nofollow noreferrer" target=_blank class=exturl>198. 打家劫舍
+<i class="fa fa-external-link-alt"></i>
+</a><a class=header-anchor href=#198-%e6%89%93%e5%ae%b6%e5%8a%ab%e8%88%8d></a></h3><p>你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。
+给定一个代表每个房屋存放金额的非负整数数组，计算你不触动警报装置的情况下，一夜之内能够偷窃到的最高金额。</p><ul><li>设 $f[i]$ 偷窃前 i+1 家获得的最高金额</li><li>递推式： $f[i]=max(f[i-2]+v[i],f[i-1])$</li><li>初始条件： $f[0]=v[0],f[1]=max(v[0],v[1])$</li></ul><h3 id=213-打家劫舍-ii><a href=https://leetcode.cn/problems/house-robber-ii/ title="213. 打家劫舍 II" rel="noopener external nofollow noreferrer" target=_blank class=exturl>213. 打家劫舍 II
+<i class="fa fa-external-link-alt"></i>
+</a><a class=header-anchor href=#213-%e6%89%93%e5%ae%b6%e5%8a%ab%e8%88%8d-ii></a></h3><p>你是一个专业的小偷，计划偷窃沿街的房屋，每间房内都藏有一定的现金。这个地方所有的房屋都<strong>围成一圈</strong>，这意味着第一个房屋和最后一个房屋是紧挨着的。同时，相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。
+给定一个代表每个房屋存放金额的非负整数数组，计算你在不触动警报装置的情况下，今晚能够偷窃到的最高金额。</p><blockquote><p>输入：nums = [2,3,2]
+输出：3
+解释：你不能先偷窃 1 号房屋（金额 = 2），然后偷窃 3 号房屋（金额 = 2）, 因为他们是相邻的。</p></blockquote><p>思路：将环形数组从某处断开，形成一个普通数组。忽略数组的最后一个元素，然后用 198 题同样的思路求解。
+遍历所有可能的断开的点，计算最大值
+优化：只需考虑从 tail→head 处和 tail-1→tail 处断开的两种情况即可</p><h3 id=337-打家劫舍-iii-树形-dp><a href=https://leetcode.cn/problems/house-robber-iii/ title="337. 打家劫舍 III" rel="noopener external nofollow noreferrer" target=_blank class=exturl>337. 打家劫舍 III
+<i class="fa fa-external-link-alt"></i>
+</a>(树形 DP)
+<a class=header-anchor href=#337-%e6%89%93%e5%ae%b6%e5%8a%ab%e8%88%8d-iii-%e6%a0%91%e5%bd%a2-dp></a></h3><p>小偷又发现了一个新的可行窃的地区。这个地区只有一个入口，我们称之为 root 。
+除了 root 之外，每栋房子有且只有一个“父“房子与之相连。一番侦察之后，聪明的小偷意识到“这个地方的所有房屋的排列类似于一棵二叉树”。如果两个直接相连的房子在同一天晚上被打劫，房屋将自动报警。
+给定二叉树的 root 。返回在不触动警报的情况下，小偷能够盗取的最高金额。</p><p>树的特点决定了，尽量不要跨 2 层及以上访问子结点，否则有很多判断情况，效率不高</p><p>思路：本质和
+<a href=https://leetcode.cn/problems/house-robber/ title="198. 打家劫舍" rel="noopener external nofollow noreferrer" target=_blank class=exturl>198. 打家劫舍
+<i class="fa fa-external-link-alt"></i>
+</a>思路一样，但是这个思路的递推式 $f[j]=max(nums[j]+f[j-2],f[j-1])$ 会跨 2 层访问结点。优化思路是，后根遍历，计算每个树结点存储偷/不偷所能获得的最大金额（2 个数），这样无需跨 2 层访问。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-0-1><a class=lnlinks href=#hl-0-1> 1</a>
+</span><span class=lnt id=hl-0-2><a class=lnlinks href=#hl-0-2> 2</a>
+</span><span class=lnt id=hl-0-3><a class=lnlinks href=#hl-0-3> 3</a>
+</span><span class=lnt id=hl-0-4><a class=lnlinks href=#hl-0-4> 4</a>
+</span><span class=lnt id=hl-0-5><a class=lnlinks href=#hl-0-5> 5</a>
+</span><span class=lnt id=hl-0-6><a class=lnlinks href=#hl-0-6> 6</a>
+</span><span class=lnt id=hl-0-7><a class=lnlinks href=#hl-0-7> 7</a>
+</span><span class=lnt id=hl-0-8><a class=lnlinks href=#hl-0-8> 8</a>
+</span><span class=lnt id=hl-0-9><a class=lnlinks href=#hl-0-9> 9</a>
+</span><span class=lnt id=hl-0-10><a class=lnlinks href=#hl-0-10>10</a>
+</span><span class=lnt id=hl-0-11><a class=lnlinks href=#hl-0-11>11</a>
+</span><span class=lnt id=hl-0-12><a class=lnlinks href=#hl-0-12>12</a>
+</span><span class=lnt id=hl-0-13><a class=lnlinks href=#hl-0-13>13</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-Python data-lang=Python><span class=line><span class=cl><span class=k>def</span> <span class=nf>rob</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>root</span><span class=p>:</span> <span class=n>Optional</span><span class=p>[</span><span class=n>TreeNode</span><span class=p>])</span> <span class=o>-&gt;</span> <span class=nb>int</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>	<span class=k>def</span> <span class=nf>maxAmount</span><span class=p>(</span><span class=n>root</span><span class=p>)</span> <span class=o>-&gt;</span> <span class=nb>tuple</span><span class=p>[</span><span class=nb>int</span><span class=p>,</span> <span class=nb>int</span><span class=p>]:</span>  <span class=c1># 返回偷，不偷root可以获得的最大金额</span>
+</span></span><span class=line><span class=cl>	    <span class=k>if</span> <span class=n>root</span> <span class=o>==</span> <span class=kc>None</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>	        <span class=k>return</span> <span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>	    <span class=k>else</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>	        <span class=n>lchild</span> <span class=o>=</span> <span class=n>maxAmount</span><span class=p>(</span><span class=n>root</span><span class=o>.</span><span class=n>left</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>	        <span class=n>rchild</span> <span class=o>=</span> <span class=n>maxAmount</span><span class=p>(</span><span class=n>root</span><span class=o>.</span><span class=n>right</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>	        <span class=n>theftAmount</span> <span class=o>=</span> <span class=n>root</span><span class=o>.</span><span class=n>val</span> <span class=o>+</span> <span class=n>lchild</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=o>+</span> <span class=n>rchild</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>	        <span class=n>noTheftAmount</span> <span class=o>=</span> <span class=nb>max</span><span class=p>(</span><span class=n>lchild</span><span class=p>)</span> <span class=o>+</span> <span class=nb>max</span><span class=p>(</span><span class=n>rchild</span><span class=p>)</span> <span class=c1># 可偷可不偷</span>
+</span></span><span class=line><span class=cl>	
+</span></span><span class=line><span class=cl>	        <span class=k>return</span> <span class=p>(</span><span class=n>theftAmount</span><span class=p>,</span> <span class=n>noTheftAmount</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=k>return</span> <span class=nb>max</span><span class=p>(</span><span class=n>maxAmount</span><span class=p>(</span><span class=n>root</span><span class=p>))</span></span></span></code></pre></td></tr></table></div></div><h3 id=5-最长回文子串---力扣leetcode><a href="https://leetcode.cn/problems/longest-palindromic-substring/description/?envType=study-plan-v2&amp;envId=top-100-liked" title="5. 最长回文子串 - 力扣（LeetCode）" rel="noopener external nofollow noreferrer" target=_blank class=exturl>5. 最长回文子串 - 力扣（LeetCode）
+<i class="fa fa-external-link-alt"></i>
+</a><a class=header-anchor href=#5-%e6%9c%80%e9%95%bf%e5%9b%9e%e6%96%87%e5%ad%90%e4%b8%b2---%e5%8a%9b%e6%89%a3leetcode></a></h3><p>给你一个字符串 s，找到 s 中最长的回文子串。</p><p>P(i,j) 表示$s[i:j]$是否为回文串。</p><ul><li>P(i,j)为回文串当且仅当 $s[i+1,j-1]$ 为回文串且 $s[i]=s[j]$</li><li>边界条件为：<ul><li>长度 1：$s[i,i]=true$</li><li>长度 2：$s[i,i+1]=s[i]==s[j]$</li></ul></li></ul><h3 id=买卖股票的最佳时机>买卖股票的最佳时机
+<a class=header-anchor href=#%e4%b9%b0%e5%8d%96%e8%82%a1%e7%a5%a8%e7%9a%84%e6%9c%80%e4%bd%b3%e6%97%b6%e6%9c%ba></a></h3><h4 id=限制交易数>限制交易数
+<a class=header-anchor href=#%e9%99%90%e5%88%b6%e4%ba%a4%e6%98%93%e6%95%b0></a></h4><ol start=6><li><a href=https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/ title="121. 买卖股票的最佳时机" rel="noopener external nofollow noreferrer" target=_blank class=exturl>121. 买卖股票的最佳时机
+<i class="fa fa-external-link-alt"></i>
+</a>给定一个数组 <code>prices</code> ，它的第 <code>i</code> 个元素 <code>prices[i]</code> 表示一支给定股票第 <code>i</code> 天的价格。
+你只能选择 <strong>某一天</strong> 买入这只股票，并选择在 <strong>未来的某一个不同的日子</strong> 卖出该股票。设计一个算法来计算你所能获取的最大利润。
+返回你可以从这笔交易中获取的最大利润。如果你不能获取任何利润，返回 <code>0</code> 。</li><li><a href=https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-ii/ title="122. 买卖股票的最佳时机 II" rel="noopener external nofollow noreferrer" target=_blank class=exturl>122. 买卖股票的最佳时机 II
+<i class="fa fa-external-link-alt"></i>
+</a>：可以先购买，然后在 <strong>同一天</strong> 出售。</li><li><a href=https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/ title="123. 买卖股票的最佳时机 III" rel="noopener external nofollow noreferrer" target=_blank class=exturl>123. 买卖股票的最佳时机 III
+<i class="fa fa-external-link-alt"></i>
+</a>：最多可以完成 <strong>两笔</strong> 交易。注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</li><li><a href=https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iv/ title="188. 买卖股票的最佳时机 IV" rel="noopener external nofollow noreferrer" target=_blank class=exturl>188. 买卖股票的最佳时机 IV
+<i class="fa fa-external-link-alt"></i>
+</a>：最多可以完成 <code>k</code> 笔交易。也就是说，你最多可以买 <code>k</code> 次，卖 <code>k</code> 次。</li></ol><p>第 1,2 问可以用贪心做：遍历 prices，记录最低价格，利润=当前价格-最低价格，记录最大利润即可</p><p>第 3,4 问只能用动规：状态：不持有股票→持有股票（第 1 次）→不持有股票（第 1 次）→&mldr;→持有股票（第 k 次）→不持有股票（第 k 次）
+$dp[i,j]$ ：表示第 i 天处于状态 j 可以获得的最大总利润</p><ul><li>每天有以下 3 种可能的操作
+$$
+\begin{cases}
+\text{买入}:dp[i,j-1]-p_i & j=1,3,5,&mldr;\
+\text{卖出}:dp[i,j-1]+p_i & j=2,4,6,&mldr;\
+\text{保持原状态}:dp[i-1,j]
+\end{cases}
+$$</li><li>因而递推式为
+$$
+dp[i,j]=\begin{cases}
+买:max(dp[i-1,j],dp[i,j-1]-p_i)& j=1,3,5,&mldr;\
+卖:max(dp[i-1,j],dp[i,j-1]+p_i)& j=2,4,6,&mldr;
+\end{cases}
+$$
+初始状态：dp = -Inf
+优化 ：压缩 dp 数组：考虑到 $dp[*,0]\equiv 0$ 因而上述 dp 数组可以去掉第一行</li></ul><p>例如允许买入卖出 2 次时，计算最大例如的程序如下</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-1-1><a class=lnlinks href=#hl-1-1> 1</a>
+</span><span class=lnt id=hl-1-2><a class=lnlinks href=#hl-1-2> 2</a>
+</span><span class=lnt id=hl-1-3><a class=lnlinks href=#hl-1-3> 3</a>
+</span><span class=lnt id=hl-1-4><a class=lnlinks href=#hl-1-4> 4</a>
+</span><span class=lnt id=hl-1-5><a class=lnlinks href=#hl-1-5> 5</a>
+</span><span class=lnt id=hl-1-6><a class=lnlinks href=#hl-1-6> 6</a>
+</span><span class=lnt id=hl-1-7><a class=lnlinks href=#hl-1-7> 7</a>
+</span><span class=lnt id=hl-1-8><a class=lnlinks href=#hl-1-8> 8</a>
+</span><span class=lnt id=hl-1-9><a class=lnlinks href=#hl-1-9> 9</a>
+</span><span class=lnt id=hl-1-10><a class=lnlinks href=#hl-1-10>10</a>
+</span><span class=lnt id=hl-1-11><a class=lnlinks href=#hl-1-11>11</a>
+</span><span class=lnt id=hl-1-12><a class=lnlinks href=#hl-1-12>12</a>
+</span><span class=lnt id=hl-1-13><a class=lnlinks href=#hl-1-13>13</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-Python data-lang=Python><span class=line><span class=cl><span class=k>def</span> <span class=nf>maxProfit</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>prices</span><span class=p>:</span> <span class=n>List</span><span class=p>[</span><span class=nb>int</span><span class=p>])</span> <span class=o>-&gt;</span> <span class=nb>int</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>	<span class=n>day_cnt</span><span class=p>,</span> <span class=n>state_cnt</span> <span class=o>=</span> <span class=nb>len</span><span class=p>(</span><span class=n>prices</span><span class=p>),</span> <span class=mi>4</span>
+</span></span><span class=line><span class=cl>	<span class=n>dp</span> <span class=o>=</span> <span class=p>[[</span><span class=mi>0</span> <span class=k>for</span> <span class=n>_</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=n>state_cnt</span><span class=p>)]</span> <span class=k>for</span> <span class=n>_</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=n>day_cnt</span> <span class=o>+</span> <span class=mi>1</span><span class=p>)]</span>
+</span></span><span class=line><span class=cl>	<span class=n>dp</span><span class=p>[</span><span class=mi>0</span><span class=p>][</span><span class=mi>0</span><span class=p>]</span> <span class=o>=</span> <span class=o>-</span><span class=n>prices</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>	<span class=n>dp</span><span class=p>[</span><span class=mi>0</span><span class=p>][</span><span class=mi>2</span><span class=p>]</span> <span class=o>=</span> <span class=n>dp</span><span class=p>[</span><span class=mi>0</span><span class=p>][</span><span class=mi>0</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>	<span class=k>for</span> <span class=n>i</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=mi>1</span><span class=p>,</span> <span class=n>day_cnt</span> <span class=o>+</span> <span class=mi>1</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>	    <span class=n>p</span> <span class=o>=</span> <span class=n>prices</span><span class=p>[</span><span class=n>i</span> <span class=o>-</span> <span class=mi>1</span><span class=p>]</span>
+</span></span><span class=line><span class=cl>	    <span class=n>dp</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=mi>0</span><span class=p>]</span> <span class=o>=</span> <span class=nb>max</span><span class=p>(</span><span class=n>dp</span><span class=p>[</span><span class=n>i</span> <span class=o>-</span> <span class=mi>1</span><span class=p>][</span><span class=mi>0</span><span class=p>],</span> <span class=o>-</span><span class=n>p</span><span class=p>)</span>  <span class=c1># 买</span>
+</span></span><span class=line><span class=cl>	    <span class=n>dp</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=mi>1</span><span class=p>]</span> <span class=o>=</span> <span class=nb>max</span><span class=p>(</span><span class=n>dp</span><span class=p>[</span><span class=n>i</span> <span class=o>-</span> <span class=mi>1</span><span class=p>][</span><span class=mi>1</span><span class=p>],</span> <span class=n>dp</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=mi>0</span><span class=p>]</span> <span class=o>+</span> <span class=n>p</span><span class=p>)</span>  <span class=c1># 卖</span>
+</span></span><span class=line><span class=cl>	    <span class=n>dp</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=mi>2</span><span class=p>]</span> <span class=o>=</span> <span class=nb>max</span><span class=p>(</span><span class=n>dp</span><span class=p>[</span><span class=n>i</span> <span class=o>-</span> <span class=mi>1</span><span class=p>][</span><span class=mi>2</span><span class=p>],</span> <span class=n>dp</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=mi>1</span><span class=p>]</span> <span class=o>-</span> <span class=n>p</span><span class=p>)</span>  <span class=c1># 买</span>
+</span></span><span class=line><span class=cl>	    <span class=n>dp</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=mi>3</span><span class=p>]</span> <span class=o>=</span> <span class=nb>max</span><span class=p>(</span><span class=n>dp</span><span class=p>[</span><span class=n>i</span> <span class=o>-</span> <span class=mi>1</span><span class=p>][</span><span class=mi>3</span><span class=p>],</span> <span class=n>dp</span><span class=p>[</span><span class=n>i</span><span class=p>][</span><span class=mi>2</span><span class=p>]</span> <span class=o>+</span> <span class=n>p</span><span class=p>)</span>  <span class=c1># 卖</span>
+</span></span><span class=line><span class=cl>	    <span class=nb>print</span><span class=p>(</span><span class=sa>f</span><span class=s2>&#34;第</span><span class=si>{</span><span class=n>i</span><span class=si>}</span><span class=s2>天,价格</span><span class=si>{</span><span class=n>p</span><span class=si>}</span><span class=s2>,总利润：</span><span class=si>{</span><span class=n>dp</span><span class=p>[</span><span class=n>i</span><span class=p>]</span><span class=si>}</span><span class=s2>&#34;</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>	<span class=k>return</span> <span class=n>dp</span><span class=p>[</span><span class=n>day_cnt</span><span class=p>][</span><span class=n>state_cnt</span> <span class=o>-</span> <span class=mi>1</span><span class=p>]</span></span></span></code></pre></td></tr></table></div></div><h4 id=限制交易间隔>限制交易间隔
+<a class=header-anchor href=#%e9%99%90%e5%88%b6%e4%ba%a4%e6%98%93%e9%97%b4%e9%9a%94></a></h4><p><a href=https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/ title="309. 买卖股票的最佳时机含冷冻期" rel="noopener external nofollow noreferrer" target=_blank class=exturl>309. 买卖股票的最佳时机含冷冻期
+<i class="fa fa-external-link-alt"></i>
+</a>给定一个整数数组<code>prices</code>，其中第  <code>prices[i]</code> 表示第 i 天的股票价格 。​
+设计一个算法计算出最大利润。在满足以下约束条件下，你可以尽可能地完成更多的交易（多次买卖一支股票）:</p><ul><li>卖出股票后，你无法在第二天买入股票 (即冷冻期为 1 天)。
+注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</li></ul><p>设第 i 天处于买入状态可以获得的最大利润为 $buy[i]$ ，处于卖出状态可以获得的最大总利润为 $sell[i]$ ,处于冻结状态可以获得的最大总利润为 $frozen[i]$
+$$
+\begin{cases}
+buy[i] = max(buy[i-1],frozen[i-1]-p_i)\
+sell[i] = max(sell[i-1],buy[i]+p_i)\
+frozen[i] = sell[i-1]
+\end{cases}
+$$
+初始条件： $buy[0]=-\infty,sell = 0,frozen=any$
+<img src=/imgs/img-lazy-loading.gif data-src=./assets/LeetCode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/image-2024-07-31_15-46-33-081.png alt=|332></p><h4 id=含手续费>含手续费
+<a class=header-anchor href=#%e5%90%ab%e6%89%8b%e7%bb%ad%e8%b4%b9></a></h4><p><a href=https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/ title="714. 买卖股票的最佳时机含手续费" rel="noopener external nofollow noreferrer" target=_blank class=exturl>714. 买卖股票的最佳时机含手续费
+<i class="fa fa-external-link-alt"></i>
+</a>给定一个整数数组 prices，其中 $prices[i]$ 表示第 i 天的股票价格；整数 fee 代表了交易股票的手续费用。返回获得利润的最大值。
+你可以无限次地完成交易，但是你每笔交易都需要付手续费。如果你已经购买了一个股票，在卖出它之前你就不能再继续购买股票了。
+注意：这里的一笔交易指买入持有并卖出股票的整个过程，每笔交易你只需要为支付一次手续费。</p><p>思路：buy 的时候计算手续费即可</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-2-1><a class=lnlinks href=#hl-2-1> 1</a>
+</span><span class=lnt id=hl-2-2><a class=lnlinks href=#hl-2-2> 2</a>
+</span><span class=lnt id=hl-2-3><a class=lnlinks href=#hl-2-3> 3</a>
+</span><span class=lnt id=hl-2-4><a class=lnlinks href=#hl-2-4> 4</a>
+</span><span class=lnt id=hl-2-5><a class=lnlinks href=#hl-2-5> 5</a>
+</span><span class=lnt id=hl-2-6><a class=lnlinks href=#hl-2-6> 6</a>
+</span><span class=lnt id=hl-2-7><a class=lnlinks href=#hl-2-7> 7</a>
+</span><span class=lnt id=hl-2-8><a class=lnlinks href=#hl-2-8> 8</a>
+</span><span class=lnt id=hl-2-9><a class=lnlinks href=#hl-2-9> 9</a>
+</span><span class=lnt id=hl-2-10><a class=lnlinks href=#hl-2-10>10</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>def maxProfit(self, prices: List[int], fee: int) -&gt; int:
+</span></span><span class=line><span class=cl>	n = len(prices) + 1
+</span></span><span class=line><span class=cl>	buy = [-50000] * n
+</span></span><span class=line><span class=cl>	sell = [0] * n
+</span></span><span class=line><span class=cl>	for i in range(1, n):
+</span></span><span class=line><span class=cl>	    p = prices[i - 1]
+</span></span><span class=line><span class=cl>	    buy[i] = max(buy[i - 1], sell[i - 1] - p - fee)
+</span></span><span class=line><span class=cl>	    sell[i] = max(sell[i - 1], buy[i] + p)
+</span></span><span class=line><span class=cl>	
+</span></span><span class=line><span class=cl>	return sell[-1]</span></span></code></pre></td></tr></table></div></div><h3 id=子序列问题>子序列问题
+<a class=header-anchor href=#%e5%ad%90%e5%ba%8f%e5%88%97%e9%97%ae%e9%a2%98></a></h3><h4 id=300-最长递增子序列><a href=https://leetcode.cn/problems/longest-increasing-subsequence/ title="300. 最长递增子序列" rel="noopener external nofollow noreferrer" target=_blank class=exturl>300. 最长递增子序列
+<i class="fa fa-external-link-alt"></i>
+</a><a class=header-anchor href=#300-%e6%9c%80%e9%95%bf%e9%80%92%e5%a2%9e%e5%ad%90%e5%ba%8f%e5%88%97></a></h4><p>给你一个整数数组 nums ，找到其中最长严格递增子序列的长度。
+子序列是由数组派生而来的序列，删除（或不删除）数组中的元素而不改变其余元素的顺序。例如，[3,6,2,7] 是数组 [0,3,1,6,2,2,7] 的子序列。
+设 $dp[i]$ 为以 $nums[i]$ 为最后一个元素的增序列长度：
+$$
+dp[i]=max(1,max_j{dp[j]+1|0\leq j&lt;i,n_j&lt;n_i })
+$$</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-3-1><a class=lnlinks href=#hl-3-1>1</a>
+</span><span class=lnt id=hl-3-2><a class=lnlinks href=#hl-3-2>2</a>
+</span><span class=lnt id=hl-3-3><a class=lnlinks href=#hl-3-3>3</a>
+</span><span class=lnt id=hl-3-4><a class=lnlinks href=#hl-3-4>4</a>
+</span><span class=lnt id=hl-3-5><a class=lnlinks href=#hl-3-5>5</a>
+</span><span class=lnt id=hl-3-6><a class=lnlinks href=#hl-3-6>6</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>def lengthOfLIS(self, nums: List[int]) -&gt; int:
+</span></span><span class=line><span class=cl>	dp = [1] * (len(nums))
+</span></span><span class=line><span class=cl>	for i in range(1, len(nums)):
+</span></span><span class=line><span class=cl>	    dp[i] = max((dp[j] + 1 for j in range(i) if nums[j] &lt; nums[i]), default=1)
+</span></span><span class=line><span class=cl>	    # print(f&#34;{nums[:i+1]}:{dp[i]}&#34;)
+</span></span><span class=line><span class=cl>	return max(dp)</span></span></code></pre></td></tr></table></div></div><h4 id=674-最长连续递增序列><a href=https://leetcode.cn/problems/longest-continuous-increasing-subsequence/ title="674. 最长连续递增序列" rel="noopener external nofollow noreferrer" target=_blank class=exturl>674. 最长连续递增序列
+<i class="fa fa-external-link-alt"></i>
+</a><a class=header-anchor href=#674-%e6%9c%80%e9%95%bf%e8%bf%9e%e7%bb%ad%e9%80%92%e5%a2%9e%e5%ba%8f%e5%88%97></a></h4><p>给定一个未经排序的整数数组，找到最长且连续递增的子序列，并返回该序列的长度。
+连续递增的子序列可以由两个下标 l 和 r（l &lt; r）确定，如果对于每个 l &lt;= i &lt; r，都有 $nums[i] &lt; nums[i + 1]$ ，那么子序列 $[nums[l], nums[l + 1], &mldr;, nums[r - 1], nums[r]]$ 就是连续递增子序列。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-4-1><a class=lnlinks href=#hl-4-1>1</a>
+</span><span class=lnt id=hl-4-2><a class=lnlinks href=#hl-4-2>2</a>
+</span><span class=lnt id=hl-4-3><a class=lnlinks href=#hl-4-3>3</a>
+</span><span class=lnt id=hl-4-4><a class=lnlinks href=#hl-4-4>4</a>
+</span><span class=lnt id=hl-4-5><a class=lnlinks href=#hl-4-5>5</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>def findLengthOfLCIS(self, nums: List[int]) -&gt; int:
+</span></span><span class=line><span class=cl>	dp = [1] * len(nums)
+</span></span><span class=line><span class=cl>	for i in range(1, len(nums)):
+</span></span><span class=line><span class=cl>	    dp[i] = dp[i - 1] + 1 if nums[i] &gt; nums[i - 1] else 1
+</span></span><span class=line><span class=cl>	return max(dp)</span></span></code></pre></td></tr></table></div></div><h4 id=718-最长重复子数组><a href=https://leetcode.cn/problems/maximum-length-of-repeated-subarray/ title="718. 最长重复子数组" rel="noopener external nofollow noreferrer" target=_blank class=exturl>718. 最长重复子数组
+<i class="fa fa-external-link-alt"></i>
+</a><a class=header-anchor href=#718-%e6%9c%80%e9%95%bf%e9%87%8d%e5%a4%8d%e5%ad%90%e6%95%b0%e7%bb%84></a></h4><p>给两个整数数组 A 和 B ，返回两个数组中公共的、长度最长的子数组的长度。</p><p>记 $f[i,j]$ 为以 $A_i,B_j$ 结尾的，最长公共子数组长度
+$$
+f[i,j]=\begin{cases}
+f[i-1,j-1]+1&amp;A[i]=B[j]\
+0 &amp;others
+\end{cases}
+$$
+边界条件：
+$$
+f[-1,<em>]=f[</em>,-1]=0
+$$
+优化空间占用：注意到计算第 i 层时只会用到 i-1 层小于 j 的元素，因而可以压缩 dp 数组成 1 维，从大到小遍历 j 即可。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-5-1><a class=lnlinks href=#hl-5-1> 1</a>
+</span><span class=lnt id=hl-5-2><a class=lnlinks href=#hl-5-2> 2</a>
+</span><span class=lnt id=hl-5-3><a class=lnlinks href=#hl-5-3> 3</a>
+</span><span class=lnt id=hl-5-4><a class=lnlinks href=#hl-5-4> 4</a>
+</span><span class=lnt id=hl-5-5><a class=lnlinks href=#hl-5-5> 5</a>
+</span><span class=lnt id=hl-5-6><a class=lnlinks href=#hl-5-6> 6</a>
+</span><span class=lnt id=hl-5-7><a class=lnlinks href=#hl-5-7> 7</a>
+</span><span class=lnt id=hl-5-8><a class=lnlinks href=#hl-5-8> 8</a>
+</span><span class=lnt id=hl-5-9><a class=lnlinks href=#hl-5-9> 9</a>
+</span><span class=lnt id=hl-5-10><a class=lnlinks href=#hl-5-10>10</a>
+</span><span class=lnt id=hl-5-11><a class=lnlinks href=#hl-5-11>11</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-Python data-lang=Python><span class=line><span class=cl><span class=k>def</span> <span class=nf>findLength</span><span class=p>(</span><span class=bp>self</span><span class=p>,</span> <span class=n>A</span><span class=p>:</span> <span class=n>List</span><span class=p>[</span><span class=nb>int</span><span class=p>],</span> <span class=n>B</span><span class=p>:</span> <span class=n>List</span><span class=p>[</span><span class=nb>int</span><span class=p>])</span> <span class=o>-&gt;</span> <span class=nb>int</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>	<span class=n>dp</span> <span class=o>=</span> <span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=o>*</span> <span class=p>(</span><span class=nb>len</span><span class=p>(</span><span class=n>B</span><span class=p>)</span> <span class=o>+</span> <span class=mi>1</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>	<span class=n>M</span> <span class=o>=</span> <span class=mi>0</span>
+</span></span><span class=line><span class=cl>	<span class=k>for</span> <span class=n>i</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=nb>len</span><span class=p>(</span><span class=n>A</span><span class=p>)):</span>
+</span></span><span class=line><span class=cl>	    <span class=k>for</span> <span class=n>j</span> <span class=ow>in</span> <span class=nb>range</span><span class=p>(</span><span class=nb>len</span><span class=p>(</span><span class=n>B</span><span class=p>),</span> <span class=mi>0</span><span class=p>,</span> <span class=o>-</span><span class=mi>1</span><span class=p>):</span>
+</span></span><span class=line><span class=cl>	        <span class=k>if</span> <span class=n>A</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>==</span> <span class=n>B</span><span class=p>[</span><span class=n>j</span> <span class=o>-</span> <span class=mi>1</span><span class=p>]:</span>
+</span></span><span class=line><span class=cl>	            <span class=n>dp</span><span class=p>[</span><span class=n>j</span><span class=p>]</span> <span class=o>=</span> <span class=n>dp</span><span class=p>[</span><span class=n>j</span> <span class=o>-</span> <span class=mi>1</span><span class=p>]</span> <span class=o>+</span> <span class=mi>1</span>
+</span></span><span class=line><span class=cl>	            <span class=n>M</span> <span class=o>=</span> <span class=nb>max</span><span class=p>(</span><span class=n>M</span><span class=p>,</span> <span class=n>dp</span><span class=p>[</span><span class=n>j</span><span class=p>])</span>
+</span></span><span class=line><span class=cl>	        <span class=k>else</span><span class=p>:</span>
+</span></span><span class=line><span class=cl>	            <span class=n>dp</span><span class=p>[</span><span class=n>j</span><span class=p>]</span> <span class=o>=</span> <span class=mi>0</span>
+</span></span><span class=line><span class=cl>	<span class=k>return</span> <span class=n>M</span></span></span></code></pre></td></tr></table></div></div><h4 id=1143-最长公共子序列><a href=https://leetcode.cn/problems/longest-common-subsequence/ title="1143. 最长公共子序列" rel="noopener external nofollow noreferrer" target=_blank class=exturl>1143. 最长公共子序列
+<i class="fa fa-external-link-alt"></i>
+</a><a class=header-anchor href=#1143-%e6%9c%80%e9%95%bf%e5%85%ac%e5%85%b1%e5%ad%90%e5%ba%8f%e5%88%97></a></h4><p>给定两个字符串 text1 和 text2，返回这两个字符串的最长公共子序列的长度。如果不存在公共子序列，返回 0 。
+一个字符串的 子序列 是指这样一个新的字符串：它是由原字符串在不改变字符的相对顺序的情况下删除某些字符（也可以不删除任何字符）后组成的新字符串。</p><p>例如，&ldquo;ace&rdquo; 是 &ldquo;abcde&rdquo; 的子序列。两个字符串的公共子序列是这两个字符串所共同拥有的子序列。</p><ul><li>记 $f[i,j]$ 是以 $A[0:i],B[0:j]$ 中最长公共子序列的长度
+$$
+f[i,j]\begin{cases}
+f[i-1,j-1]+1 & A_{i-1}=B_{j-1}\
+max(f[i-1,j],f[i,j-1])&amp;else
+\end{cases}
+$$</li><li>边界条件： $f[0,<em>]=0,f[</em>,0]=0$</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-6-1><a class=lnlinks href=#hl-6-1> 1</a>
+</span><span class=lnt id=hl-6-2><a class=lnlinks href=#hl-6-2> 2</a>
+</span><span class=lnt id=hl-6-3><a class=lnlinks href=#hl-6-3> 3</a>
+</span><span class=lnt id=hl-6-4><a class=lnlinks href=#hl-6-4> 4</a>
+</span><span class=lnt id=hl-6-5><a class=lnlinks href=#hl-6-5> 5</a>
+</span><span class=lnt id=hl-6-6><a class=lnlinks href=#hl-6-6> 6</a>
+</span><span class=lnt id=hl-6-7><a class=lnlinks href=#hl-6-7> 7</a>
+</span><span class=lnt id=hl-6-8><a class=lnlinks href=#hl-6-8> 8</a>
+</span><span class=lnt id=hl-6-9><a class=lnlinks href=#hl-6-9> 9</a>
+</span><span class=lnt id=hl-6-10><a class=lnlinks href=#hl-6-10>10</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>def longestCommonSubsequence(self, A: str, B: str) -&gt; int:
+</span></span><span class=line><span class=cl>    m, n = len(A) + 1, len(B) + 1
+</span></span><span class=line><span class=cl>    dp = [[0] * n for _ in range(m)]
+</span></span><span class=line><span class=cl>    for i in range(1, m):
+</span></span><span class=line><span class=cl>        for j in range(1, n):
+</span></span><span class=line><span class=cl>            if A[i - 1] == B[j - 1]:
+</span></span><span class=line><span class=cl>                dp[i][j] = dp[i - 1][j - 1] + 1
+</span></span><span class=line><span class=cl>            else:
+</span></span><span class=line><span class=cl>                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
+</span></span><span class=line><span class=cl>    return dp[-1][-1]</span></span></code></pre></td></tr></table></div></div><h2 id=背包问题>背包问题
+<a class=header-anchor href=#%e8%83%8c%e5%8c%85%e9%97%ae%e9%a2%98></a></h2><p>背包问题有多种背包⽅式，常⻅的有：01 背包、完全背包、多重背包、分组背包和混合背包等等。
+⼀个商品如果可以重复多次放⼊是完全背包，⽽只能放⼊⼀次是 01 背包</p><h3 id=01-背包>01 背包
+<a class=header-anchor href=#01-%e8%83%8c%e5%8c%85></a></h3><p>有 n 件物品和⼀个最多能背重量为 w 的背包。第 i 件物品的重量是 weight[i]，得到的价值是 value[i] 。每件物品<strong>只能放入一次</strong>，求解将哪些物品装⼊背包⾥物品价值总和最⼤。</p><ul><li><p>用二维数组 $dp[i][j]$ 表示从下标为 $[0-i]$ 的物品⾥任意取，放进容量为 $j$ 的背包，价值总和的最⼤值。</p></li><li><p><strong>递推公式</strong>： $dp[i,j]=Max(dp[i-1,j],,dp[i-1,j-W_i]+V_i)$ ，前者是不拿物品 i，后者是拿物品 i</p></li><li><p><strong>初始化</strong>：</p><ul><li>背包容量为 0 时，可携带的总价值为 0： $dp_{i,0}=0$</li><li>$dp_{i,j}$ 依赖于 $dp_{i-1,<em>}$ ，因而需要初始化 $dp[0,</em>]$ ：<ul><li>背包容量小于 0 号物品大小时： $dp[0,j&lt;W_0]=0$</li><li>背包容量大于 0 号物品大小时： $dp[0,j\geq W_0]=V_0$</li></ul></li></ul></li><li><p><strong>缓存优化</strong>：注意到计算 $dp[I,J]$ 只用到了 $i-1$ 这一行 $j\leq J$ 的数据，因而实际只需要缓存一行的内容。更新时要注意新内容只能覆盖用不到的旧内容。也就是要按照 j 从大到小的顺序更新，这样更新到 $j=J$ 时， $dp[&lt;=J]$ 存储的是第 i-1 行的内容， $dp[>J]$ 存储的是第 i 行的内容，而我们更新 $dp[j=J]$ 只会用到 i-1 行小于 J 的数据，因此覆盖掉 i-1 行大于 J 的数据没有影响。</p></li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-7-1><a class=lnlinks href=#hl-7-1> 1</a>
+</span><span class=lnt id=hl-7-2><a class=lnlinks href=#hl-7-2> 2</a>
+</span><span class=lnt id=hl-7-3><a class=lnlinks href=#hl-7-3> 3</a>
+</span><span class=lnt id=hl-7-4><a class=lnlinks href=#hl-7-4> 4</a>
+</span><span class=lnt id=hl-7-5><a class=lnlinks href=#hl-7-5> 5</a>
+</span><span class=lnt id=hl-7-6><a class=lnlinks href=#hl-7-6> 6</a>
+</span><span class=lnt id=hl-7-7><a class=lnlinks href=#hl-7-7> 7</a>
+</span><span class=lnt id=hl-7-8><a class=lnlinks href=#hl-7-8> 8</a>
+</span><span class=lnt id=hl-7-9><a class=lnlinks href=#hl-7-9> 9</a>
+</span><span class=lnt id=hl-7-10><a class=lnlinks href=#hl-7-10>10</a>
+</span><span class=lnt id=hl-7-11><a class=lnlinks href=#hl-7-11>11</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-C data-lang=C><span class=line><span class=cl><span class=kt>int</span> <span class=nf>maxValue_ver1</span><span class=p>(</span><span class=kt>int</span> <span class=n>backpackSize</span><span class=p>,</span> <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>itemWeight</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                  <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>itemValue</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=c1>// dp[i][j]的含义：从下标为[0-i]的物品⾥任意取，放进容量为j的背包，价值总和最⼤是多少
+</span></span></span><span class=line><span class=cl><span class=c1></span>  <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=nf>dp</span><span class=p>(</span><span class=n>backpackSize</span> <span class=o>+</span> <span class=mi>1</span><span class=p>,</span> <span class=mi>0</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>itemValue</span><span class=p>.</span><span class=nf>size</span><span class=p>();</span> <span class=o>++</span><span class=n>i</span><span class=p>)</span> <span class=p>{</span>             <span class=c1>// 遍历物品
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>j</span> <span class=o>=</span> <span class=n>backpackSize</span><span class=p>;</span> <span class=n>j</span> <span class=o>&gt;=</span> <span class=n>itemWeight</span><span class=p>[</span><span class=n>i</span><span class=p>];</span> <span class=o>--</span><span class=n>j</span><span class=p>)</span> <span class=p>{</span>  <span class=c1>// 遍历背包容量
+</span></span></span><span class=line><span class=cl><span class=c1></span>      <span class=n>dp</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>=</span> <span class=nf>max</span><span class=p>(</span><span class=n>dp</span><span class=p>[</span><span class=n>j</span><span class=p>],</span> <span class=n>dp</span><span class=p>[</span><span class=n>j</span> <span class=o>-</span> <span class=n>itemWeight</span><span class=p>[</span><span class=n>i</span><span class=p>]]</span> <span class=o>+</span> <span class=n>itemValue</span><span class=p>[</span><span class=n>i</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=n>dp</span><span class=p>[</span><span class=n>backpackSize</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div><h4 id=416-分割等和子集><a href=https://leetcode.cn/problems/partition-equal-subset-sum/ title="416. 分割等和子集" rel="noopener external nofollow noreferrer" target=_blank class=exturl>416. 分割等和子集
+<i class="fa fa-external-link-alt"></i>
+</a><a class=header-anchor href=#416-%e5%88%86%e5%89%b2%e7%ad%89%e5%92%8c%e5%ad%90%e9%9b%86></a></h4><p>给你一个 <strong>只包含正整数</strong> 的 <strong>非空</strong> 数组 <code>nums</code> 。请你判断是否可以将这个数组分割成两个子集，使得两个子集的元素和相等。</p><p>思路 1：每个数只能放到一个子集中，套 01 背包。计算 sum(nums)，检测是否能正好装满容量为(sum/2)的背包</p><p>思路 2：记忆化搜索， $f(i,j)$ 表示序列 $[0,i]$ 中是否包含和为 j 的子序列</p><ul><li>$f(i,j)=f(i-1,j),or,f(i-1,j-nums[i])if,j>=nums[i]$</li><li>$f(i&lt;0,0)=T,f(i&lt;0,!=0)=F$</li></ul><h4 id=1049-最后一块石头的重量-ii><a href=https://leetcode.cn/problems/last-stone-weight-ii/ title="1049. 最后一块石头的重量 II" rel="noopener external nofollow noreferrer" target=_blank class=exturl>1049. 最后一块石头的重量 II
+<i class="fa fa-external-link-alt"></i>
+</a><a class=header-anchor href=#1049-%e6%9c%80%e5%90%8e%e4%b8%80%e5%9d%97%e7%9f%b3%e5%a4%b4%e7%9a%84%e9%87%8d%e9%87%8f-ii></a></h4><p>有一堆石头，用整数数组 <code>stones</code> 表示。其中 <code>stones[i]</code> 表示第 <code>i</code> 块石头的重量。
+每一回合，从中选出<strong>任意两块石头</strong>，然后将它们一起粉碎。假设石头的重量分别为 <code>x</code> 和 <code>y</code>，且 <code>x &lt;= y</code>。那么粉碎的可能结果如下：</p><ul><li>如果 <code>x == y</code>，那么两块石头都会被完全粉碎；</li><li>如果 <code>x != y</code>，那么重量为 <code>x</code> 的石头将会完全粉碎，而重量为 <code>y</code> 的石头新重量为 <code>y-x</code>。
+最后，<strong>最多只会剩下一块</strong> 石头。返回此石头 <strong>最小的可能重量</strong> 。如果没有石头剩下，就返回 <code>0</code>。</li></ul><p>思路：本质是将数组分划为 2 个子集 N1 和 N2，计算 $min(\sum N_1-\sum N_2)$</p><h4 id=494-目标和><a href=https://leetcode.cn/problems/target-sum/ title="494. 目标和" rel="noopener external nofollow noreferrer" target=_blank class=exturl>494. 目标和
+<i class="fa fa-external-link-alt"></i>
+</a><a class=header-anchor href=#494-%e7%9b%ae%e6%a0%87%e5%92%8c></a></h4><p>给你一个非负整数数组 <code>nums</code> 和一个整数 <code>target</code> 。
+向数组中的每个整数前添加 <code>'+'</code> 或 <code>'-'</code> ，然后串联起所有整数，可以构造一个 <strong>表达式</strong> ：</p><ul><li>例如，<code>nums = [2, 1]</code> ，可以在 <code>2</code> 之前添加 <code>'+'</code> ，在 <code>1</code> 之前添加 <code>'-'</code> ，然后串联起来得到表达式 <code>"+2-1"</code> 
+返回可以通过上述方法构造的、运算结果等于 <code>target</code> 的不同 <strong>表达式</strong> 的数目。</li></ul><p><strong>思路 1</strong>：记 $f(i,j)$ 为下标为 0~i 的数（ $N_0\rightarrow N_i$ ）构成的表达式中，和为 j 的个数
+$$
+f(i,j)=
+\begin{cases}
+(N_0=j)+(N_0=-j)&amp;i=0\
+f(i-1,j-N_i)+f(i-1,j+N_i)&amp;i>0</p><p>\end{cases}
+$$
+<strong>思路 2</strong>：利用表达式的特征，缩小搜索空间
+对 nums 的若干项加负号，得到的新数组 A 中：记正项集合为 P，负项集合为 N。若 sum(P)-sum(N)=target，则意味着找到了一个。
+这里 P 和 N 并不是独立的，根据关系联立方程组：
+$$
+\begin{split}
+sum(P)+sum(N)&=target\
+sum(P)-sum(N)&=sum(nums)
+\end{split}
+$$
+解得 $sum(P)=(target+sum(nums))/2$
+问题转化为，求使得上述 P 和 nums 的关系成立的集合 P 的组成方式数</p><p>设 $f(i,j)$ 为 nums 中下标为 0~i 的数构成的子数组中，和为 j 的个数</p><ul><li>递推式为：
+$$f(i,j)=\begin{cases}
+f(i-1,j)+f(i-1,j-N_i) &amp;j\geq N_i\
+f(i-1,j) &amp;j&lt;N_i
+\end{cases}
+$$</li><li>初始条件为 i=-1 时
+$$
+f(0,j)=\begin{cases}
+1&amp;j=0\
+0&amp;j\neq0
+\end{cases}
+$$</li><li>因为 nums 均为非负整数，其任意子数组和也是非负整数，因此要求target+sum(nums)必须为非负偶数。否则无解，数目为 0</li></ul><h4 id=474-一和零><a href=https://leetcode.cn/problems/ones-and-zeroes/ title="474. 一和零" rel="noopener external nofollow noreferrer" target=_blank class=exturl>474. 一和零
+<i class="fa fa-external-link-alt"></i>
+</a><a class=header-anchor href=#474-%e4%b8%80%e5%92%8c%e9%9b%b6></a></h4><p>给你一个二进制字符串数组 <code>strs</code> 和两个整数 <code>m</code> 和 <code>n</code> 。</p><p>请你找出并返回 <code>strs</code> 的最大子集的长度，该子集中 <strong>最多</strong> 有 <code>m</code> 个 <code>0</code> 和 <code>n</code> 个 <code>1</code> 。
+示例 1：
+输入：strs = [&ldquo;10&rdquo;, &ldquo;0001&rdquo;, &ldquo;111001&rdquo;, &ldquo;1&rdquo;, &ldquo;0&rdquo;], m = 5, n = 3
+输出：4
+解释：最多有 5 个 0 和 3 个 1 的最大子集是 {&ldquo;10&rdquo;,&ldquo;0001&rdquo;,&ldquo;1&rdquo;,&ldquo;0&rdquo;} ，因此答案是 4 。
+其他满足题意但较小的子集包括 {&ldquo;0001&rdquo;,&ldquo;1&rdquo;} 和 {&ldquo;10&rdquo;,&ldquo;1&rdquo;,&ldquo;0&rdquo;} 。{&ldquo;111001&rdquo;} 不满足题意，因为它含 4 个 1 ，大于 n 的值 3 。</p><ul><li><p>缓存搜索： $f(i,j,k)$ 0~i 号字符串中使用不超过j个0，k个1所取得的最大子集长度</p><ul><li>递推式： 记当前字符串中 0,1 数目为 n0,n1，则
+$$
+f(i,j,k)=\begin{cases}
+Max(f(i-1,j,k),1+f(i-1,j-n_0,k-n_1)) & j\geq n_0,k\geq n_1\
+f(i-1,j,k) & other
+\end{cases}
+$$</li><li>边界条件： i&lt;=0 时，f=0</li></ul></li><li><p>用 DP 数组处理</p></li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-8-1><a class=lnlinks href=#hl-8-1> 1</a>
+</span><span class=lnt id=hl-8-2><a class=lnlinks href=#hl-8-2> 2</a>
+</span><span class=lnt id=hl-8-3><a class=lnlinks href=#hl-8-3> 3</a>
+</span><span class=lnt id=hl-8-4><a class=lnlinks href=#hl-8-4> 4</a>
+</span><span class=lnt id=hl-8-5><a class=lnlinks href=#hl-8-5> 5</a>
+</span><span class=lnt id=hl-8-6><a class=lnlinks href=#hl-8-6> 6</a>
+</span><span class=lnt id=hl-8-7><a class=lnlinks href=#hl-8-7> 7</a>
+</span><span class=lnt id=hl-8-8><a class=lnlinks href=#hl-8-8> 8</a>
+</span><span class=lnt id=hl-8-9><a class=lnlinks href=#hl-8-9> 9</a>
+</span><span class=lnt id=hl-8-10><a class=lnlinks href=#hl-8-10>10</a>
+</span><span class=lnt id=hl-8-11><a class=lnlinks href=#hl-8-11>11</a>
+</span><span class=lnt id=hl-8-12><a class=lnlinks href=#hl-8-12>12</a>
+</span><span class=lnt id=hl-8-13><a class=lnlinks href=#hl-8-13>13</a>
+</span><span class=lnt id=hl-8-14><a class=lnlinks href=#hl-8-14>14</a>
+</span><span class=lnt id=hl-8-15><a class=lnlinks href=#hl-8-15>15</a>
+</span><span class=lnt id=hl-8-16><a class=lnlinks href=#hl-8-16>16</a>
+</span><span class=lnt id=hl-8-17><a class=lnlinks href=#hl-8-17>17</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>class Solution:
+</span></span><span class=line><span class=cl>def findMaxForm(self, strs: List[str], m: int, n: int) -&gt; int:
+</span></span><span class=line><span class=cl>    cnts = []
+</span></span><span class=line><span class=cl>    for s in strs:
+</span></span><span class=line><span class=cl>        rn0 = s.count(&#34;0&#34;)
+</span></span><span class=line><span class=cl>        cnts.append((rn0, len(s) - rn0))
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    # 初始化DP数组
+</span></span><span class=line><span class=cl>    dp = [[0 for _ in range(1 + n)] for _ in range(1 + m)]
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    for i in range(len(strs)):
+</span></span><span class=line><span class=cl>        rn0, rn1 = cnts[i]
+</span></span><span class=line><span class=cl>        for n0 in range(m, rn0 - 1, -1):
+</span></span><span class=line><span class=cl>            for n1 in range(n, rn1 - 1, -1):
+</span></span><span class=line><span class=cl>                dp[n0][n1] = max(dp[n0][n1], dp[n0 - rn0][n1 - rn1] + 1)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    return dp[-1][-1]</span></span></code></pre></td></tr></table></div></div><h3 id=完全背包>完全背包
+<a class=header-anchor href=#%e5%ae%8c%e5%85%a8%e8%83%8c%e5%8c%85></a></h3><p>有 N 件物品和⼀个最多能背重量为 V 的背包。第 i 件物品的重量是 weight[i]，得到的价值是 value[i] 。每件物品都有 ⽆限个（也就是可以放⼊背包多次），求解将哪些物品装⼊背包⾥物品价值总和最⼤。</p><ul><li>$f(i,j)$ 为放入 0~i 类物品且总重量不超过 j 时，物品的总价值
+$$
+f(i,j)=\begin{cases}
+max{f(i-1,j-kW_i)+kV_i,|,0\leq k \leq j//W[i]} &amp;i>=0\
+0 & i&lt;0
+\end{cases}
+$$</li><li>转化为 DP 数组时，只需 j 从小到大遍历即可，这样 $dp[&lt;j]$ 实为 $dp[i][&lt;j]$</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-9-1><a class=lnlinks href=#hl-9-1> 1</a>
+</span><span class=lnt id=hl-9-2><a class=lnlinks href=#hl-9-2> 2</a>
+</span><span class=lnt id=hl-9-3><a class=lnlinks href=#hl-9-3> 3</a>
+</span><span class=lnt id=hl-9-4><a class=lnlinks href=#hl-9-4> 4</a>
+</span><span class=lnt id=hl-9-5><a class=lnlinks href=#hl-9-5> 5</a>
+</span><span class=lnt id=hl-9-6><a class=lnlinks href=#hl-9-6> 6</a>
+</span><span class=lnt id=hl-9-7><a class=lnlinks href=#hl-9-7> 7</a>
+</span><span class=lnt id=hl-9-8><a class=lnlinks href=#hl-9-8> 8</a>
+</span><span class=lnt id=hl-9-9><a class=lnlinks href=#hl-9-9> 9</a>
+</span><span class=lnt id=hl-9-10><a class=lnlinks href=#hl-9-10>10</a>
+</span><span class=lnt id=hl-9-11><a class=lnlinks href=#hl-9-11>11</a>
+</span><span class=lnt id=hl-9-12><a class=lnlinks href=#hl-9-12>12</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-C data-lang=C><span class=line><span class=cl><span class=kt>int</span> <span class=nf>maxValue_ver1</span><span class=p>(</span><span class=kt>int</span> <span class=n>backpackSize</span><span class=p>,</span> <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>itemWeight</span><span class=p>,</span>
+</span></span><span class=line><span class=cl>                  <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=n>itemValue</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>  <span class=c1>// dp[i][j]的含义：从下标为[0-i]的物品⾥任意取，放进容量为j的背包，价值总和最⼤是多少
+</span></span></span><span class=line><span class=cl><span class=c1></span>  <span class=n>vector</span><span class=o>&lt;</span><span class=kt>int</span><span class=o>&gt;</span> <span class=nf>dp</span><span class=p>(</span><span class=n>backpackSize</span> <span class=o>+</span> <span class=mi>1</span><span class=p>,</span> <span class=mi>0</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  <span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>itemValue</span><span class=p>.</span><span class=nf>size</span><span class=p>();</span> <span class=o>++</span><span class=n>i</span><span class=p>)</span> <span class=p>{</span>             <span class=c1>// 遍历物品
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=k>for</span> <span class=p>(</span><span class=kt>int</span> <span class=n>j</span> <span class=o>=</span> <span class=n>itemWeight</span><span class=p>[</span><span class=n>i</span><span class=p>];</span> <span class=n>j</span> <span class=o>&lt;=</span> <span class=n>backpackSize</span> <span class=p>;</span> <span class=o>++</span><span class=n>j</span><span class=p>)</span> <span class=p>{</span>  <span class=c1>// 遍历背包容量
+</span></span></span><span class=line><span class=cl><span class=c1></span>      <span class=c1>// 从小到大遍历，允许重复添加物品
+</span></span></span><span class=line><span class=cl><span class=c1></span>      <span class=n>dp</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>=</span> <span class=nf>max</span><span class=p>(</span><span class=n>dp</span><span class=p>[</span><span class=n>j</span><span class=p>],</span> <span class=n>dp</span><span class=p>[</span><span class=n>j</span> <span class=o>-</span> <span class=n>itemWeight</span><span class=p>[</span><span class=n>i</span><span class=p>]]</span> <span class=o>+</span> <span class=n>itemValue</span><span class=p>[</span><span class=n>i</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=p>}</span>
+</span></span><span class=line><span class=cl>  <span class=k>return</span> <span class=n>dp</span><span class=p>[</span><span class=n>backpackSize</span><span class=p>];</span>
+</span></span><span class=line><span class=cl><span class=p>}</span></span></span></code></pre></td></tr></table></div></div><h4 id=遍历顺序对方案数的影响>遍历顺序对方案数的影响
+<a class=header-anchor href=#%e9%81%8d%e5%8e%86%e9%a1%ba%e5%ba%8f%e5%af%b9%e6%96%b9%e6%a1%88%e6%95%b0%e7%9a%84%e5%bd%b1%e5%93%8d></a></h4><p>遍历 DP 数组，计算达到目标解的方案数时：</p><ul><li><strong>先遍历背包再遍历物品得到排列数</strong>：相当于对每个容量的背包，依次考虑最后装入物品 $x_0,\dots,x_n$ 的情况，物品的不同顺序会被考虑到</li><li><strong>先遍历物品再遍历背包得到组合数</strong>：相当于每个物品，依次装入不同容量的背包。最终所有背包中物品装入的顺序一定是从 $x_0,\dots,x_n$ ，每种物品组合只会计数一次。</li></ul><h4 id=转换为-01-背包>转换为 01 背包
+<a class=header-anchor href=#%e8%bd%ac%e6%8d%a2%e4%b8%ba-01-%e8%83%8c%e5%8c%85></a></h4><p>完全背包问题可以转化为 01 背包问题。
+完全背包中，背包容量为 V，物品 i 重量 wi，因此相当于物品 i 最多有 n = V//wi 个，也就相当于有 n个的一模一样的物品 i 的选或不选的问题。</p><p>优化策略：将 n 表示成二进制形式，例如 7 表示成 $1<em>2^2+1</em>2^1+1*2^0$ 。</p><ul><li>则完全背包转换为 01 背包时，的物品 i 可以转化为以下物品：物品 $i_0$ （重量 $2^0<em>w_i$ ，价值 $2^0</em>v_i$ ），物品 $i_1$ （重量 $2^1<em>w_i$ ，价值 $2^1</em>v_i$ ）,物品 $i_2$ （重量 $2^2<em>w_i$ ，价值 $2^2</em>v_i$ ）</li></ul><h4 id=518-零钱兑换-ii><a href=https://leetcode.cn/problems/coin-change-ii/ title="518. 零钱兑换 II" rel="noopener external nofollow noreferrer" target=_blank class=exturl>518. 零钱兑换 II
+<i class="fa fa-external-link-alt"></i>
+</a><a class=header-anchor href=#518-%e9%9b%b6%e9%92%b1%e5%85%91%e6%8d%a2-ii></a></h4><p>#mark/leetcode
+给你一个整数数组 <code>coins</code> 表示不同面额的硬币，另给一个整数 <code>amount</code> 表示总金额。
+请你计算并返回可以凑成总金额的硬币组合数。如果任何硬币组合都无法凑出总金额，返回 <code>0</code> 。
+假设每一种面额的硬币有无限个。
+EG: 输入：amount = 5, coins = [1, 2, 5]
+输出：4</p><p><strong>方法</strong>：缓存搜索：设 f(i,j)为用 0~i 种硬币凑出金额 j 的方案数。</p><ul><li><p>有两种凑法：
+    - 不再继续选第 i 种硬币凑出金额 j
+    - 继续选一枚第 i 种硬币凑出金额 $j-coins[i]$
+    - 因此 $f(i,j)=f(i-1,j)+f(i,j-c_i)$</p></li><li><p>递归边界：f(−1,0)=1, f(−1,>0)=0</p></li><li><p>递归入口：f(n−1,amount)。
+等价于需要二维的$f[硬币种类数][金额+1]$缓存状态。</p></li><li><p><strong>空间优化</strong>：假设将二维的 $f[m][n]$ 压缩为一维的 $g[n]$ ，对应于 f 中的一行。只需从小到大遍历 j，则当计算 $g[j]=f[i][j]$ 时</p></li></ul><p>$$</p><p>\begin{cases}</p><p>\forall_{j&rsquo;&lt;j} & g[j&rsquo;]=f[i][j&rsquo;]\</p><p>\forall_{j&rsquo;\geq j} & g[j&rsquo;]=f[i-1][j']</p><p>\end{cases}</p><p>$$</p><ul><li>因此递推式可以转化为 $g[j]= g[j]+f[j-c_i]$</li><li>相应的初始条件转换为$g[0]=f(−1,0)=1$,$g[>0]=0$</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-10-1><a class=lnlinks href=#hl-10-1>1</a>
+</span><span class=lnt id=hl-10-2><a class=lnlinks href=#hl-10-2>2</a>
+</span><span class=lnt id=hl-10-3><a class=lnlinks href=#hl-10-3>3</a>
+</span><span class=lnt id=hl-10-4><a class=lnlinks href=#hl-10-4>4</a>
+</span><span class=lnt id=hl-10-5><a class=lnlinks href=#hl-10-5>5</a>
+</span><span class=lnt id=hl-10-6><a class=lnlinks href=#hl-10-6>6</a>
+</span><span class=lnt id=hl-10-7><a class=lnlinks href=#hl-10-7>7</a>
+</span><span class=lnt id=hl-10-8><a class=lnlinks href=#hl-10-8>8</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>def change(self, amount: int, coins: List[int]) -&gt; int:
+</span></span><span class=line><span class=cl>f = [0 for _ in range(amount + 1)]
+</span></span><span class=line><span class=cl>f[0] = 1
+</span></span><span class=line><span class=cl>for c in coins:
+</span></span><span class=line><span class=cl>    for j in range(c, amount + 1):
+</span></span><span class=line><span class=cl>        f[j] = f[j] + f[j - c]
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>return f[amount]</span></span></code></pre></td></tr></table></div></div><h4 id=377-组合总和-><a href=https://leetcode.cn/problems/combination-sum-iv/ title="377. 组合总和 Ⅳ" rel="noopener external nofollow noreferrer" target=_blank class=exturl>377. 组合总和 Ⅳ
+<i class="fa fa-external-link-alt"></i>
+</a><a class=header-anchor href=#377-%e7%bb%84%e5%90%88%e6%80%bb%e5%92%8c-></a></h4><p>给你一个由 <strong>不同</strong> 整数组成的数组 <code>nums</code> ，和一个目标整数 <code>target</code> 。请你从 <code>nums</code> 中找出并返回总和为 <code>target</code> 的元素组合的个数。
+请注意，顺序不同的序列被视作不同的组合。</p><blockquote><p>例如：输入：nums = [1,2,3], target = 4
+输出：7
+所有可能的组合为：(1, 1, 1, 1)(1, 1, 2)(1, 2, 1)(1, 3)(2, 1, 1)(2, 2)(3, 1)</p></blockquote><p>完全背包求排列数：先遍历背包再遍历物品</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt id=hl-11-1><a class=lnlinks href=#hl-11-1>1</a>
+</span><span class=lnt id=hl-11-2><a class=lnlinks href=#hl-11-2>2</a>
+</span><span class=lnt id=hl-11-3><a class=lnlinks href=#hl-11-3>3</a>
+</span><span class=lnt id=hl-11-4><a class=lnlinks href=#hl-11-4>4</a>
+</span><span class=lnt id=hl-11-5><a class=lnlinks href=#hl-11-5>5</a>
+</span><span class=lnt id=hl-11-6><a class=lnlinks href=#hl-11-6>6</a>
+</span><span class=lnt id=hl-11-7><a class=lnlinks href=#hl-11-7>7</a>
+</span><span class=lnt id=hl-11-8><a class=lnlinks href=#hl-11-8>8</a>
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>def combinationSum4(self, nums: List[int], target: int) -&gt; int:
+</span></span><span class=line><span class=cl>	f = [0 for _ in range(target + 1)]
+</span></span><span class=line><span class=cl>	f[0] = 1
+</span></span><span class=line><span class=cl>	for j in range(1, target + 1):
+</span></span><span class=line><span class=cl>	    for n in nums:
+</span></span><span class=line><span class=cl>	        if j &gt;= n:
+</span></span><span class=line><span class=cl>	            f[j] += f[j - n]
+</span></span><span class=line><span class=cl>	return f[target]</span></span></code></pre></td></tr></table></div></div><h4 id=322-零钱兑换><a href=https://leetcode.cn/problems/coin-change/ title="322. 零钱兑换" rel="noopener external nofollow noreferrer" target=_blank class=exturl>322. 零钱兑换
+<i class="fa fa-external-link-alt"></i>
+</a><a class=header-anchor href=#322-%e9%9b%b6%e9%92%b1%e5%85%91%e6%8d%a2></a></h4><p>给你一个整数数组 <code>coins</code> ，表示不同面额的硬币；以及一个整数 <code>amount</code> ，表示总金额。
+计算并返回可以凑成总金额所需的 <strong>最少的硬币个数</strong> 。如果没有任何一种硬币组合能组成总金额，返回 <code>-1</code> 。
+你可以认为每种硬币的数量是无限的。</p><p>思路： $f[i,j]$ 表示使用前 i+1 种硬币凑出 j 的最少硬币个数</p><ul><li>递推式：有两种凑法：<ul><li>使用前 i 种硬币： $f[i-1,j]$</li><li>使用 i+1 种硬币： $\min_k (f[i,j-kc_i]+k),j\geq kc_i$</li></ul></li><li>初始条件： $f[-1,0]=0,f[-1,else]=INT_MAX$ ，个数为 INT_MAX 表示凑不出来</li></ul><h4 id=279-完全平方数><a href=https://leetcode.cn/problems/perfect-squares/ title="279. 完全平方数" rel="noopener external nofollow noreferrer" target=_blank class=exturl>279. 完全平方数
+<i class="fa fa-external-link-alt"></i>
+</a><a class=header-anchor href=#279-%e5%ae%8c%e5%85%a8%e5%b9%b3%e6%96%b9%e6%95%b0></a></h4><p>给你一个整数 n ，返回和为 n 的完全平方数的最少数量。</p><blockquote><p>完全平方数 是一个整数，其值等于另一个整数的平方；换句话说，其值等于一个整数自乘的积。例如，1、4、9 和 16 都是完全平方数，而 3 和 11 不是。</p></blockquote><p>思路：</p><ul><li>变量定义：<ul><li>设完全平方数的数列为 $nums[100<em>100,99</em>99,&mldr;,1*1]$</li><li>设 $f[i,j]$ 表示用前 i+1 个数构成 j 所需的完全平方数的个数</li></ul></li><li>递推式： $f[i,j]=min{f[i-1,j],min_k (f[i,j-kn_i])},j\geq kc_i$</li><li>初始条件 $f[-1,0]=0,f[-1,else]=INT_MAX$ ，个数为 INT_MAX 表示凑不出来</li></ul><h4 id=139-单词拆分><a href=https://leetcode.cn/problems/word-break/ title="139. 单词拆分" rel="noopener external nofollow noreferrer" target=_blank class=exturl>139. 单词拆分
+<i class="fa fa-external-link-alt"></i>
+</a><a class=header-anchor href=#139-%e5%8d%95%e8%af%8d%e6%8b%86%e5%88%86></a></h4><p>给你一个字符串 s 和一个字符串列表 wordDict 作为字典。如果可以利用字典中出现的一个或多个单词拼接出 s 则返回 true。
+注意：不要求字典中出现的单词全部都使用，并且字典中的单词可以重复使用。</p><blockquote><p>输入: s = &ldquo;leetcode&rdquo;, wordDict = [&ldquo;leet&rdquo;, &ldquo;code&rdquo;]
+输出: true
+解释: 返回 true 因为 &ldquo;leetcode&rdquo; 可以由 &ldquo;leet&rdquo; 和 &ldquo;code&rdquo; 拼接成。</p></blockquote><ul><li>变量定义<ul><li>设 $f[i,j]$ 表示由前 i+1 个单词能否组成字符串 $s[:j]$</li></ul></li><li>递推式：<ul><li>$f[i,j]=f[i-1,j]\lor ((f[i,j-1]\land s[j-1] \in dict)\lor\dots\lor (f[i,0]\land s[1:] \in dict))$</li><li>$f[0,0]=true,f[0,else]=false$</li></ul></li></ul><h3 id=多重背包>多重背包
+<a class=header-anchor href=#%e5%a4%9a%e9%87%8d%e8%83%8c%e5%8c%85></a></h3><p>N 种物品，每种有 Mi 件，放入容量为 V 的背包，问怎么装价值最大。
+分解方法：方法是将每种物品拆解为 Mi 种物品，详见完全背包中转换为 01 背包的小节</p></div><footer class=post-footer><div class=post-tags><a href=/tags/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/>算法与数据结构</a></div><div class=post-share-tools><div class=post-share-loading><i class="fa-solid fa-ellipsis fa-spin"></i></div><div class="a2a_kit a2a_kit_size_32 a2a_default_style"><a class=a2a_dd href=https://www.addtoany.com/share></a><a class=a2a_button_wechat></a><a class=a2a_button_qzone></a><a class=a2a_button_sina_weibo></a><a class=a2a_button_douban></a><a class=a2a_button_facebook></a><a class=a2a_button_x></a><a class=a2a_button_email></a><a class=a2a_button_printfriendly></a></div></div><hr><div class=reward-container><div><i class="fa-solid fa-mug-hot"></i>请我喝杯咖啡吧 ヾ(^▽^*)))</div><button>
+赞赏</button><div class=post-reward><div class=post-reward-item><img src=/imgs/img-lazy-loading.gif data-src=/imgs/ali-pay.png alt="CSMTC - 支付宝">
+<span>支付宝</span></div><div class=post-reward-item><img src=/imgs/img-lazy-loading.gif data-src=/imgs/wechat-pay.png alt="CSMTC - 微信">
+<span>微信</span></div></div></div><div class=post-copyright><img src=/imgs/cc/cc.svg width=75 height=75 align=right alt=共享知识><ul><li class=post-copyright-title><strong>文章标题：</strong>
+LeetCode刷题记录-动态规划</li><li class=post-copyright-author><strong>本文作者： </strong>CSMTC</li><li class=post-copyright-link><strong>本文链接：</strong>
+<a id=post-cr-link href=//localhost:1313/post/work/%E5%9F%BA%E7%A1%80/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/%E9%A2%98%E7%9B%AE/leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/ title=LeetCode刷题记录-动态规划>//localhost:1313/post/work/%E5%9F%BA%E7%A1%80/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/%E9%A2%98%E7%9B%AE/leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</a></li><li class=post-copyright-license><strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <i class="fab fa-fw fa-creative-commons"></i><a target=_blank href=https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh>BY-NC-SA</a> 许可协议。转载请注明出处！</li></ul></div><div class=followme><span>欢迎关注我的其它发布渠道</span><div class=social-list><div class=social-item><a target=_blank class=social-link href=/images/wechat_channel.jpg><span class=icon><i class="fab fa-weixin"></i>
+</span><span class=label>WeChat</span></a></div><div class=social-item><a target=_blank class=social-link href=/atom.xml><span class=icon><i class="fa fa-rss"></i>
+</span><span class=label>RSS</span></a></div></div></div><div class=post-nav><div class="post-nav-next post-nav-item"><a href=/post/work/%E5%9F%BA%E7%A1%80/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/%E9%A2%98%E7%9B%AE/leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-%E8%B4%AA%E5%BF%83/ rel=next title=LeetCode刷题记录-贪心><i class="fa fa-chevron-left"></i> LeetCode刷题记录-贪心</a></div><div class="post-nav-prev post-nav-item"></div></div></footer></article></div></div></main><footer class=footer><div class=footer-inner><div class=copyright>&copy;
+<span itemprop=copyrightYear>2024 - 2025
+</span><span class=with-love><i class="fa fa-heart"></i>
+</span><span class=author itemprop=copyrightHolder>CSMTC</span></div><div class=powered-by>由 <a href=https://gohugo.io title=0.145.0 target=_blank>Hugo</a> & <a href=https://github.com/hugo-next/hugo-theme-next title=4.7.2 target=_blank>Hugo NexT.Gemini</a> 强力驱动</div></div></footer><script class=next-config data-name=page type=application/json>{"clipboard":{"js":{"file":"dist/clipboard.min.js","name":"clipboard","version":"2.0.11"}},"comments":false,"expired":false,"isHome":false,"isPage":true,"math":{"js":{"file":"es5/tex-mml-svg.js","name":"mathjax","version":"3.2.2"},"render":"mathjax"},"path":"leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92","permalink":"//localhost:1313/post/work/%E5%9F%BA%E7%A1%80/%E7%AE%97%E6%B3%95%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%88%86%E6%9E%90/%E9%A2%98%E7%9B%AE/leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/","title":"LeetCode刷题记录-动态规划","toc":true,"waline":{"commentcnt":{"alias":"@waline/client","alias_name":"waline","file":"dist/comment.js","name":"comment","version":"2.15.8"}}}</script><script type=text/javascript src=//localhost:1313/js/3rd/animejs/3.2.2/anime.min.js crossorigin=anonymous defer></script><script type=text/javascript src=//localhost:1313/js/3rd/viewerjs/1.11.6/viewer.min.js crossorigin=anonymous defer></script><script class=next-config data-name=main type=application/json>{"bookmark":{"color":"#222","enable":true,"save":"manual"},"copybtn":true,"darkmode":false,"giscus":{"cfg":{"category":"Comments","categoryid":null,"emit":false,"inputposition":"top","mapping":"title","reactions":false,"repo":"username/repo-name","repoid":null,"theme":"preferred_color_scheme"},"js":"https://giscus.app/client.js"},"hostname":"//localhost:1313/","i18n":{"ds_day":" 天前","ds_days":" 天 ","ds_hour":" 小时前","ds_hours":" 小时 ","ds_just":"刚刚","ds_min":" 分钟前","ds_mins":" 分钟","ds_month":" 个月前","ds_years":" 年 ","empty":"没有找到任何搜索结果：${query}","hits":"找到 ${hits} 个搜索结果","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","placeholder":"搜索..."},"isMultiLang":false,"lang":"zh-CN","lazyload":false,"localSearch":{"enable":true,"limit":1e3,"path":"/searchindexes.xml","preload":false,"topnperarticle":-1,"trigger":"auto","unescape":false},"motion":{"async":true,"enable":true,"transition":{"collheader":"slideInRight","postblock":"fadeIn","postbody":"fadeInDown","postheader":"fadeInDown","sidebar":"fadeInUp"}},"postmeta":{"comments":{"enable":true,"plugin":"waline"},"views":{"enable":true,"plugin":"busuanzi"}},"root":"/","scheme":"Gemini","share":{"addtoany":{"js":"https://static.addtoany.com/menu/page.js","locale":"zh-CN","num":8},"enable":false},"sidebar":{"display":"post","offset":12,"padding":18,"position":"left","width":256},"vendor":{"plugins":"local","router":{"name":"local","type":"modern","url":"//localhost:1313/js/3rd"}},"version":"4.7.2","waline":{"cfg":{"emoji":false,"imguploader":false,"placeholder":"请文明发言哟 ヾ(≧▽≦*)o","reaction":true,"reactiontext":["点赞","踩一下","得意","不屑","尴尬","睡觉"],"reactiontitle":"你认为这篇文章怎么样？","requiredmeta":["nick","mail"],"serverurl":null,"sofa":"快来发表你的意见吧 (≧∀≦)ゞ","wordlimit":200},"css":{"alias":"@waline/client","file":"dist/waline.css","name":"waline","version":"2.15.8"},"js":{"alias":"@waline/client","file":"dist/waline.js","name":"waline","version":"2.15.8"}}}</script><script type=text/javascript src="/js/main.js?=1741718936" defer></script><script type=text/javascript src="/js/clipboard.js?=1741718937" defer></script><script type=text/javascript src="/js/math.js?=1741718937" defer></script></body></html>
