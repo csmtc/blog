@@ -10,7 +10,7 @@ def wrap_formulas(content):
         content,
         flags=re.DOTALL,
     )
-    content = re.sub(r"\([\s\./]*assets/(.*)\)", r"\(../assets/\1\)", content)
+    content = re.sub(r"\([\s\./]*assets/(.*)\)", r"(../assets/\1)", content)
     return content
 
 
