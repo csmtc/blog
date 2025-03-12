@@ -36,6 +36,11 @@ to see an ASCII-art graph of the commit history.
 git config --global http.proxy http://127.0.0.1:57890
 ```
 
+#### default branch
+```
+git config --global init.defaultBranch main
+```
+
 #### check
 To confirm that you set up Git properly, run
 ```
