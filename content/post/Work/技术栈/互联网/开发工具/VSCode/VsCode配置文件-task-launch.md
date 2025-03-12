@@ -3,14 +3,15 @@ title: VsCode配置文件-task-launch
 date: 2023-09-28 14:46:34
 lastmod: 2025-03-12 21:53:36
 aliases: 
-keywords: 
+keywords:
+  - VSCode
+  - 配置文件
 categories:
   - 开发工具
-tags: 
+tags:
+  - VSCode
 share: true
 ---
-
-
 
 
 # Vscode 配置文件
