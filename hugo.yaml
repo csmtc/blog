@@ -15,7 +15,7 @@ disablePathToLower: true
 
 # 站点域名，比如： https://hugo-next.eu.org
 # Website domain, eg: https://hugo-next.eu.org
-baseURL: https://csmtc.github.io/blog/
+baseURL: /
 # 站点标题
 # Website title
 title: CSMTC Blog
@@ -310,14 +310,14 @@ params:
   # 不同尺寸站点图标
   # Different size of favicon
   favicon:
-    icon: /imgs/icons/favicon.ico
-    small: /imgs/icons/favicon_16x16_next.png
-    medium: /imgs/icons/favicon_32_32_next.png
-    appleTouchIcon: /imgs/icons/apple_touch_icon_next.png
+    icon: ./imgs/icons/favicon.ico
+    small: ./imgs/icons/favicon_16x16_next.png
+    medium: ./imgs/icons/favicon_32_32_next.png
+    appleTouchIcon: ./imgs/icons/apple_touch_icon_next.png
 
   # 自定义 Logo （目前只支持 Mist 页面模式）
   # Custom Logo (Warning: Only support scheme Mist)
-  customLogo: #/imgs/hugo_next_logo.png
+  customLogo: #./imgs/hugo_next_logo.png
 
   # 用户自定义文件配置
   # Define custom file paths.
@@ -408,7 +408,7 @@ params:
   avatar:
     # 设置显示头像的相对路径
     # Replace the default image and set the url here.
-    url: /imgs/csmtc.png
+    url: ./imgs/csmtc.png
     # 开启头像的圆形显示效果
     # If true, the avatar will be displayed in circle.
     rounded: true
@@ -559,18 +559,18 @@ params:
       list:
         - name: Vercel
           image: 
-            url: /imgs/vendors/vercel.svg
+            url: ./imgs/vendors/vercel.svg
             width: 50
           link: https://vercel.com
         - name: 又拍云
           image: 
-            url: /imgs/vendors/upyun.png
+            url: ./imgs/vendors/upyun.png
             width: 43
           link: https://upyun.com
         - name: Github
           link: https://github.com
           image:
-            url: /imgs/vendors/github.svg
+            url: ./imgs/vendors/github.svg
             width: 14
 
 
@@ -675,8 +675,8 @@ params:
     # Donate type
     # Usage: `name:image url`
     reward:
-      wechatpay: /imgs/wechat-pay.png
-      alipay: /imgs/ali-pay.png
+      wechatpay: ./imgs/wechat-pay.png
+      alipay: ./imgs/ali-pay.png
       #paypal: /images/paypal.png
       #bitcoin: /images/bitcoin.png
 
