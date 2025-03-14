@@ -7,6 +7,7 @@ count_sumary = 0
 
 
 def wrap_formulas(content):
+    global count_sumary
     content, count = re.subn(r"src\s*=([\s\"]*)/imgs/", r"src=\1/blog/imgs/", content)
     count_sumary += count
     return content

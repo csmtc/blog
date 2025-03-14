@@ -7,6 +7,7 @@ count_sumary = 0
 
 
 def wrap_formulas(content):
+    global count_sumary
     content, count = re.subn(
         r"\$\$(.*?)\$\$",
         r'<div class="math display">\1</div>',
