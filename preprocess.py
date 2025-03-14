@@ -3,14 +3,19 @@ import re
 import os
 
 
+count_sumary = 0
+
+
 def wrap_formulas(content):
-    content = re.sub(
+    content, count = re.subn(
         r"\$\$(.*?)\$\$",
         r'<div class="math display">\1</div>',
         content,
         flags=re.DOTALL,
     )
-    content = re.sub(r"\([\s\./]*assets/(.*)\)", r"(../assets/\1)", content)
+    count_sumary += count
+    content, count = re.subn(r"\([\s\./]*assets/(.*)\)", r"(../assets/\1)", content)
+    count_sumary += count
     return content
 
 
@@ -25,3 +30,4 @@ for root, dirs, files in os.walk(input_dir):
             processed_content = wrap_formulas(content)
             with open(filepath, "w", encoding="utf-8") as f:
                 f.write(processed_content)
+print(f"完成{count_sumary}处替换")

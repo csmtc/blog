@@ -3,8 +3,12 @@ import re
 import os
 
 
+count_sumary = 0
+
+
 def wrap_formulas(content):
-    content = re.sub(r"src\s*=\s*/imgs/", r"src=/blog/imgs/", content)
+    content, count = re.subn(r"src\s*=([\s\"]*)/imgs/", r"src=\1/blog/imgs/", content)
+    count_sumary += count
     return content
 
 
@@ -19,3 +23,5 @@ for root, dirs, files in os.walk(input_dir):
             processed_content = wrap_formulas(content)
             with open(filepath, "w", encoding="utf-8") as f:
                 f.write(processed_content)
+
+print(f"完成{count_sumary}处替换")
