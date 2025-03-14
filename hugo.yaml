@@ -15,7 +15,7 @@ disablePathToLower: true
 
 # 站点域名，比如： https://hugo-next.eu.org
 # Website domain, eg: https://hugo-next.eu.org
-baseURL: https://csmtc.github.io
+baseURL: "https://csmtc.github.io/blog/"
 # 站点标题
 # Website title
 title: CSMTC Blog

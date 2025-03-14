@@ -14,7 +14,7 @@ def wrap_formulas(content):
     return content
 
 
-input_dir = "content"  # 你的 Markdown 文件目录
+input_dir = "content/post"  # 你的 Markdown 文件目录
 for root, dirs, files in os.walk(input_dir):
     for filename in files:
         if filename.endswith(".md"):
