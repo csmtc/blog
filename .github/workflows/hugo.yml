@@ -64,12 +64,12 @@ jobs:
             --gc \
             --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
+    #   - name: post-Process html images
+    #     run: "python3 postprocess.py"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
-      - name: post-Process html images
-        run: "python3 postprocess.py"
 
   # Deployment job
   deploy:

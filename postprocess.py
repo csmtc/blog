@@ -9,6 +9,9 @@ count_sumary = 0
 def wrap_formulas(content):
     global count_sumary
     content, count = re.subn(r"src\s*=([\s\"]*)/imgs/", r"src=\1/blog/imgs/", content)
+    # content, count = re.subn(
+    #     r"<img(.*)(=/imgs)(.*)</img>", r"<img\1=blog/imgs/\3", content
+    # )
     count_sumary += count
     return content
 
@@ -17,7 +20,7 @@ input_dir = "public"  # 你的 Markdown 文件目录
 for root, dirs, files in os.walk(input_dir):
     for filename in files:
         if filename.endswith(".html"):
-            print("process:", filename)
+            # print("process:", filename)
             filepath = os.path.join(root, filename)
             with open(filepath, "r", encoding="utf-8") as f:
                 content = f.read()
