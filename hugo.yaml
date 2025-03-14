@@ -15,7 +15,7 @@ disablePathToLower: true
 
 # 站点域名，比如： https://hugo-next.eu.org
 # Website domain, eg: https://hugo-next.eu.org
-baseURL: "https://csmtc.github.io/blog/"
+baseURL: "/blog/"
 # 站点标题
 # Website title
 title: CSMTC Blog
@@ -695,7 +695,8 @@ params:
   # Easily browse and edit blog source code online.
   postEdit:
     enable: true
-    url: https://github.com/user-name/repo-name/tree/branch-name/subdirectory-name/
+    # url: https://github.com/user-name/repo-name/tree/branch-name/subdirectory-name/
+    url: https://github.com/csmtc/blog/tree/master/content/post/
 
 
   # 设置文本的对齐方式
@@ -793,7 +794,7 @@ params:
     enable: true
     # 你的 Github 仓库地址
     # Your repository url on Github.
-    permalink: https://github.com/hugo-next
+    permalink: https://github.com/csmtc
     # 关注说明
     # Show this title when cursor move on.
     title: Follow me on GitHub
@@ -1088,7 +1089,7 @@ params:
 
   # 文章分享功能
   share:
-    enable: false
+    enable: true
     # 更多信息与配置，请参考：https://sharethis.com
     # For more information and configuration, please refer to:https://sharethis.com
     # sharethis:

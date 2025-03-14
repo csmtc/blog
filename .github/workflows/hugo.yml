@@ -68,6 +68,8 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
+      - name: post-Process html images
+        run: "python3 postprocess.py"
 
   # Deployment job
   deploy:
