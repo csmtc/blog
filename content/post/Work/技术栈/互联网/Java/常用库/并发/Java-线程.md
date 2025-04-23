@@ -244,6 +244,20 @@ class Task implements Callable<String> {
 
 #### CompletableFuture
 
+将 Future 转为 CompletableFuture：
+```Java
+CompletableFuture<T> completableFuture = new CompletableFuture<>();
+executorService.submit(() -> {
+	try {
+		T result = future.get();
+		completableFuture.complete(result);
+	} catch (Exception e) {
+		completableFuture.completeExceptionally(e);
+	}
+});
+return completableFuture;
+```
+
 当异步任务完成或者发生异常时，自动调用回调对象的回调方法
 
 创建一个 `CompletableFuture` 是通过 `CompletableFuture.supplyAsync()` 实现的，它需要一个实现了 `Supplier` 接口的对象：

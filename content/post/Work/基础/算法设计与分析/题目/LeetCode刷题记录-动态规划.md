@@ -16,18 +16,19 @@ share: true
 这类问题的求解思路是：
 - 先尝试有 Cache 的暴力搜索，列出递推式
 - 将上述搜索转化为使用 dp 数组的方法
+- 尝试压缩 dp 数组维度
 
 ### [70. 爬楼梯](https://leetcode.cn/problems/climbing-stairs/description/)
 
 假设你正在爬楼梯。需要 `n` 阶你才能到达楼顶。
 每次你可以爬 `1` 或 `2` 个台阶。你有多少种不同的方法可以爬到楼顶呢？
 
-<div class="math display">
+$$
 \begin{cases}
 f(n)=f(n-2)+f(n-1)\\
 f(<=0)=0,f(1)=1,f(2)=2
 \end{cases}
-</div>
+$$
 
 ### [746. 使用最小花费爬楼梯](https://leetcode.cn/problems/min-cost-climbing-stairs/)
 
@@ -39,6 +40,17 @@ f(<=0)=0,f(1)=1,f(2)=2
 - 支付 15 ，向上爬两个台阶，到达楼梯顶部。
 总花费为 15 。
 
+设 $dp[i]$ 为走到位置 i 所需的最小 cost：
+$$
+dp[i] = 
+\begin{cases}
+min(dp[i-1]+cost[i-1],dp[i-2]+cost[i-2]) & i>=2\\
+dp[0]=0\\
+dp[1] =cost[0]
+\end{cases}
+$$
+
+
 ### [62. 不同路径](https://leetcode.cn/problems/unique-paths/)
 
 一个机器人位于一个 `m x n` 网格的左上角 （起始点在下图中标记为 “Start” ）。
@@ -46,12 +58,12 @@ f(<=0)=0,f(1)=1,f(2)=2
 问总共有多少条不同的路径？
 
 设 $dp[i][j]$ 表示由 (0,0) 走到(i,j)的路径数目
-<div class="math display">
+$$
 \begin{cases}
 dp[i][j]=0,i<=0||j<=0\\
 dp[i][j]=dp[i][j-1]+dp[i-1][j]
 \end{cases}
-</div>
+$$
 
 ### [343. 整数拆分](https://leetcode.cn/problems/integer-break/)
 
@@ -60,12 +72,12 @@ dp[i][j]=dp[i][j-1]+dp[i-1][j]
 
 -  $dp[i]$ 表示拆解i可得的最大乘积
 - 递推时，数 a 可拆解为 b+c 的形式，而 b，c 可以进一步拆分（其最大乘积为 $dp[b]$ ），也可以不拆分
-<div class="math display">
+$$
 \begin{cases}
 dp[2]=1\\
 dp[i] =max(max(i-1,dp[i-1])*1,\,\dots,\,max(2,dp[2])*(i-2))
 \end{cases}
-</div>
+$$
 
 ### [96. 不同的二叉搜索树](https://leetcode.cn/problems/unique-binary-search-trees/)
 #mark/leetcode 未做出来
@@ -152,20 +164,20 @@ P(i,j) 表示$s[i:j]$是否为回文串。
 第 3,4 问只能用动规：状态：不持有股票→持有股票（第 1 次）→不持有股票（第 1 次）→...→持有股票（第 k 次）→不持有股票（第 k 次）
 $dp[i,j]$ ：表示第 i 天处于状态 j 可以获得的最大总利润
 - 每天有以下 3 种可能的操作
-<div class="math display">
+$$
 \begin{cases}
 \text{买入}:dp[i,j-1]-p_i & j=1,3,5,...\\
 \text{卖出}:dp[i,j-1]+p_i & j=2,4,6,...\\
 \text{保持原状态}:dp[i-1,j]
 \end{cases}
-</div>
+$$
 - 因而递推式为
-<div class="math display">
+$$
 dp[i,j]=\begin{cases}
 买:max(dp[i-1,j],dp[i,j-1]-p_i)& j=1,3,5,...\\
 卖:max(dp[i-1,j],dp[i,j-1]+p_i)& j=2,4,6,...
 \end{cases}
-</div>
+$$
 初始状态：dp = -Inf
 优化 ：压缩 dp 数组：考虑到 $dp[*,0]\equiv 0$ 因而上述 dp 数组可以去掉第一行
 
@@ -195,13 +207,13 @@ def maxProfit(self, prices: List[int]) -> int:
 注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。
 
 设第 i 天处于买入状态可以获得的最大利润为 $buy[i]$ ，处于卖出状态可以获得的最大总利润为 $sell[i]$ ,处于冻结状态可以获得的最大总利润为 $frozen[i]$
-<div class="math display">
+$$
 \begin{cases}
 buy[i] = max(buy[i-1],frozen[i-1]-p_i)\\
 sell[i] = max(sell[i-1],buy[i]+p_i)\\
 frozen[i] = sell[i-1]
 \end{cases}
-</div>
+$$
 初始条件： $buy[0]=-\infty,sell = 0,frozen=any$
 ![|332](./assets/LeetCode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/image-2024-07-31_15-46-33-081.png)
 
@@ -232,9 +244,9 @@ def maxProfit(self, prices: List[int], fee: int) -> int:
 给你一个整数数组 nums ，找到其中最长严格递增子序列的长度。
 子序列是由数组派生而来的序列，删除（或不删除）数组中的元素而不改变其余元素的顺序。例如，[3,6,2,7] 是数组 [0,3,1,6,2,2,7] 的子序列。
 设 $dp[i]$ 为以 $nums[i]$ 为最后一个元素的增序列长度：
-<div class="math display">
+$$
 dp[i]=max(1,max_j\{dp[j]+1|0\leq j<i,n_j<n_i \})
-</div>
+$$
 ```
 def lengthOfLIS(self, nums: List[int]) -> int:
 	dp = [1] * (len(nums))
@@ -261,16 +273,16 @@ def findLengthOfLCIS(self, nums: List[int]) -> int:
 给两个整数数组 A 和 B ，返回两个数组中公共的、长度最长的子数组的长度。
 
 记 $f[i,j]$ 为以 $A_i,B_j$ 结尾的，最长公共子数组长度
-<div class="math display">
+$$
 f[i,j]=\begin{cases}
 f[i-1,j-1]+1&A[i]=B[j]\\
 0 &others
 \end{cases}
-</div>
+$$
 边界条件：
-<div class="math display">
+$$
 f[-1,*]=f[*,-1]=0
-</div>
+$$
 优化空间占用：注意到计算第 i 层时只会用到 i-1 层小于 j 的元素，因而可以压缩 dp 数组成 1 维，从大到小遍历 j 即可。
 ```Python
 def findLength(self, A: List[int], B: List[int]) -> int:
@@ -294,12 +306,12 @@ def findLength(self, A: List[int], B: List[int]) -> int:
 例如，"ace" 是 "abcde" 的子序列。两个字符串的公共子序列是这两个字符串所共同拥有的子序列。
 
 - 记 $f[i,j]$ 是以 $A[0:i],B[0:j]$ 中最长公共子序列的长度
-<div class="math display">
+$$
 f[i,j]\begin{cases}
 f[i-1,j-1]+1 & A_{i-1}=B_{j-1}\\
 max(f[i-1,j],f[i,j-1])&else
 \end{cases}
-</div>
+$$
 - 边界条件： $f[0,*]=0,f[*,0]=0$
  ```
  def longestCommonSubsequence(self, A: str, B: str) -> int:
@@ -373,40 +385,40 @@ int maxValue_ver1(int backpackSize, vector<int> itemWeight,
 返回可以通过上述方法构造的、运算结果等于 `target` 的不同 **表达式** 的数目。
 
 **思路 1**：记 $f(i,j)$ 为下标为 0~i 的数（ $N_0\rightarrow N_i$ ）构成的表达式中，和为 j 的个数
-<div class="math display">
+$$
 f(i,j)=
 \begin{cases}
 (N_0=j)+(N_0=-j)&i=0\\
 f(i-1,j-N_i)+f(i-1,j+N_i)&i>0
 
 \end{cases}
-</div>
+$$
 **思路 2**：利用表达式的特征，缩小搜索空间
 对 nums 的若干项加负号，得到的新数组 A 中：记正项集合为 P，负项集合为 N。若 sum(P)-sum(N)=target，则意味着找到了一个。
 这里 P 和 N 并不是独立的，根据关系联立方程组：
-<div class="math display">
+$$
 \begin{split}
 sum(P)+sum(N)&=target\\
 sum(P)-sum(N)&=sum(nums)
 \end{split}
-</div>
+$$
 解得 $sum(P)=(target+sum(nums))/2$
 问题转化为，求使得上述 P 和 nums 的关系成立的集合 P 的组成方式数
 
 设 $f(i,j)$ 为 nums 中下标为 0~i 的数构成的子数组中，和为 j 的个数
 - 递推式为：
-<div class="math display">f(i,j)=\begin{cases}
+$$f(i,j)=\begin{cases}
 f(i-1,j)+f(i-1,j-N_i) &j\geq N_i\\
 f(i-1,j) &j<N_i
 \end{cases}
-</div>
+$$
 - 初始条件为 i=-1 时
-<div class="math display">
+$$
 f(0,j)=\begin{cases}
 1&j=0\\
 0&j\neq0
 \end{cases}
-</div>
+$$
 - 因为 nums 均为非负整数，其任意子数组和也是非负整数，因此要求target+sum(nums)必须为非负偶数。否则无解，数目为 0
 
 #### [474. 一和零](https://leetcode.cn/problems/ones-and-zeroes/)
@@ -422,12 +434,12 @@ f(0,j)=\begin{cases}
 
 - 缓存搜索： $f(i,j,k)$ 0~i 号字符串中使用不超过j个0，k个1所取得的最大子集长度
 	- 递推式： 记当前字符串中 0,1 数目为 n0,n1，则 
-<div class="math display">
+$$
 f(i,j,k)=\begin{cases}
 Max(f(i-1,j,k),1+f(i-1,j-n_0,k-n_1)) & j\geq n_0,k\geq n_1\\
 f(i-1,j,k) & other
 \end{cases}
-</div>
+$$
 	- 边界条件： i<=0 时，f=0
 
 - 用 DP 数组处理
@@ -456,12 +468,12 @@ def findMaxForm(self, strs: List[str], m: int, n: int) -> int:
 有 N 件物品和⼀个最多能背重量为 V 的背包。第 i 件物品的重量是 weight[i]，得到的价值是 value[i] 。每件物品都有 ⽆限个（也就是可以放⼊背包多次），求解将哪些物品装⼊背包⾥物品价值总和最⼤。
 
 - $f(i,j)$ 为放入 0~i 类物品且总重量不超过 j 时，物品的总价值
-<div class="math display">
+$$
 f(i,j)=\begin{cases}
 max\{f(i-1,j-kW_i)+kV_i\,|\,0\leq k \leq j//W[i]\} &i>=0\\
 0 & i<0
 \end{cases}
-</div>
+$$
 - 转化为 DP 数组时，只需 j 从小到大遍历即可，这样 $dp[<j]$ 实为 $dp[i][<j]$
 ```C
 int maxValue_ver1(int backpackSize, vector<int> itemWeight,
@@ -513,7 +525,7 @@ EG: 输入：amount = 5, coins = [1, 2, 5]
 
 - **空间优化**：假设将二维的 $f[m][n]$ 压缩为一维的 $g[n]$ ，对应于 f 中的一行。只需从小到大遍历 j，则当计算 $g[j]=f[i][j]$ 时
 
-<div class="math display">
+$$
 
 \begin{cases}
 
@@ -523,7 +535,7 @@ EG: 输入：amount = 5, coins = [1, 2, 5]
 
 \end{cases}
 
-</div>
+$$
 
 - 因此递推式可以转化为 $g[j]= g[j]+f[j-c_i]$
 - 相应的初始条件转换为$g[0]=f(−1,0)=1$,$g[>0]=0$
